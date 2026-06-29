@@ -1,0 +1,248 @@
+NDefines.NGame.START_DATE = "1007.1.1.12"
+NDefines.NGame.END_DATE = "1030.1.1.1"
+NDefines.NGame.HANDS_OFF_START_TAG = "DRG"
+NDefines.NGame.MAX_EFFECT_ITERATION = 50000
+
+NDefines.NDiplomacy.TENSION_TIME_SCALE_START_DATE = "1012.1.1.12" -- increased from 1007 due to Great War being the main huge wakeup call -- Starting at this date, the tension values will be scaled down (will be equal to 1 before that)
+NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 1
+NDefines.NDiplomacy.MAX_OPINION_VALUE = 200							-- Max opinion value cap.
+NDefines.NDiplomacy.MIN_OPINION_VALUE = -200						-- Min opinion value cap.
+NDefines.NDiplomacy.TENSION_PUPPET = -0.5 -- vanilla is 0
+NDefines.NDiplomacy.PEACE_SCORE_DISTRIBUTION = { 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2 } -- How much of the total peace conference score you get during the first n turns.
+NDefines.NDiplomacy.PEACE_CONTEST_REFUND_FACTOR = { 1.0, 0.90, 0.80, 0.70, 0.60, 0.50 } -- How much of the spent peace conference score that gets refunded in a contest. First element applies for the first round of conflicts, second element for the second round of conflicts, etc. The final element is used for each consecutive turn, so setting that to e.g. 0.7 means you get 70 % of the spent score back for every turn thereafter.
+NDefines.NDiplomacy.EQUIPMENT_PURCHASE_ACCEPTANCE_COMPETING_FACTIONS = 0
+NDefines.NDiplomacy.MARKET_ACCESS_ACCEPTANCE_COMPETING_FACTIONS = 0
+
+NDefines.NCountry.SPECIAL_FORCES_CAP_BASE = 0.1					-- Max ammount of special forces battalions is total number of non-special forces battalions multiplied by this and modified by a country modifier
+NDefines.NCountry.SPECIAL_FORCES_CAP_MIN = 32					-- You can have a minimum of this many special forces battalions, regardless of the number of non-special forces battalions you have, this can also be modified by a country modifier
+NDefines.NCountry.MAJOR_MIN_FACTORIES = 25 --default 35		-- need at least these many factories to become a major
+-- modifiers female_random_operative_chance female_random_army_leader_chance female_random_admiral_chance
+NDefines.NCountry.FEMALE_UNIT_LEADER_BASE_CHANCE = { 
+    -- applies as a factor to female unit leader randomization
+    -- the values needs to be zero if you don't actually have random portraits
+    0.5, -- country leaders
+    0.5, -- army leaders
+    0.5, -- navy leaders
+    0.5, -- air leaders
+    0.5, -- operatives
+    0.5, -- scientists
+}
+
+NDefines.NResistance.GARRISON_MANPOWER_LOST_BY_ATTACK = 0.01 	-- Ratio of manpower lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
+
+NDefines.NProduction.FLOATING_HARBOR_MAX_NAV_FACTORIES_PER_LINE = 5 -- vanilla is 5
+NDefines.NProduction.CAPITAL_SHIP_MAX_NAV_FACTORIES_PER_LINE = 5 -- vanilla is 5
+NDefines.NProduction.RAILWAY_GUN_MAX_MIL_FACTORIES_PER_LINE = 5 -- vanilla is 5
+NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 3.0 -- vanilla is 2.0
+NDefines.NProduction.POWERED_FACTORY_SPEED_NAV = 3.5 			--Powered factory speed multiplier. Vanilla is 2.5 -- TODO SEA change the value
+
+NDefines.NProduction.MINIMUM_NUMBER_OF_FACTORIES_TAKEN_BY_CONSUMER_GOODS_PERCENT = 0.05 -- vanilla is 0.1
+NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 4
+
+NDefines.NBuildings.RADAR_RANGE_MAX = 416 --each level is 36, we've gone from 6 levels (40 to 220, 5 increases) to 12 levels (40 to 436, 11 increases)
+NDefines.NBuildings.MAX_SHARED_SLOTS = 30
+
+NDefines.NMilitary.PLAN_EXECUTE_CAREFUL_MAX_FORT = 4
+NDefines.NMilitary.TRAINING_MAX_LEVEL = 10
+NDefines.NMilitary.DEPLOY_TRAINING_MAX_LEVEL = 5
+NDefines.NMilitary.UNIT_EXP_LEVELS = {0.02,	0.04,	0.06,	0.08,	0.1,	0.14,	0.18,	0.22,	0.26,	0.3,	0.39,	0.48,	0.57,	0.66,	0.75,	0.78,	0.81,	0.84,	0.87,	0.9}		-- Experience needed to progress to the next level
+NDefines.NMilitary.EXPERIENCE_COMBAT_FACTOR = 0.05
+NDefines.NMilitary.ARMY_EXP_BASE_LEVEL = 5
+NDefines.NMilitary.BASE_CAPTURE_EQUIPMENT_RATIO = 0.02
+NDefines.NMilitary.BASE_FEMALE_DIVISIONAL_COMMANDER_CHANCE = 0.5 -- 50% of time by default, female_divisional_commander_chance modifier is additive
+
+NDefines.NNavy.NAVAL_MINES_INTEL_DIFF_FACTOR = 0.1 -- Vanilla is 0.5, reverted to pre-AAT value
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_STRENGTH_LOSS = 75.0 -- Vanilla is 50.0, reverted to pre-AAT value
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_ORG_LOSS_FACTOR = 0.6	-- Vanilla is 0.5, reverted to pre-AAT value
+
+NDefines.NAir.NAVAL_COMBAT_EXTERNAL_PLANES_JOIN_RATIO = 0.03 	-- Max planes that can join a combat comparing to the total strength of the ships, vanilla is 0.05
+NDefines.NAir.AIR_WING_XP_LEVELS = {20,	40,	60,	80,	100,	140,	180,	220,	260,	300,	390,	480,	570,	660,	750,	780,	810,	840,	870,	900}		-- Experience needed to progress to the next level
+
+NDefines.NAI.RESEARCH_LAND_DOCTRINE_NEED_GAIN_FACTOR = 0.12 -- Multiplies value based on relative military industry size / country size.
+NDefines.NAI.DYNAMIC_STRATEGIES_THREAT_FACTOR = 6.0
+NDefines.NAI.BASE_DISTANCE_TO_CARE = 400.0
+NDefines.NAI.ATTACK_HEAVILY_DEFENDED_LIMIT = 1.1
+NDefines.NAI.SEND_VOLUNTEER_EVAL_BASE_DISTANCE = 100.0
+NDefines.NAI.SEND_VOLUNTEER_EVAL_CONTAINMENT_FACTOR = 0.15
+NDefines.NAI.DIPLOMACY_FACTION_GLOBAL_TENSION_FACTOR = 0.15
+NDefines.NAI.DIPLOMACY_FACTION_NEUTRALITY_PENALTY = 0.2
+NDefines.NAI.FASCISTS_ALLY_FASCISTS = -10
+NDefines.NAI.FASCISTS_BEFRIEND_FASCISTS = 0
+NDefines.NAI.SCREENS_TO_CAPITAL_RATIO = 3.0 -- Vanilla is 4.0, mostly AI stuff
+
+--NDefines.NAI.MANPOWER_FREE_USAGE_THRESHOLD = 600000			-- If AI has this much manpower he doesn't care about the percentage
+NDefines.NAI.NEUTRAL_THREAT_PARANOIA = 1
+--NDefines.NAI.DIVISION_CREATE_MIN_XP = 50
+--NDefines.NAI.VARIANT_UPGRADE_MIN_XP = 10
+
+NDefines.NAI.HOUR_BAD_COMBAT_REEVALUATE = 24 --default 100
+NDefines.NAI.PLAN_ACTIVATION_SUPERIORITY_AGGRO = 1.2 --default 1.0		-- How aggressive a country is in activating a plan based on how superiour their force is.
+NDefines.NAI.AI_FRONT_MOVEMENT_FACTOR_FOR_READY = 0.1 --default 0.25
+NDefines.NAI.PLAN_VALUE_TO_EXECUTE = -0.2 --default -0.5
+NDefines.NAI.DEPLOY_MIN_TRAINING_SURRENDER_FACTOR = 0.5		-- Required percentage of training (1.0 = 100%) for AI to deploy unit in wartime while surrender progress is higher than 0
+NDefines.NAI.DEPLOY_MIN_EQUIPMENT_SURRENDER_FACTOR = 0.5	-- Required percentage of equipment (1.0 = 100%) for AI to deploy unit in wartime while surrender progress is higher than 0
+NDefines.NAI.DEPLOY_MIN_TRAINING_WAR_FACTOR = 0.8		-- Required percentage of training (1.0 = 100%) for AI to deploy unit in wartime
+NDefines.NAI.DEPLOY_MIN_EQUIPMENT_WAR_FACTOR = 0.80		-- Required percentage of equipment (1.0 = 100%) for AI to deploy unit in wartime
+NDefines.NAI.DEPLOY_MIN_TRAINING_PEACE_FACTOR = 0.99		-- Required percentage of training (1.0 = 100%) for AI to deploy unit in peacetime
+NDefines.NAI.DEPLOY_MIN_EQUIPMENT_PEACE_FACTOR = 0.95	-- Required percentage of equipment (1.0 = 100%) for AI to deploy unit in peacetime
+
+NDefines.NAI.MIN_PLAN_VALUE_TO_MICRO_INACTIVE = 0.1 --default 0.2				-- The AI will not consider members of groups which plan is not activated AND evaluates lower than this.
+NDefines.NAI.MAX_UNITS_FACTOR_FRONT_ORDER = 3.0	--default 1.0			-- Factor for max number of units to assign to area front orders
+NDefines.NAI.DESIRED_UNITS_FACTOR_FRONT_ORDER = 3.0	--default 1.1		-- Factor for desired number of units to assign to area front orders
+NDefines.NAI.MIN_UNITS_FACTOR_FRONT_ORDER = 2.0	--default 1.0			-- Factor for min number of units to assign to area front orders
+NDefines.NAI.MAX_UNITS_FACTOR_INVASION_ORDER = 0.8	--default 1.0	-- Factor for max number of units to assign to naval invasion orders
+NDefines.NAI.DESIRED_UNITS_FACTOR_INVASION_ORDER = 0.8	--default 1.0	-- Factor for desired number of units to assign to naval invasion orders
+NDefines.NAI.MIN_UNITS_FACTOR_INVASION_ORDER = 0.8	--default 1.0			-- Factor for min number of units to assign to naval invasion orders
+NDefines.NAI.MAX_DIST_PORT_RUSH = 40.0	--default 20.0			-- If a unit is in enemy territory with no supply it will consider nearby ports within this distance.
+NDefines.NAI.MIN_FIELD_STRENGTH_TO_BUILD_UNITS = 0.6	--default 0.7		-- Cancel unit production if below this to get resources out to units in the field
+NDefines.NAI.MIN_MANPOWER_TO_BUILD_UNITS = 0.6	--default 0.7				-- Cancel unit production if below this to get resources out to units in the field
+NDefines.NAI.FORTIFIED_RATIO_TO_CONSIDER_A_FRONT_FORTIFIED = 0.3
+NDefines.NAI.HEAVILY_FORTIFIED_RATIO_TO_CONSIDER_A_FRONT_FORTIFIED = 0.3
+NDefines.NAI.INVASION_DISTANCE_RANDOMNESS = 400
+
+NDefines.NAI.CAPITAL_TASKFORCE_MAX_CAPITAL_COUNT = 12 		-- optimum capital count for capital taskforces Vanilla is 12
+NDefines.NAI.SCREEN_TASKFORCE_MAX_SHIP_COUNT = 5		-- optimum screen count for screen taskforces Vanilla is 12
+NDefines.NAI.SUB_TASKFORCE_MAX_SHIP_COUNT = 6 			-- optimum sub count for sub taskforces Vanilla is 16
+NDefines.NAI.DIPLOMACY_ACCEPT_VOLUNTEERS_BASE = 100
+NDefines.NAI.REFIT_SHIP_RELUCTANCE = 5000
+NDefines.NAI.REFIT_SHIP_PERCENTAGE_OF_FORCES = 0.33
+NDefines.NAI.MAX_PATROL_TO_STRIKE_FORCE_RATIO = 4.0
+
+NDefines.NAI.RESEARCH_AHEAD_OF_TIME_FACTOR = 1.5 			-- vanilla 4.0 To which extent AI should care about ahead of time penalties to research
+NDefines.NAI.RESEARCH_AHEAD_BONUS_FACTOR = 10.0          	-- vanilla 4.0 To which extent AI should care about ahead of time bonuses to research
+NDefines.NAI.RESEARCH_BONUS_FACTOR = 2.0 					-- vanilla 5.0 To which extent AI should care about bonuses to research
+
+NDefines.NAI.DESIRE_USE_XP_TO_UPGRADE_AIR_EQUIPMENT = 15.0   -- Vanilla is 1
+NDefines.NAI.DESIRE_USE_XP_TO_UPGRADE_NAVAL_EQUIPMENT = 15.0	-- Vanilla is 1
+NDefines.NAI.DESIRE_USE_XP_TO_UPGRADE_LAND_EQUIPMENT = 5.0 	-- Vanilla is 1
+NDefines.NAI.UPGRADE_DIVISION_RELUCTANCE = 3				-- was 14, vanilla is 7
+NDefines.NAI.DESIRE_USE_XP_TO_UPDATE_LAND_TEMPLATE = 25.0	-- vanilla 2.0
+NDefines.NAI.VARIANT_CREATION_XP_RESERVE_LAND = 25			-- vanilla 50
+NDefines.NAI.UPGRADE_PERCENTAGE_OF_FORCES = 0.09   			-- Vanilla is 0.03
+NDefines.NAI.UPGRADES_DEFICIT_LIMIT_DAYS = 24 				-- vanilla is 7
+
+NDefines.NAI.ARMY_LEADER_ASSIGN_KEEP_CURRENT_LEADER_FACTOR = 1.8    -- default is 1.2, Boosts the score for keeping the current leader. Value > 1.0 favors the current leader.
+-- NDefines.NAI.ARMY_LEADER_ASSIGN_DONT_STEAL_OTHER_FACTOR = 0.9       -- default is 0.75, Reduces the score for leaders assigned elsewhere. Value < 1.0 discourages reassigning these leaders.
+NDefines.NAI.ARMY_LEADER_ASSIGN_FIELD_MARSHAL_TO_ARMY = -100000            			-- Score for assigning a field marshal to a normal army (want to use them for army groups)
+NDefines.NAI.ARMY_LEADER_ASSIGN_EMPTYNESS_MALUS = 0.0                  				-- Factor for avoiding assigning leaders that can lead large armies to small armies (a value of 0.2 reduces the score by max 20 %)
+NDefines.NAI.ARMY_LEADER_ASSIGN_OVERALL_SKILL_FACTOR = 750			-- default is 50
+NDefines.NAI.ARMY_LEADER_ASSIGN_DEFENSE_ATTACK_SKILL_FACTOR = 15	-- default is 3
+NDefines.NAI.ARMY_LEADER_ASSIGN_INVASION_ATTACK_SKILL_FACTOR = 20	-- default is 10
+NDefines.NAI.ARMY_LEADER_ASSIGN_ATTACK_SKILL_FACTOR = 350			-- default is 20
+NDefines.NAI.ARMY_LEADER_ASSIGN_DEFENSE_SKILL_FACTOR = 100          -- This times general's defense skill is added to score
+NDefines.NAI.ARMY_LEADER_ASSIGN_PLANNING_SKILL_FACTOR = 12			-- default is 7
+NDefines.NAI.ARMY_LEADER_ASSIGN_MAX_PLANNING = 0.2					-- default is 0.1
+NDefines.NAI.MIN_INVASION_PLAN_VALUE_TO_EXECUTE = 0.3				-- default is 0.2 
+NDefines.NAI.PLAN_AVG_PREPARATION_TO_EXECUTE = 0.6					-- default is 0.5, % or more average plan preparation before executing
+
+NDefines.NAI.CHIEF_ADDED_WEIGHT_FACTOR = 15.0 					   	-- default is 12.5 Weight multiplier for chief roles over other advisor or idea types
+NDefines.NAI.ARMY_CHIEF_SCORE_MULTIPLIER = 5.0    					-- default is 2.0 score multiplier for hiring an army chief    
+NDefines.NAI.AIR_CHIEF_SCORE_MULTIPLIER = 2.5    					-- default is 1.5 score multiplier for hiring an air chief    
+NDefines.NAI.NAVY_CHIEF_SCORE_MULTIPLIER = 1.2    					-- default is 1.0 score multiplier for hiring an navy chief
+
+NDefines.NAI.LAND_DEFENSE_SUPPLY_HUB_IMPORTANCE = 9		-- default is 4
+NDefines.NAI.ASSIGN_TANKS_TO_MOUNTAINS = -15			-- default is 6
+NDefines.NAI.ASSIGN_TANKS_TO_JUNGLE = -20				-- default is 6
+NDefines.NAI.DIPLOMACY_SEND_ATTACHE_COST_FACTOR = 2.5 	-- default is 5.0 Desire to send attache substracts the cost multiplied by this
+NDefines.NAI.DIPLOMACY_SEND_ATTACHE_PP_FACTOR = 0.2 	-- default is 0.1 Desire to send attache adds total PP multiplied by this
+
+NDefines.NAI.CANCEL_COMBAT_DISADVANTAGE_RATIO = 1.25    -- default is 1.5, If the enemy's advantage ratio over us during (normal) combat is more than <value>, allow canceling the attack
+NDefines.NAI.CANCEL_COMBAT_MIN_DURATION_HOURS = 24      -- default is 48, Only allow cancelling (normal) combat if at least <value> hours have passed
+
+NDefines.NAI.GARRISON_TEMPLATE_SCORE_IC_FACTOR = 1.4		-- ai uses these defines while calculating garrison template score of a template.
+NDefines.NAI.GARRISON_TEMPLATE_SCORE_MANPOWER_FACTOR = 0.4  -- formula is (template_ic * ic_factor + template_manpower * manpower_factor ) / template_supression (lower is better)
+NDefines.NAI.JOIN_ALLY_BASE_DESIRE = 50		-- exactly what it says (vanilla is 20)
+
+NDefines.NAI.MIN_FACTORIES_TO_WANT_TO_IMPORT = {  -- minimum number of civilian factories the AI must have to consider importing a resource - per strategic resource. Default 0, array -should- be updated with new resources, or if the order changes.
+		5, -- oil -- EAW increased because of outdated societies
+		0, -- aluminium
+		0, -- rubber
+		0, -- tungsten
+		0, -- steel
+		0, -- chromium
+		10, -- coal
+		0, -- crystals
+	}
+
+NDefines.NOperatives.AGENCY_CREATION_FACTORIES = 3
+NDefines.NOperatives.AGENCY_UPGRADE_PER_OPERATIVE_SLOT = 4			-- Number of upgrade needed to unlock an additional operative slot
+
+NDefines.NSupply.AVAILABLE_MANPOWER_STATE_SUPPLY = 0.5 --Factor for state supply from max manpower (population) (Base is 0.18, this is PER MILLION.)
+
+-- defines that are used for supply reach for built nodes
+NDefines.NSupply.NODE_STARTING_PENALTY_PER_PROVINCE = 0.30 -- default is 0.5
+NDefines.NSupply.NODE_ADDED_PENALTY_PER_PROVINCE = 0.50 -- default is 0.7
+
+-- BREAKTHROUGH DOUBLED
+
+NDefines.NProject.BREAKTHROUGH_DAILY_TECHNOLOGY_GAIN = 24 -- default is 12
+NDefines.NProject.BREAKTHROUGH_DAILY_SCIENTIST_SKILL_GAIN = 10 -- default is 10
+NDefines.NProject.BREAKTHROUGH_DAILY_ROCKET_SITE_GAIN = 2 -- default is 1
+NDefines.NProject.BREAKTHROUGH_DAILY_NUCLEAR_REACTOR_GAIN = 2 -- default is 1
+NDefines.NProject.BREAKTHROUGH_GAIN_ANIMATION_SPEED_MAX = 2.0 -- default is 1
+
+
+NDefines.NTechnology.BASE_TECH_COST = 80					-- Base cost for a tech. multiplied with tech cost and ahead of time penalties. 100 in vanilla
+NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 4	-- Base year ahead penalty. Vanilla is 2
+
+NDefines.NAI.DEFAULT_MODULE_VARIANT_CREATION_XP_CUTOFF_LAND = 10	-- vanilla is 35
+NDefines.NAI.DEFAULT_MODULE_VARIANT_CREATION_XP_CUTOFF_NAVY = 10	-- vanilla is 50
+NDefines.NAI.DEFAULT_MODULE_VARIANT_CREATION_XP_CUTOFF_AIR = 10		-- vanilla is 25
+NDefines.NFactions.FACTION_INTELLIGENCE_ALLOWED_ADVISOR_TRAIT = {
+	"head_of_intelligence",
+	"mastermind_code_cracker",
+	"expert_code_cracker",
+	"spymaster",
+	"spymaster_no_lar",
+	"commander_of_the_fetno_derash",
+	"commander_of_the_fetno_derash_no_lar",
+	"SWI_soviet_spy",
+	"SWI_intelligence_officer",
+	"special_envoy",
+	"BRA_soviet_spy",
+	"HUN_military_intelligence_officer",
+	"AUS_secretive_priest",
+	"AUS_veteran_head_of_agency",
+	"BEL_illusive_mastermind",
+	"GER_intelligence_coordinator",
+	"GER_secretary_of_state_security",
+	"GER_reich_security_main_office_director_lar",
+	"GER_reich_security_main_office_director_no_lar",
+	"head_of_the_abwehr",
+	"head_of_the_abwehr_improved",
+	"intelligence_service_deputy",
+	"PRC_multi_talented_diplomat_lar",
+	"PRC_multi_talented_diplomat_no_lar",
+	"PRC_trained_by_the_nkvd",
+	"PRC_spymaster",
+	"PHI_intelligence_bureau_chief",
+	"HUN_stalinist_agent",
+	"JAP_tokko_chief",
+	"CHI_spymaster",
+	"AST_intelligence_director",
+	"AST_indomitable_scout",
+	"head_of_intelligence_kirin",
+	"HEL_general_secretary",
+	"HEL_general_secretary_lar",
+	"FAT_head_of_intelligence",
+	"FAT_head_of_intelligence_lar", 
+	"head_of_ohs",
+	"head_of_ohs_lar",
+	"cryptologic_genius_lar",
+	"cryptologic_genius",
+	"agent_of_smile_lar",
+	"great_nobody",
+	"great_nobody_lar",
+	"GRI_iron_lady",
+	"GRI_iron_lady_lar",
+	"KIR_birdkeeper",
+	"KIR_birdkeeper_lar",
+	"JER_kindly_enigma",
+	"JER_kindly_enigma_lar",
+	"head_of_intelligence_useless",
+	"HYE_little_shadow_lar",
+	"HYE_little_shadow",
+	"TBK_AF_lightbringer_advisor",
+	"TBK_AF_lightbringer_advisor_expanded"
+}
+NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0.05 -- vanilla is 0.1
