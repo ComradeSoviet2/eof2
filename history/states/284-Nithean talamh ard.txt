@@ -8,8 +8,8 @@ state={
 		90 152 193 3068 3084 3185 6033 6057 6156 6172 9104 9169 9556 11076 12024 13105 13111 13112 13114 
 	}
 	history = {
-		owner = PNG
-		add_core_of = PNG
+		owner = PLB
+		add_core_of = PLB
 
 		victory_points = { 13111 5 }
 
