@@ -1,0 +1,22 @@
+state={
+	id=25
+	name="STATE_25"
+
+	provinces={
+		336 3991 4084 4097 7008 7215 7908 8046 11987 12018 12842 13074
+	}
+
+	manpower=199500
+	state_category=pastoral
+	buildings_max_level_factor=1.00
+
+	history={
+		owner = EQS
+		add_core_of = EQS
+		victory_points = { 336 1 }
+	}
+
+	resources={
+		rubber=20
+	}
+}

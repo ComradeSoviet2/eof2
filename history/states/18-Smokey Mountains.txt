@@ -1,0 +1,21 @@
+
+state={
+	id=18
+	name="STATE_18"
+
+	history={
+		owner = EQS
+		add_core_of = EQS
+
+	}
+
+	provinces={
+		1752 1870 3719 4759 4772 6722 7877 10709 12566 12685 
+	}
+	manpower=15831
+	buildings_max_level_factor=1.000
+	state_category=wasteland
+	local_supplies=0.000
+	impassable=yes
+	force_link_ownership_to = 130 # Wyvern Hills
+}

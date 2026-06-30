@@ -1,0 +1,22 @@
+state={
+	id=20
+	name="STATE_20"
+	history={
+		owner = CHN
+		add_core_of = CHN
+		victory_points = {
+			11654 2
+		}
+		buildings = {
+			infrastructure = 1
+		}
+	}
+
+	provinces={
+		86 749 880 3008 3107 6087 6137 9162 9198 11654 11760 
+	}
+	manpower=214601
+	buildings_max_level_factor=1
+	state_category=rural
+	local_supplies=0
+}

@@ -1,0 +1,31 @@
+state={
+	id=1199
+	name="STATE_1199"
+	state_category = small_island
+	provinces={
+		2651 2650 2649 2629 2628 2627 2626 2607 2603 
+	}
+	history={
+		owner = HIP
+		add_core_of = HIP
+		victory_points = { 2628 1 }
+		buildings = {
+			infrastructure = 1
+			anti_air_building = 1
+			2628={
+				naval_base = 3
+			}
+			2651={
+				naval_base = 1
+			}
+		}
+		strategic_province_location = {
+			natural_harbor = 2628
+		}
+		strategic_state_location = {
+			favorable_approach = 2628
+		}
+	}
+	manpower=26491
+	buildings_max_level_factor=1.000
+}

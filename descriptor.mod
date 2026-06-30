@@ -1,6 +1,6 @@
-version="0.01"
-dependencies = {
-	Equestria at War
+version="0.1"
+dependencies={
+	"Equestria at War"
 }
 tags={
 	"Alternative History"

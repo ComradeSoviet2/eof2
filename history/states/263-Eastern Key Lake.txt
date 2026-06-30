@@ -1,0 +1,27 @@
+state={
+	id=263
+	name="STATE_263"
+
+	provinces={
+		1560 7586 7797 9910 12418
+	}
+
+	manpower=50600
+	state_category = pastoral
+	buildings_max_level_factor=1.00
+
+	history={
+		owner = PLB
+		add_core_of = PLB
+		strategic_province_location = {
+			defensive_chokepoint = 1560
+		}	
+		victory_points = {
+			1560 1
+		}
+	}
+
+	resources = {
+		oil = 18
+	}
+}

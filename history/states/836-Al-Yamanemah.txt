@@ -1,0 +1,24 @@
+
+state={
+	id=836
+	name="STATE_836"
+
+	history={
+		owner = HLR
+		add_core_of = HLR
+		add_core_of = HLR
+		add_core_of = HLR
+		add_core_of = HLR
+		add_core_of = HLR
+
+	}
+
+	provinces={
+		15106 15108 15109 15117 15118 15120 15122 15125 15127 15129 15130 
+	}
+	manpower=56777
+	buildings_max_level_factor=1.000
+	state_category=wasteland
+	impassable=yes
+	force_link_ownership_to = 834 # Al'Maneid
+}

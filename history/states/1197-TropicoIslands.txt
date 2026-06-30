@@ -1,0 +1,35 @@
+state={
+	id=1197
+	name="STATE_1197"
+	state_category = small_island
+	provinces={
+		2503 2498 2496 2470 2452 2445 2429 2428 2346 2302 2277 
+	}
+	resources={
+		rubber = 4
+	}
+	history={
+		owner = HLR
+		add_core_of = HLR
+		buildings = {
+			infrastructure = 1
+			2428={
+				naval_base = 1
+			}
+			2277={
+				naval_base = 1
+			}
+			2498={
+				naval_base = 2
+			}
+		}
+		strategic_province_location = {
+			natural_harbor = 2498
+		}
+		victory_points={
+			2498 5
+		}
+	}
+	manpower=202440
+	buildings_max_level_factor=1.000
+}

@@ -1,0 +1,34 @@
+state={
+	id=1085
+	name="STATE_1085"
+	state_category = large_town
+	history={
+		owner = HLR
+		add_core_of = HLR
+		buildings = {
+			infrastructure = 2
+			industrial_complex = 1
+			arms_factory = 2
+			air_base = 1
+			16573 = {
+				bunker = 2
+			}
+		}
+		victory_points = {
+			16573 15
+		}
+		victory_points = {
+			4399 3
+		}
+	}
+	resources={
+		crystals = 11
+		aluminium = 5
+		coal = 5
+	}
+	provinces={
+		1388 1437 1574 1629 4399 16573 16586 
+	}
+	manpower=894363
+	buildings_max_level_factor=1.000
+}

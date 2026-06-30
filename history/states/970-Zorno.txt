@@ -1,0 +1,21 @@
+state={
+	id=970
+	name="STATE_970"
+	provinces={
+		1242 1283 1310 3817 4180 13244 19508 19509 19512 19523 19528 19532 20302 
+	}
+	history={
+		owner = HLR
+		add_core_of = HLR
+		buildings = {
+			infrastructure = 1
+		}
+		victory_points={
+			1242 5
+		}
+	}
+	manpower=528600
+	buildings_max_level_factor=1
+	state_category=rural
+	local_supplies=0
+}

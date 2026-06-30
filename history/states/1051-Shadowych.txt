@@ -1,0 +1,35 @@
+state={
+	id=1051
+	name="STATE_1051"
+
+	provinces={
+		16785 16786 16788 16793 16795 16802 16811 16812 16813 16820 16826 
+	}
+
+	manpower=1179541
+	state_category=city
+	buildings_max_level_factor=1.000
+
+	history={
+		owner = HLR
+		add_core_of = HLR
+
+		victory_points = { 16786 20 }
+
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 2
+			arms_factory = 1
+			dockyard = 1
+
+			16786 = {
+				naval_base = 4
+			}
+		}
+	}
+
+	resources={
+		aluminium=18
+		steel=10
+	}
+}

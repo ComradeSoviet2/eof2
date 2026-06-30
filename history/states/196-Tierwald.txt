@@ -1,0 +1,24 @@
+state={
+	id=196
+	name="STATE_196"
+
+	provinces={
+		1764 6813 6958 6977 9830 9893 9912 11810
+	}
+
+	manpower=144928
+	state_category = pastoral
+	buildings_max_level_factor=1.00
+
+	history={
+		owner = OLE
+		add_core_of = OLE
+
+		victory_points = {
+			6977 1
+		}
+		buildings = {
+			infrastructure = 1
+		}
+	}
+}

@@ -1,0 +1,33 @@
+state={
+	id=15
+	name="STATE_15"
+
+	provinces={
+		538 586 673 3500 6501 6680 9441 9515 9524 9666 11404 11417 11620 11634
+	}
+
+	manpower=1141700
+	state_category=city
+	buildings_max_level_factor=1.00
+
+	history={
+		owner = EQS
+		add_core_of = EQS
+
+		victory_points = { 586 20 }
+
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 2
+			arms_factory = 1
+			dockyard = 1
+			586 = {
+				naval_base = 3
+			}
+		}
+	}
+
+	resources={
+		steel=1
+	}
+}
