@@ -7,4 +7,4 @@ tags={
 	"Balance"
 }
 name="EoF 2: New Sunrise"
-supported_version="1.19.0.0"
+supported_version="1.19.2.0"
