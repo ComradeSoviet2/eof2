@@ -1,0 +1,206 @@
+add_namespace = EoF
+add_namespace = EoF_unit
+add_namespace = EoF.news
+add_namespace = Eof.ole
+add_namespace = EoF.cityfall
+unit_leader_event = {
+	id = EoF_unit.1
+	title = EoF_unit.1.t
+	desc = EoF_unit.1.desc
+	is_triggered_only = yes
+	option = {
+		name = EoF_unit.1.a
+	}
+}
+country_event = {
+	id = EoF.1
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		EQS = {
+			add_to_faction = CRY
+			add_to_faction = STG
+			add_to_faction = HIP
+		}
+		CHN = {
+			add_to_faction = PLB
+			add_to_faction = GRF
+		}
+	}
+}
+country_event = {
+	id = EoF.4
+	title = EoF.4.t
+	desc = EoF.4.desc
+	picture = GFX_event_stalliongrad
+	is_triggered_only = yes
+	option = {
+		name = EoF.4.a
+		STG = {
+			country_event = EoF.17
+		}
+		STG = {
+			transfer_state = 326
+			add_state_core = 326
+			transfer_state = 167
+			add_state_core = 167
+			transfer_state = 164
+			add_state_core = 164
+			transfer_state = 162
+			add_state_core = 162
+			transfer_state = 160
+			add_state_core = 160
+			transfer_state = 159
+			add_state_core = 159
+			transfer_state = 158
+			add_state_core = 158
+			transfer_state = 157
+			add_state_core = 157
+			transfer_state = 156
+			add_state_core = 156
+			transfer_state = 155
+			add_state_core = 155
+			transfer_state = 154
+			add_state_core = 154
+			transfer_state = 653
+			add_state_core = 653
+			transfer_state = 662
+			add_state_core = 662
+			transfer_state = 661
+			add_state_core = 661
+			transfer_state = 229
+			add_state_core = 229
+			transfer_state = 67
+			add_state_core = 67
+			transfer_state = 1194
+			add_state_core = 1194
+			transfer_state = 1193
+			add_state_core = 1193
+		}
+		
+		EQS = {
+			remove_state_core = 326
+			remove_state_core = 167
+			remove_state_core = 164
+			remove_state_core = 162
+			remove_state_core = 160
+			remove_state_core = 159
+			remove_state_core = 158
+			remove_state_core = 157
+			remove_state_core = 156
+			remove_state_core = 155
+			remove_state_core = 154
+			remove_state_core = 653
+			remove_state_core = 662
+			remove_state_core = 661
+			remove_state_core = 229
+			remove_state_core = 67
+			remove_state_core = 1194
+			remove_state_core = 1193
+		}
+		
+	}
+	option = {
+		name = EoF.4.b
+		STG = {
+			country_event = EoF.18
+		}
+		STG = {
+			transfer_state = 326
+			add_state_core = 326
+			transfer_state = 167
+			add_state_core = 167
+			transfer_state = 164
+			add_state_core = 164
+			transfer_state = 162
+			add_state_core = 162
+			transfer_state = 160
+			add_state_core = 160
+			transfer_state = 159
+			add_state_core = 159
+			transfer_state = 158
+			add_state_core = 158
+			transfer_state = 157
+			add_state_core = 157
+			transfer_state = 156
+			add_state_core = 156
+			transfer_state = 155
+			add_state_core = 155
+			transfer_state = 154
+			add_state_core = 154
+			transfer_state = 653
+			add_state_core = 653
+			transfer_state = 662
+			add_state_core = 662
+			transfer_state = 661
+			add_state_core = 661
+			transfer_state = 229
+			add_state_core = 229
+		}
+		
+		EQS = {
+			remove_state_core = 326
+			remove_state_core = 167
+			remove_state_core = 164
+			remove_state_core = 162
+			remove_state_core = 160
+			remove_state_core = 159
+			remove_state_core = 158
+			remove_state_core = 157
+			remove_state_core = 156
+			remove_state_core = 155
+			remove_state_core = 154
+			remove_state_core = 653
+			remove_state_core = 662
+			remove_state_core = 661
+			remove_state_core = 229
+		}		
+	}
+}
+
+country_event = { ### CHN declares war on EQS event 
+	id = EoF.7
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		CHN = { complete_national_focus = demand_equestria } 
+	}
+}
+
+country_event = {
+	id = EoF.17
+	title = EoF.17.t
+	desc = EoF.17.desc
+	picture = GFX_event_stalliongrad
+	is_triggered_only = yes
+	option = {
+		name = EoF.17.a
+		EQS = {
+			add_to_faction = STG
+		}
+		add_ideas = EoF_STG_southern_island_campaign_5
+		add_named_threat = {
+			threat = 5
+			name = EoF_STG_join_UPA_tension
+		}
+	}
+}
+
+country_event = {
+	id = EoF.18
+	title = EoF.18.t
+	desc = EoF.18.desc
+	picture = GFX_event_stalliongrad
+	is_triggered_only = yes
+	option = {
+		name = EoF.18.a
+		add_timed_idea = {
+			idea = EoF_STG_delayed_UPA
+			days = 900
+		}
+		add_named_threat = {
+			threat = 5
+			name = EoF_STG_join_UPA_tension
+		}
+	}
+}

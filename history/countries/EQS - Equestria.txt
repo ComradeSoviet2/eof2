@@ -11,7 +11,7 @@ if = {
 }
 set_naval_oob = "EQS_1007_naval"
 
-set_research_slots = 5 ### +2
+set_research_slots = 4 ### +1
 starting_train_buffer = 4
 
 save_global_event_target_as = equestria
