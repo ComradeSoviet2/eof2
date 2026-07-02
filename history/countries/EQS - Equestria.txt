@@ -1,0 +1,360 @@
+﻿capital = 3
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "EQS_1007_nsb"
+	else = {
+		set_oob = "EQS_1007"
+	}
+}
+set_naval_oob = "EQS_1007_naval"
+
+set_research_slots = 5 ### +2
+starting_train_buffer = 4
+
+save_global_event_target_as = equestria
+
+add_breakthrough_progress = {
+	specialization = specialization_naval
+	value = 0.6
+}
+add_breakthrough_progress = {
+	specialization = specialization_air
+	value = 0.5
+}
+add_breakthrough_progress = {
+	specialization = specialization_magical
+	value = 1.0
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	set_technology = {
+		aa_lmg = 1
+		engines_1 = 1
+		engines_2 = 1
+		early_bombs = 1
+		aircraft_construction = 1
+		iw_small_airframe = 1
+		iw_medium_airframe = 1
+		iw_large_airframe = 1
+		air_torpedoe_1 = 1
+		bba_early_transport_plane = 1
+	}
+
+	set_air_oob = "EQS_1007_air_bba"
+
+	else = {
+		set_technology = {
+			early_fighter = 1
+			cv_early_fighter = 1
+			cv_naval_bomber1 = 1
+			naval_bomber1 = 1
+			early_bomber = 1
+			early_transport_plane = 1
+		}
+		set_air_oob = "EQS_1007_air_legacy"
+	}
+}
+
+set_technology = {
+	pony_race = 1
+	tech_unicorn = 1
+	melee_weapons = 1
+	melee_weapons1 = 1
+	pre_gw_artillery = 1
+	tech_pegasi = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	support_weapons =1
+	interwar_antitank = 1
+	gw_artillery = 1
+	tech_support = 1
+	fuel_silos = 1
+	tech_recon = 1
+	tech_field_hospital = 1
+	tech_military_police = 1
+	tech_engineers = 1
+	# trench_warfare = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	interwar_antiair = 1
+	# fleet_in_being = 1
+	basic_train = 1
+}
+
+#set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+actually_fix_weapon_techs = yes #THIS HAS TO BE CALLED IN EVERY HISTORY FILE RIGHT AFTER MAIN set_technology!
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+	else = {
+		set_technology = {
+			gwtank = 1
+			basic_light_tank = 1
+		}
+	}
+}
+set_technology = {
+	basic_naval_mines = 1
+	submarine_mine_laying = 1
+	torpedo_gunboats = 1
+	early_ship_hull_light = 1
+	basic_ship_hull_light = 1
+	early_ship_hull_submarine = 1
+	protected_cruisers = 1
+	early_ship_hull_cruiser = 1
+	basic_ship_hull_cruiser = 1
+	pre_dreadnoughts = 1
+	early_ship_hull_heavy = 1
+	basic_ship_hull_heavy = 1
+	early_ship_hull_carrier = 1
+	basic_battery = 1
+	basic_light_battery = 1
+	#basic_medium_battery = 1
+	basic_heavy_battery = 1
+	basic_torpedo = 1
+	#improved_airplane_launcher = 1
+	sonar = 1
+	improved_sonar = 1
+	smoke_generator = 1
+	basic_depth_charges = 1
+	improved_depth_charges = 1
+	basic_cruiser_armor_scheme = 1
+	basic_heavy_armor_scheme = 1
+	mtg_transport = 1
+	basic_fire_control_system = 1
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	set_technology = {
+		armored_car1 = 1
+	}
+}
+add_opinion_modifier = { modifier = equestrian_kindness target = BUF }
+give_guarantee = BUF
+add_equipment_to_stockpile = {
+	type = infantry_equipment_0
+	amount = 10000
+	producer = EQS
+}
+add_equipment_to_stockpile = {
+	type = melee_equipment_1
+	amount = 1600
+	producer = EQS
+}
+add_tech_bonus = {
+	name = fighter_bonus
+	bonus = 3
+	uses = 1
+	category = light_fighter
+}
+add_tech_bonus = {
+	name = bomber_bonus
+	bonus = 0.1
+	uses = 1
+	category = tactical_bomber
+}
+set_convoys = 269
+set_popularities = {
+	democratic = 79
+	fascism = 1
+	communism = 20
+	neutrality = 0
+}
+set_politics = {
+	ruling_party = democratic
+	last_election = "1.10.10"
+	election_frequency = 36
+	elections_allowed = no
+}
+set_country_flag = has_custom_advisors
+set_country_flag = AI_reduced_combat_width_arm
+set_country_flag = has_custom_spymaster
+add_ideas = {
+	home_of_ponies
+	alicorn_sisters
+	friendly_harmony
+	harmonic_stagnation
+	EQS_bat_pony_divide_1
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	add_ideas = {
+		traditionalism_academy_spirit
+		doctrinal_orthodoxy_spirit
+		disdain_for_the_digging_spirit
+	}
+}
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	add_ideas = {
+		EQS_bad_tanks
+	}
+}
+
+set_autonomy = {
+	target = CRY
+	autonomy_state = autonomy_integrated_puppet
+}
+set_autonomy = {
+	target = EQC
+	autonomy_state = autonomy_dominion
+}
+set_autonomy = {
+	target = PCB
+	autonomous_state = autonomy_dominion
+}
+
+add_to_tech_sharing_group = equestrian_research
+
+set_stability = 0.55
+set_war_support = 0.3
+
+recruit_character = EQS_prince_blueblood
+recruit_character = EQS_chancellor_neighsay
+recruit_character = EQS_princess_celestia
+recruit_character = EQS_starlight_glimmer
+recruit_character = EQS_soarin
+recruit_character = EQS_fast_clip
+recruit_character = EQS_whiplash
+recruit_character = EQS_madoor_stronghammer
+recruit_character = EQS_evening_squall
+recruit_character = EQS_cynosura
+recruit_character = EQS_dust_hoover
+recruit_character = EQS_copper_gearheart_cog
+recruit_character = EQS_twilight_sparkle
+recruit_character = EQS_cocopomell
+recruit_character = EQS_flim_flam
+recruit_character = EQS_raven_inkwell
+recruit_character = EQS_fancy_pants
+recruit_character = EQS_filthy_rich
+recruit_character = EQS_sweetie_drops
+recruit_character = EQS_rockhoof
+recruit_character = EQS_grimhoof
+recruit_character = EQS_coppertop
+recruit_character = EQS_flash_magnus
+recruit_character = EQS_rainbowdash
+recruit_character = EQS_kittyhawk
+recruit_character = EQS_eqs6
+recruit_character = EQS_maudpie
+recruit_character = EQS_limestone
+recruit_character = EQS_zecora
+recruit_character = EQS_rarity
+recruit_character = EQS_wonderbolts
+recruit_character = EQS_sentinel
+recruit_character = EQS_fizzlepop
+recruit_character = EQS_grannysmith
+recruit_character = EQS_spitfire
+recruit_character = EQS_fluttershy
+recruit_character = EQS_flakesnow
+recruit_character = EQS_SOL_padlock
+recruit_character = EQS_SOL_dottedline
+recruit_character = EQS_SOL_scope
+recruit_character = EQS_SOL_benevelle
+recruit_character = EQS_SOL_summersweet
+recruit_character = EQS_SOL_morninglight
+recruit_character = EQS_SOL_sunnyflare
+recruit_character = EQS_SOL_wind_rider
+recruit_character = EQS_SOL_arcane_nova
+recruit_character = EQS_SOL_batcouncil
+recruit_character = EQS_SOL_blaze
+recruit_character = EQS_SOL_thunderlane
+recruit_character = EQS_NLR_celenite
+recruit_character = EQS_NLR_tempest_wind
+recruit_character = EQS_NLR_bipen
+recruit_character = EQS_NLR_midnight_oil
+recruit_character = EQS_oli_equites
+recruit_character = EQS_SOL_shining_star
+recruit_character = EQS_SOL_scroup_whitemares
+recruit_character = EQS_SOL_aurora_shinesparck
+recruit_character = EQS_SOL_midwinter_halo
+recruit_character = EQS_SOL_august_fon_eisenstadt
+recruit_character = EQS_SOL_comet_trail
+recruit_character = EQS_SOL_Capsaicin
+recruit_character = EQS_SOL_comm_rush
+recruit_character = EQS_SOL_Stormchaser
+recruit_character = EQS_princess_luna
+recruit_character = EQS_sunset_shimmer
+recruit_character = EQS_braeburn
+recruit_character = EQS_sakira
+recruit_character = EQS_applejack
+recruit_character = EQS_allen_spark
+recruit_character = EQS_swift_wing
+recruit_character = EQS_Fireflight
+recruit_character = EQS_anonfilly
+recruit_character = EQS_sergeant_reckless
+recruit_character = EQS_big_macintosh
+recruit_character = EQS_pinkie_pie
+recruit_character = EQS_caltrop_decay
+recruit_character = EQS_sun_marble
+recruit_character = EQS_orion_star
+recruit_character = EQS_bernard_hoofgonery
+recruit_character = EQS_sunrise_moonshadow
+recruit_character = EQS_SOL_ksen_autumn
+recruit_character = EQS_SOL_red_rocket
+recruit_character = EQS_maekt_ix
+recruit_character = EQS_mayor_mare
+recruit_character = EQS_maxos_eternal
+recruit_character = EQS_ledd_metal
+recruit_character = EQS_ember_spark
+recruit_character = EQS_sunrise_sparkle
+#Scientists
+recruit_character = EQS_miss_harshwhinny
+recruit_character = EQS_naval_scientist
+recruit_character = EQS_bill_neigh
+###TNO Crossover Characters###
+recruit_character = EUS_country_leader
+recruit_character = UESR_berry_punch
+recruit_character = UESR_bonbon
+recruit_character = UESR_chungus
+recruit_character = UESR_ugandan_knuckles
+recruit_character = UESR_buckharin
+recruit_character = UESR_bordiclaw
+recruit_character = UESR_jorge_orellana
+recruit_character = UESR_lavender_berry
+recruit_character = UESR_sugar_belle
+recruit_character = UESR_party_flavour
+recruit_character = UESR_cheese_sandwich
+recruit_character = UESR_floppa
+recruit_character = UESR_literally_sablin
+recruit_character = POE_country_leader
+recruit_character = POE_prince_silver
+recruit_character = POE_princess_gold
+recruit_character = POE_council
+recruit_character = ERE_country_leader
+recruit_character = ERE_lyra_heartstrings
+recruit_character = ERE_dandy_charms
+recruit_character = ERE_vinyl_scratch
+
+create_faction_from_template = faction_template_all_ponies_front
+add_to_faction = CRY
+add_to_faction = EQC
+add_to_faction = PCB
+
+set_rule = {
+	can_generate_female_aces = yes
+	can_generate_female_unit_leaders  = yes
+	can_generate_female_country_leaders = yes
+}
+
+### Variants ###
+equestrian_breakaways_tanks = yes
+equestrian_breakaways_planes = yes
+equestrian_breakaways_ships = yes
