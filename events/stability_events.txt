@@ -17,6 +17,7 @@ country_event = {
 	hidden = yes
 
 	trigger = {
+		always = no
 		OR = {
 			has_idea = modern_society
 			has_outdated_industry = yes
@@ -98,12 +99,6 @@ country_event = {
 		}
 		NOT = {
 		    has_country_flag = BAT_no_crisises
-		}
-		NOT = {
-			has_country_leader = {
-				character = EQC_ED_theevilsisters
-				ruling_only = yes
-			}
 		}
 		NOT = {
 			AND = {
