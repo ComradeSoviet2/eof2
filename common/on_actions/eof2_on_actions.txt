@@ -135,4 +135,17 @@ on_actions = {
 			}
 		}
 	}
+	on_monthly = {
+		effect = {
+			if = {
+				limit = {
+					has_theorist = yes
+				}
+				add_mastery = {
+					amount = 5
+					folder = land
+				}
+			}
+		}
+	}
 }
