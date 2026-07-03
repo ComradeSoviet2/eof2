@@ -91,5 +91,22 @@ ideas = {
 				# local_resources_factor = 1
 			}
 		}
+		EoF_Underdeveloped_heavy_industry = {
+			removal_cost = -1
+			picture = neutrality_idea
+			equipment_bonus = {
+				large_plane_airframe = {
+					build_cost_ic = 0.9 instant = yes
+				}
+				medium_plane_airframe = {
+					build_cost_ic = 0.9 instant = yes
+				}
+				small_plane_airframe = {
+					build_cost_ic = 0.9 instant = yes
+				}
+			}
+
+			
+		}
 	}
 }

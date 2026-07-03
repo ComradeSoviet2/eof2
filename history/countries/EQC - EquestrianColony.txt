@@ -296,6 +296,7 @@ add_ideas = {
 	EQC_griffon_minorities1
 	equestrian_overlord
 	modern_society
+	EoF_Underdeveloped_heavy_industry
 }
 
 set_convoys = 69 #I'm a child
