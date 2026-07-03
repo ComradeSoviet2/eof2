@@ -1,0 +1,8301 @@
+﻿add_namespace = griffons
+country_event = {
+	#Teafeather dead
+	id = griffons.1
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.1"
+	}
+	title = griffons.1.t
+	desc = griffons.1.d
+	picture = GFX_event_evil_griffon_ghosts
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = GRF
+		#date > 1009.04.5
+		is_subject = no
+		has_country_leader = { character = GRF_governor_teafeather ruling_only = yes }
+		
+	} 
+	option = {
+		name = griffons.1.a
+		GRF_governor_teafeather = {
+			retire = yes
+		}
+		add_country_leader_role = {
+			character = GRF_provisional_council
+			promote_leader = yes
+
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = oligarchism
+				traits = { provisional }
+			}
+		}
+		add_ideas = GRF_political_chaos
+		add_political_power = -150
+		country_event = { id = griffons.2 hours = 6 }
+		hidden_effect = {
+			set_country_flag = GRF_prepare_civil_war
+			set_country_flag = GRF_teafeather_dead
+			news_event = {
+				id = newsg.2
+				hours = 12
+			}
+			country_event = {
+				id = griffons.23
+				days = 14
+			}
+			#STG = {
+			#	country_event = {
+			#		id = stalliongrad.96
+			#		days = 3
+			#	}
+			#}
+			#if = {			#temproary soultion, until i'll find the way to work AI weights in events correctly
+			#	limit = {
+			#		is_ai = yes
+			#		OR = {
+			#			has_country_flag = GRF_AI_BLACKPEAK
+			#			has_game_rule = {
+			#				rule = GRF_ai_behavior
+			#				option = BLACKPEAK
+			#			}
+			#		}
+			#	}
+			#	set_power_balance = {
+			#		id = GRF_civil_war_bop
+			#		set_value = -0.8
+			#	}
+			#}
+		}
+	}
+}
+#aftermath of assasiation
+country_event = {
+	id = griffons.2
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.2"
+	}
+	title = griffons.2.t
+	desc = griffons.2.d
+	picture = GFX_event_medieval_city_3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.2.a
+	}
+}
+country_event = {
+	# Solutions for our immense problems
+	id = griffons.3
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.3"
+	}
+	title = griffons.3.t
+	desc = griffons.3.d
+	picture = GFX_event_griffon_mountain
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {# play as authoritarians
+		name = griffons.3.a
+		ai_chance = {
+			factor = 65
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+		}
+		swap_ideas = {
+			remove_idea = GRF_political_chaos
+			add_idea = GRF_doused_flames
+		}
+		set_country_flag = GRF_junta
+		set_global_flag = GRF_civil_war_begun
+		add_political_power = -50
+		add_stability = -0.1
+		add_war_support = -0.1
+
+		kill_country_leader = yes
+		add_country_leader_role = {
+			character = GRF_erwin_highhill
+			promote_leader = yes 
+			country_leader = {
+				desc="chadhill_desc"
+				ideology = khakistocracy
+				expire = "1965.1.1"
+				traits={ dictator }
+			}
+		}
+		set_party_name = {
+			ideology = neutrality
+			name = GRF_junta_party
+			long_name = GRF_junta_party
+		}
+
+		clr_country_flag = GRF_have_bop_flag
+		remove_power_balance = {
+			id = GRF_civil_war_bop
+		}
+		add_ideas = {
+			GRF_communist_militias
+		}
+		add_ideas = {
+			GRF_fight_for_freedom
+		}
+	}
+	option = { # play as republicans
+		name = griffons.3.b
+		ai_chance = {
+			factor = 35
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HIGHHILL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HIGHHILL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+		}
+		swap_ideas = {
+			remove_idea = GRF_political_chaos
+			add_idea = GRF_doused_flames
+		}
+		add_political_power = 50
+		add_stability = 0.05
+		set_country_flag = GRF_refuse_junta
+		set_global_flag = GRF_civil_war_begun
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		clr_country_flag = GRF_have_bop_flag
+		remove_power_balance = {
+			id = GRF_civil_war_bop
+		}
+		GRF_erwin_highhill = {
+			remove_unit_leader_role = yes
+		}	
+	}
+}
+
+country_event = {
+	id = griffons.300
+	hidden = yes
+	mean_time_to_happen = {
+		days = 2
+	}
+	trigger = {
+		original_tag = GRF
+		has_variable = global.GRF_demilitarized_states^0
+		any_of = {
+			array = global.GRF_demilitarized_states
+			var:v = {
+				owner = {
+					OR = {
+						NOT = { tag = GRF }
+						is_subject = yes
+					}
+				}
+			}
+		}
+	}
+	immediate = {
+		set_temp_variable = { start_idx = global.GRF_demilitarized_states^num }
+		subtract_from_temp_variable = { start_idx = 1 }
+		for_loop_effect = {
+			start = start_idx
+			end = 0
+			add = -1
+			compare = greater_than_or_equals
+			var:global.GRF_demilitarized_states^v = {
+				if = {
+					limit = {
+							owner = {
+								OR = {
+									NOT = { tag = GRF }
+									is_subject = yes
+								}
+							}
+					}
+					set_demilitarized_zone = no
+					remove_from_array = { 
+						array = global.GRF_demilitarized_states
+						index = v
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.4
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.4"
+	}
+	title = griffons.4.t
+	desc = griffons.4.d
+	picture = GFX_event_medieval_city_in_mountains
+	is_triggered_only = yes
+	option = {
+		name = griffons.4.a
+		trigger = {
+			NOT = { is_subject_of = STG } 
+		}
+		ai_chance = {
+			base = party_popularity@democratic
+			modifier = {
+				add = 30
+			}
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+		set_party_name = {
+			ideology = democratic
+			name = GRF_social_democratic_party
+			long_name = GRF_social_democratic_party_long
+		}
+		if = {
+			limit = { has_country_flag = GRF_civil_war_flag }
+			GRF_wilhelm_silverwing = {
+				remove_unit_leader_role = yes
+			}
+		}
+		hidden_effect = {
+			complete_national_focus = GRF_harmonists_win
+			add_country_leader_role = {
+				character = GRF_hector_goldcrest
+				promote_leader = yes
+
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = khakistocracy
+					traits = { }
+				}
+			}
+			set_party_name = {
+				ideology = neutrality
+				name = GRF_military_association
+				long_name = GRF_military_association_long
+			}
+		}
+	}
+	option = {
+		name = griffons.4.b
+		trigger = {
+			NOT = { has_country_flag = GRF_arrest_commies }
+		}
+		ai_chance = {
+			base = party_popularity@communism
+			modifier = {
+				add = 30
+			}
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_idea = communist_influence
+				NOT = {
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+				}
+				add = 30
+			}
+		}
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.1
+		}
+		add_political_power = 50
+		hidden_effect = {
+			complete_national_focus = GRF_commies_win
+			add_country_leader_role = {
+				character = GRF_hector_goldcrest
+				promote_leader = yes
+
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = khakistocracy
+					traits = { }
+				}
+			}
+			set_party_name = {
+				ideology = neutrality
+				name = GRF_military_association
+				long_name = GRF_military_association_long
+			}
+		}
+	}
+	option = {
+		name = griffons.4.c
+		trigger = {
+			#NOT = { has_country_flag = GRF_civil_war_flag }
+			NOT = { is_subject_of = STG } 
+		}
+		ai_chance = {
+			base = party_popularity@democratic
+			modifier = {
+				add = 30
+			}
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+				}
+				factor = 0
+			}
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+		set_party_name = {
+			ideology = democratic
+			name = GRF_market_liberal_party
+			long_name = GRF_market_liberal_party_long
+		}
+		add_country_leader_role = {
+			character = GRF_triton_blackpeak
+			promote_leader = yes
+
+			country_leader = {
+				desc="femboy_in_striped_socks_desc"
+				expire = "1965.1.1"
+				ideology = harmonic_libertarianism
+				traits = { the_young_magnate }
+			}
+		}
+		hidden_effect = {
+			complete_national_focus = GRF_mark_libs
+			add_country_leader_role = {
+				character = GRF_hector_goldcrest
+				promote_leader = yes
+
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = khakistocracy
+					traits = { }
+				}
+			}
+			set_party_name = {
+				ideology = neutrality
+				name = GRF_military_association
+				long_name = GRF_military_association_long
+			}
+		}
+	}
+}
+
+country_event = {
+	#STG influence
+	id = griffons.5
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.5"
+	}
+	title = griffons.5.t
+	desc = griffons.5.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.5.a
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.025
+		}
+		hidden_effect = {
+			add_timed_idea = {
+				idea = communist_influence
+				days = 360
+			}
+			set_country_flag = stalliongrad_influence
+			country_event = {
+				id = griffons.6
+				days = 14
+			}
+		}
+	}
+}
+
+country_event = {
+	#STG influence
+	id = griffons.6
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.6"
+	}
+	title = griffons.6.t
+	desc = griffons.6.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes	#moved to griffons.5
+	option = {
+		name = griffons.6.a		# stop the influence
+		ai_chance = {
+			base = 20
+			#modifier = {
+			#	factor = 100
+			#	is_historical_focus_on = yes
+			#}
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		remove_ideas = communist_influence
+		add_political_power = -50
+		add_stability = 0.05
+		set_country_flag = GRF_arrest_commies
+		add_popularity = {
+			ideology = communism
+			popularity = -0.22
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.075
+		}
+		STG = {
+			add_opinion_modifier = {
+				target = GRF
+				modifier = hostility
+			}
+			country_event = {
+				id = stalliongrad.47
+				days = 10
+			}
+		}
+	}
+	#option = {
+	#	name = griffons.6.c		# stop the influence but not less communism
+	#	remove_ideas = communist_influence
+	#	add_political_power = -20
+	#	set_country_flag = GRF_arrest_commies
+	#	ai_chance = {
+	#		base = 10
+	#		modifier = {
+	#			factor = 0
+	#			is_historical_focus_on = yes
+	#		}
+	#	}
+	#	STG = {
+	#		add_opinion_modifier = {
+	#			target = GRF
+	#			modifier = hostility
+	#		}
+	#		country_event = {
+	#			id = stalliongrad.47
+	#			days = 3
+	#		}
+	#	}
+	#}
+	option = {
+		name = griffons.6.b		# support the movement
+		ai_chance = {
+			factor = 10
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_war_support = -0.05
+		add_stability = -0.1
+		add_popularity = {
+			ideology = communism
+			popularity = 0.15
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.075
+		}
+		remove_opinion_modifier = {
+			target = STG
+			modifier = hostility
+		}
+		add_opinion_modifier = {
+			target = STG
+			modifier = friendly_government
+		}
+	}
+}
+
+country_event = {
+	#STG wants to puppet
+	id = griffons.7
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.7"
+	}
+	title = griffons.7.t
+	desc = griffons.7.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.7.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+		}
+		FROM = {
+			country_event = {
+				id = stalliongrad.49
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = griffons.7.b
+		add_political_power = 50
+		ai_chance = {
+			factor = 90
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+				}
+				factor = 0
+			}
+		}
+		FROM = {
+			country_event = {
+				id = stalliongrad.50
+				days = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	#GRF civil_war
+	id = griffons.8
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.8"
+	}
+	title = griffons.8.t
+	desc = griffons.8.d
+	picture = GFX_event_griffon_soldier
+	# trigger = {
+	# 	tag = GRF
+	# 	has_country_flag = stalliongrad_influence
+	# 	has_idea = communist_influence
+	# 	communism > 0.6
+	# 	NOT = {
+	# 		has_government = communism
+	# 	}
+	# }
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		# support communists
+		name = griffons.8.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		ai_chance = {
+			factor = 100
+		}
+		start_civil_war = {
+			ruling_party = communism
+			ideology = neutrality
+			size = 0.6
+			capital = 239
+			keep_unit_leaders = {
+				10100
+			}
+		}
+	}
+	option = {
+		# support current government
+		name = griffons.8.b
+		ai_chance = {
+			factor = 0
+		}
+		start_civil_war = {
+			ideology = communism
+			keep_unit_leaders = {
+				10101
+			}
+			size = 0.4
+			capital = 239
+		}
+	}
+}
+
+country_event = {
+	#STG active intervention ## add STG to war, dunno if that works
+	id = griffons.9
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.9"
+	}
+	title = griffons.9.t
+	desc = griffons.9.d
+	picture = GFX_event_stalliongrad
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_other_country = {
+				limit = {
+					original_tag = GRF
+					has_government = communism
+					is_subject_of = STG
+				}
+			}
+		}
+	}
+	option = {
+		name = griffons.9.a
+		STG = {
+			every_state = {
+				limit = { 
+					OR = {
+						is_core_of = GRF
+						is_in_array = {
+							state_original_cores = GRF
+						}
+					}
+				}
+				add_core_of = STG
+			}
+		}
+		STG = { annex_country = { target = GRF transfer_troops = yes } }
+		
+		ai_chance = {
+			factor = 100
+		}
+		hidden_effect = {
+			news_event = {
+				id = news.27
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = griffons.9.b
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	#STG active intervention ## GRF wants to join faction with STG
+	id = griffons.10
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.10"
+	}
+	title = griffons.10.t
+	desc = griffons.10.d
+	picture = GFX_event_stg_pairlament
+	trigger = {
+		original_tag = GRF
+		has_civil_war = no
+		has_country_flag = stalliongrad_influence
+		has_government = communism
+		is_subject = no
+		is_in_faction = no
+	}
+	mean_time_to_happen = {
+		days = 7
+	}
+	fire_only_once = yes
+	option = {
+		name = griffons.10.a
+		STG = {
+			country_event = {
+				id = stalliongrad.5111
+				days = 2
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {
+		name = griffons.10.b
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+	#Sinister's focus strike # Puppet demand
+	id = griffons.11
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.11"
+	}
+	title = griffons.11.t
+	desc = griffons.11.d
+	picture = GFX_event_sinister_stg
+	is_triggered_only = yes
+	option = {
+		## Agree and become a puppet
+		name = griffons.11.a
+		FROM = {
+			effect_tooltip = {
+				puppet = ROOT
+			}
+			country_event = {
+				id = stalliongrad.78
+			}
+		}
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.8
+				}
+			}
+		}
+	}
+	option = {
+		## Decline the demand, STG gets wargoal
+		name = griffons.11.b
+		if = {
+			limit = { is_in_faction_with = FROM }
+			FROM = {
+				remove_from_faction = ROOT
+			}
+		}
+		FROM = {
+			country_event = {
+				id = stalliongrad.77
+			}
+		}
+		ai_chance = {
+			factor = 85
+		}
+	}
+}
+
+### Empire ###
+country_event = {
+	#A New Age
+	id = griffons.13
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.13"
+	}
+	title = griffons.13.t
+	desc = griffons.13.d
+	picture = GFX_event_griffon_royal_guard
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.13.a
+		if = {
+			limit = {
+				country_exists = GRD
+			}
+			reverse_add_opinion_modifier = {
+				target = GRD
+				modifier = hostility
+			}
+		}
+	}
+}
+
+country_event = {
+	#Highhill Emperor
+	id = griffons.14
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.14"
+	}
+	title = griffons.14.t
+	desc = griffons.14.d
+	picture = GFX_event_camelot
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.14.a
+		hidden_effect = {
+			set_country_flag = GRF_highhill_emperor_set
+		}
+		set_cosmetic_tag = GRF_EMP
+		
+		GRF_erwin_highhill = {
+			set_character_name = GRF_erwin_highhill_emperor
+			add_trait = {
+				ideology = khakistocracy
+				trait = nationalist_symbol
+			}
+		}
+		set_party_name = {
+			ideology = neutrality
+			name = GRF_imperial_leauge
+			long_name = GRF_imperial_leauge_long
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsg.5
+				hours = 6
+			}
+		}
+		add_ideas = GRF_phoenix
+	}
+}
+
+country_event = {
+	#Ironclaw Emperor
+	id = griffons.15
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.15"
+	}
+	title = griffons.15.t
+	desc = griffons.15.d
+	picture = GFX_event_feast
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.15.a
+		hidden_effect = {
+			set_country_flag = GRF_ironclaw_emperor_set
+		}
+		set_cosmetic_tag = GRF_ORDER
+		GRF_reyhard_ironclaw = {
+			set_character_name = GRF_reyhard_ironclaw_emperor # WILL BE CHANGED ONCE NEW TITLE IS DECIDED UPON
+			add_trait = {
+				ideology = nazism
+				trait = great_war_hero
+			}
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.1
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsg.6
+				hours = 6
+			}
+		}
+		add_ideas = GRF_phoenix
+	}
+}
+
+###Frontier Relations###
+country_event = {
+	id = griffons.18
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.18"
+	}
+	title = griffons.18.t
+	desc = griffons.18.d
+	picture = GFX_event_green_mountain
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.18.a
+		add_political_power = -75
+		add_timed_idea = {
+			idea = GRF_frontier_help
+			days = 120
+		}
+		GFF = {
+			country_event = {
+				id = frontier.2
+				days = 1
+			}
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+
+			modifier = {
+				GFF = { is_ai = yes } # No cheating.
+				OR = {
+					has_country_flag = GFF_AI_VIRGIL
+					has_game_rule = {
+						rule = GFF_ai_behavior
+						option = VIRGIL
+					}
+					has_country_flag = GFF_AI_HEINRICH
+					has_game_rule = {
+						rule = GFF_ai_behavior
+						option = HEINRICH
+					}
+				}
+				factor = 0
+			}
+			#modifier = {
+			#	factor = 5
+			#	OR = {
+			#		has_country_flag = GRF_AI_BLACKPEAK
+			#		has_game_rule = {
+			#			rule = GRF_ai_behavior
+			#			option = BLACKPEAK
+			#		}
+			#	}
+			#}
+		}
+	}
+	option = {
+		name = griffons.18.b
+		GFF = {
+			country_event = {
+				id = frontier.3
+				days = 1
+			}
+		}
+		ai_chance = {
+			factor = 95
+
+			modifier = {
+				GFF = { is_ai = yes } # No cheating.
+				OR = {
+					has_country_flag = GFF_AI_MUCK
+					has_game_rule = {
+						rule = GFF_ai_behavior
+						option = MUCK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				GFF = { is_ai = yes }
+				OR = {
+					GRF = { has_country_flag = GRF_AI_BLACKPEAK }
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.19
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.19"
+	}
+	title = griffons.19.t
+	desc = griffons.19.d
+	picture = GFX_event_medieval_city_3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.19.a
+		annex_country = {
+			target = GFF
+			transfer_troops = yes
+		}
+	}
+}
+
+country_event = {
+	id = griffons.20
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.20"
+	}
+	title = griffons.20.t
+	desc = griffons.20.d
+	picture = GFX_event_medieval_tower
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.20.a
+		hidden_effect = {
+			create_wargoal = {
+				target = GFF
+				type = annex_everything
+			}
+		}
+		declare_war_on = {
+			target = GFF
+			type = annex_everything
+		}
+		add_timed_idea = {
+			idea = GRF_frontier_invasion
+			days = 180
+		}
+		271 = {
+			add_building_construction = {
+				type = air_base
+				level = 1
+			}
+		}
+		custom_effect_tooltip = griffons.20.a_tt
+		hidden_effect = {
+			activate_targeted_decision = {
+				target = GFF
+				decision = GRF_GFF_war_crisis
+			}
+		}
+		ai_chance = {
+			factor = 70
+		}
+		add_war_support = 0.05
+	}
+	option = {
+		name = griffons.20.b
+		add_war_support = -0.05
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+### Flavour Events ###
+country_event = {
+	id = griffons.21
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.21"
+	}
+	title = griffons.21.t
+	desc = griffons.21.d
+	picture = GFX_event_medieval_castle_on_hill
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.21.a
+		add_political_power = -20
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.025
+		}
+		hidden_effect = {
+			country_event = { id = griffons.24 days = 14 }
+		}
+		activate_mission = GRF_highhill_planning_something
+	}
+}
+
+country_event = {
+	id = griffons.22
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.22"
+	}
+	title = griffons.22.t
+	desc = griffons.22.d
+	picture = GFX_event_medieval_city_ugly_street
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.22.a
+		add_political_power = 10
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.025
+		}
+		# This was what fired the civil war event but it got moved to GRF_highhill_planning_something mission
+	}
+	option = {
+		name = griffons.22.b
+		add_political_power = -10
+		add_stability = -0.05
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.025
+		}
+		# This was what fired the civil war event but it got moved to GRF_highhill_planning_something mission
+	}
+}
+
+country_event = {
+	id = griffons.23
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.23"
+	}
+	title = griffons.23.t
+	desc = griffons.23.d
+	picture = GFX_event_medieval_city
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.23.a
+		add_manpower = -200
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.01
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.01
+		}
+		hidden_effect = {
+			country_event = { id = griffons.25 days = 14 }
+		}
+	}
+}
+
+country_event = {
+	id = griffons.24
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.24"
+	}
+	title = griffons.24.t
+	desc = griffons.24.d
+	picture = GFX_event_medieval_city_winter
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.24.a
+		add_political_power = -15
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.01
+		}
+		hidden_effect = {
+			country_event = { id = griffons.178 days = 14 }
+		}
+	}
+}
+
+country_event = {
+	id = griffons.25
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.25"
+	}
+	title = griffons.25.t
+	desc = griffons.25.d
+	picture = GFX_event_eqs_communists
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.25.a
+		add_political_power = -20
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.025
+		}
+		hidden_effect = {
+			country_event = { id = griffons.21 days = 14 }
+		}
+	}
+}
+
+country_event = {
+	id = griffons.28
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.28"
+	}
+	title = griffons.28.t
+	desc = griffons.28.d
+	picture = GFX_event_griffon_with_gun
+	is_triggered_only = yes
+	option = {
+		name = griffons.28.a
+		ai_chance = {
+			factor = 95
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		GFF = {
+			country_event = {
+				id = frontier.8
+				days = 1
+			}
+		}
+		add_stability = -0.05
+		add_war_support = -0.1
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.1
+		}
+	}
+	option = {
+		name = griffons.28.b
+		ai_chance = {
+			factor = 5
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_stability = -0.1
+		add_war_support = -0.15
+		add_political_power = -100
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.1
+		}
+	}
+}
+
+country_event = {
+	id = griffons.281
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.281"
+	}
+	title = griffons.281.t
+	desc = griffons.281.d
+	picture = GFX_event_feast
+	is_triggered_only = yes
+	option = {
+		name = griffons.281.a
+		add_political_power = 50
+		effect_tooltip = {
+			white_peace = FROM
+			set_truce = { target = FROM days = 180 }
+			remove_wargoal = {
+				target = GFF
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.282
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.282"
+	}
+	title = griffons.282.t
+	desc = griffons.282.d
+	picture = GFX_event_gothic_interior
+	is_triggered_only = yes
+	option = {
+		name = griffons.282.a
+		add_stability = -0.05
+		add_war_support = -0.07
+		add_political_power = -30
+	}
+}
+
+country_event = {
+	id = griffons.283
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.283"
+	}
+	title = griffons.283.t
+	desc = griffons.283.d
+	picture = GFX_event_crystal_mountain
+	is_triggered_only = yes
+	option = {
+		name = griffons.283.a
+		hidden_effect = {
+			activate_decision = AAA_Julbock
+		}
+	}
+	option = {
+		name = griffons.283.b
+		hidden_effect = {
+			activate_decision = BBB_Krampus
+		}
+	}
+	option = {
+		name = griffons.283.c
+		hidden_effect = {
+			activate_decision = CCC_Kozlov
+		}
+	}
+	option = {
+		name = griffons.283.e
+		hidden_effect = {
+			activate_decision = DDD_Nuuttipukki
+		}
+	}
+}
+
+country_event = {
+	id = griffons.29
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.29"
+	}
+	title = griffons.29.t
+	desc = griffons.29.d
+	picture = GFX_event_griffon_mountain_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.29.a
+		GRF = {
+			annex_country = {
+				target = GFF
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.30
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.30"
+	}
+	title = griffons.30.t
+	desc = griffons.30.d
+	picture = GFX_event_medieval_city
+	is_triggered_only = yes
+	option = {
+		name = griffons.30.a
+		add_political_power = -100
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.31
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.31"
+	}
+	title = griffons.31.t
+	desc = griffons.31.d
+	picture = GFX_event_medieval_city_3
+	trigger = {
+		original_tag = GRF
+		has_completed_focus = GRF_immigration
+		has_war = no
+	}
+	mean_time_to_happen = {
+		months = 15
+	}
+	option = {
+		name = griffons.31.a
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_manpower = 2500
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_manpower = 500
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_manpower = 1000
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_manpower = 1500
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_manpower = 250
+		}
+	}
+}
+
+country_event = {
+	#Equestrian Civil War Intervention
+	id = griffons.32
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.32"
+	}
+	title = griffons.32.t
+	desc = griffons.32.d
+	picture = GFX_event_equestria_fail
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.32.a
+		ai_chance = {
+			factor = 40
+		}
+		send_equipment = {
+			target = event_target:equestria
+			type = infantry_equipment
+			amount = 1000
+		}
+		add_ai_strategy = {
+			type = support
+			id = event_target:equestria
+			value = 50
+		}
+		reverse_add_opinion_modifier = {
+			target = event_target:equestria
+			modifier = sent_equipment
+		}
+	}
+	option = {
+		name = griffons.32.b
+		trigger = {
+			has_manpower > 10000
+		}
+		ai_chance = {
+			factor = 40
+		}
+		add_ai_strategy = {
+			type = support
+			id = event_target:equestria
+			value = 75
+		}
+		add_manpower = -10000
+		send_equipment = {
+			target = event_target:equestria
+			type = infantry_equipment
+			amount = 1000
+		}
+		effect_tooltip = {
+			reverse_add_opinion_modifier = {
+				target = event_target:equestria
+				modifier = sent_volunteers
+			}
+		}
+		hidden_effect = {
+			event_target:equestria = {
+				country_event = {
+					id = griffons.33
+					days = 30
+				}
+			}
+		}
+	}
+	option = {
+		name = griffons.32.c
+		trigger = {
+			is_ai = yes
+		}
+		ai_chance = {
+			factor = 20
+		}
+		add_political_power = -20
+	}
+}
+
+country_event = {
+	id = griffons.33
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.33"
+	}
+	title = griffons.33.t
+	desc = griffons.33.d
+	picture = GFX_event_griffon_para
+	is_triggered_only = yes
+	option = {
+		name = griffons.33.a
+		add_manpower = 10000
+		custom_effect_tooltip = GRF_volunteers_in_los_pegasus
+		hidden_effect = {
+			spawn_GRF_volunteers = yes
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = sent_volunteers
+		}
+	}
+}
+
+country_event = {
+	#Changeling War Intervention
+	id = griffons.34
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.34"
+	}
+	title = griffons.34.t
+	desc = griffons.34.d
+	picture = GFX_event_pony_trench
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = griffons.34.a
+		ai_chance = {
+			factor = 20
+		}
+		send_equipment = {
+			target = event_target:equestria
+			type = infantry_equipment
+			amount = 1000
+		}
+		add_ai_strategy = {
+			type = support
+			id = event_target:equestria
+			value = 75
+		}
+		reverse_add_opinion_modifier = {
+			target = event_target:equestria
+			modifier = sent_equipment
+		}
+	}
+	option = {
+		trigger = {
+			has_manpower > 10000
+		}
+		name = griffons.34.b
+		ai_chance = {
+			factor = 60
+		}
+		add_manpower = -10000
+		send_equipment = {
+			target = event_target:equestria
+			type = infantry_equipment
+			amount = 1000
+		}
+		add_ai_strategy = {
+			type = support
+			id = event_target:equestria
+			value = 100
+		}
+		effect_tooltip = {
+			reverse_add_opinion_modifier = {
+				target = event_target:equestria
+				modifier = sent_volunteers
+			}
+		}
+		hidden_effect = {
+			event_target:equestria = {
+				country_event = {
+					id = griffons.35
+					days = 30
+				}
+			}
+		}
+	}
+	option = {
+		name = griffons.34.c
+		trigger = {
+			is_ai = yes
+		}
+		ai_chance = {
+			factor = 20
+		}
+		add_political_power = 20
+	}
+}
+
+country_event = {
+	id = griffons.35
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.35"
+	}
+	title = griffons.35.t
+	desc = griffons.35.d
+	picture = GFX_event_griffon_para
+	is_triggered_only = yes
+	option = {
+		name = griffons.35.a
+		add_manpower = 10000
+		custom_effect_tooltip = GRF_volunteers_in_los_pegasus
+		hidden_effect = {
+			spawn_GRF_volunteers = yes
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = sent_volunteers
+		}
+	}
+}
+
+country_event = {
+	id = griffons.36
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.36"
+	}
+	title = griffons.36.t
+	desc = griffons.36.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			NOT = {
+				AND = {
+					original_tag = JAK
+					has_government = neutrality
+				}
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+		name = griffons.36.a
+		add_political_power = 25
+		hidden_effect = {
+			GRF = {
+				country_event = {
+					days = 15
+					id = griffons.37
+				}
+			}
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 0
+			modifier = {
+				AND = {
+					original_tag = JAK
+					has_government = neutrality
+				}
+				add = 10
+			}
+		}
+		name = griffons.36.b
+		add_political_power = -25
+		hidden_effect = {
+			GRF = {
+				country_event = {
+					days = 15
+					id = griffons.38
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.37
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.37"
+	}
+	title = griffons.37.t
+	desc = griffons.37.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {
+		name = griffons.37.a
+		add_to_faction = FROM
+	}
+}
+
+country_event = {
+	id = griffons.38
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.38"
+	}
+	title = griffons.38.t
+	desc = griffons.38.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {
+		name = griffons.38.a
+	}
+}
+
+country_event = {
+	id = griffons.39
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.39"
+	}
+	title = griffons.39.t
+	desc = griffons.39.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = griffons.39.a
+		add_political_power = 25
+		hidden_effect = {
+			GRF = {
+				country_event = {
+					days = 15
+					id = griffons.40
+				}
+			}
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 0
+		}
+		name = griffons.39.b
+		add_political_power = 50
+		hidden_effect = {
+			GRF = {
+				country_event = {
+					days = 15
+					id = griffons.41
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.40
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.40"
+	}
+	title = griffons.40.t
+	desc = griffons.40.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {
+		name = griffons.40.a
+		GRF = {
+			annex_country = {
+				target = GFF
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.41
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.41"
+	}
+	title = griffons.41.t
+	desc = griffons.41.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {
+		name = griffons.41.a
+		ai_chance = {
+			factor = 30
+		}
+		declare_war_on = {
+			target = GFF
+			type = annex_everything
+		}
+		add_stability = -0.05
+	}
+	option = {
+		name = griffons.41.b
+		ai_chance = {
+			factor = 70
+		}
+		add_political_power = -50
+	}
+}
+
+country_event = {
+	id = griffons.42
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.42"
+	}
+	title = griffons.42.t
+	desc = griffons.42.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {
+		name = griffons.42.a
+		ai_chance = {
+			factor = 100
+		}
+		add_to_faction = FROM
+		add_political_power = 20
+		FROM = {
+			country_event = {
+				id = griffons.43
+			}
+		}
+	}
+	option = {
+		name = griffons.42.b
+		ai_chance = {
+			factor = 0
+		}
+		add_political_power = -20
+		FROM = {
+			country_event = {
+				id = griffons.44
+			}
+		}
+	}
+}
+
+country_event = {
+	id = griffons.43
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.43"
+	}
+	title = griffons.43.t
+	desc = griffons.43.d
+	picture = GFX_event_griffon_mountain
+	is_triggered_only = yes
+	option = {
+		name = griffons.43.a
+		add_political_power = 40
+	}
+}
+
+country_event = {
+	id = griffons.44
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.44"
+	}
+	title = griffons.44.t
+	desc = griffons.44.d
+	picture = GFX_event_griffon_mountain
+	is_triggered_only = yes
+	option = {
+		name = griffons.44.a
+		add_political_power = -40
+	}
+}
+
+# Border war for 241
+# Win for GRF
+country_event = {
+	id = griffons.45
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.45"
+	}
+	title = griffons.45.t
+	desc = griffons.45.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = {
+				id = newsg.8
+				hours = 6
+			}
+		}
+	}
+	option = {
+		name = griffons.45.a
+		transfer_state = 241
+		add_political_power = 50
+		army_experience = 5
+	}
+}
+
+# Lose for GRF
+country_event = {
+	id = griffons.46
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.46"
+	}
+	title = griffons.46.t
+	desc = griffons.46.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {
+		name = griffons.46.a
+		add_political_power = -50
+		add_war_support = -0.05
+		add_stability = -0.05
+	}
+}
+
+# Cancel
+country_event = {
+	id = griffons.47
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.47"
+	}
+	title = griffons.47.t
+	desc = griffons.47.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {
+		name = griffons.47.a
+	}
+}
+
+# Win for EQS
+country_event = {
+	id = griffons.48
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.48"
+	}
+	title = griffons.48.t
+	desc = griffons.48.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {
+		name = griffons.48.a
+		add_political_power = 50
+		army_experience = 5
+	}
+}
+
+# Lose for EQS
+country_event = {
+	id = griffons.49
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.49"
+	}
+	title = griffons.49.t
+	desc = griffons.49.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			original_tag = EQS
+			NOT = {
+				has_government = fascism
+			}
+		}
+		name = griffons.49.a
+		add_political_power = -25
+	}
+	option = {
+		trigger = {
+			original_tag = EQS
+			has_government = fascism
+		}
+		name = griffons.49.b
+		add_political_power = -25
+	}
+	option = {
+		trigger = {
+			original_tag = NLR
+		}
+		name = griffons.49.c
+		add_political_power = -25
+	}
+}
+
+country_event = {
+	#The Long March
+	id = griffons.50
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.50"
+	}
+	title = griffons.50.t
+	desc = griffons.50.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.50.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 1000
+		244 = {
+			add_manpower = -601
+		}
+		245 = {
+			add_manpower = -427
+		}
+	}
+}
+
+country_event = {
+	#The Skirmish at Guidonuovo
+	id = griffons.51
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.51"
+	}
+	title = griffons.51.t
+	desc = griffons.51.d
+	picture = GFX_event_griffon_with_gun
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.51.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 1000
+		271 = {
+			add_manpower = -4592
+		}
+		335 = {
+			add_manpower = -1921
+		}
+	}
+}
+
+country_event = {
+	#The Battle at Hermanstadt
+	id = griffons.52
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.52"
+	}
+	title = griffons.52.t
+	desc = griffons.52.d
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.51.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 1000
+		336 = {
+			add_manpower = -721
+		}
+		337 = {
+			add_manpower = -535
+		}
+	}
+}
+
+country_event = {
+	#The Battle at the Kingsmere
+	id = griffons.53
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.53"
+	}
+	title = griffons.53.t
+	desc = griffons.53.d
+	picture = GFX_event_medieval_tower
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.53.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 2500
+		286 = {
+			add_manpower = -1931
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 0.5
+			}
+		}
+		279 = {
+			add_manpower = -1635
+		}
+	}
+}
+
+country_event = {
+	#The Battle in the Mountains
+	id = griffons.54
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.54"
+	}
+	title = griffons.54.t
+	desc = griffons.54.d
+	picture = GFX_event_griffon_mountain
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.54.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 1000
+		238 = {
+			add_manpower = -889
+		}
+		58 = {
+			add_manpower = -773
+		}
+	}
+}
+
+country_event = {
+	#The Battle for the North
+	id = griffons.55
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.55"
+	}
+	title = griffons.55.t
+	desc = griffons.55.d
+	picture = GFX_event_winter_forest
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.55.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 1500
+		288 = {
+			add_manpower = -1535
+		}
+		287 = {
+			add_manpower = -905
+		}
+	}
+}
+
+country_event = {
+	#The Battle for Ny Winghaven
+	id = griffons.56
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.56"
+	}
+	title = griffons.56.t
+	desc = griffons.56.d
+	picture = GFX_event_griffon_mountain_2
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.56.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 2500
+		338 = {
+			add_manpower = -345
+		}
+		222 = {
+			add_manpower = -2879
+		}
+	}
+}
+
+country_event = {
+	#The Battle for Aquila
+	id = griffons.57
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.57"
+	}
+	title = griffons.57.t
+	desc = griffons.57.d
+	picture = GFX_event_medieval_castle_on_hill
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.57.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 5000
+		239 = {
+			damage_building = {
+				type = infrastructure
+				damage = 2
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 0.5
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 0.5
+			}
+			add_manpower = -3507
+		}
+	}
+}
+
+country_event = {
+	#Victory
+	id = griffons.58
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.58"
+	}
+	title = griffons.58.t
+	desc = griffons.58.d
+	picture = GFX_event_feast
+	is_triggered_only = yes
+	option = {
+		name = griffons.58.a
+		remove_ideas = GRF_doused_flames
+		clr_country_flag = GRF_civil_war_flag
+		add_stability = 0.05
+		add_political_power = 50
+		add_war_support = -0.05
+	}
+}
+
+country_event = {
+	#The Falcons Removed
+	id = griffons.59
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.59"
+	}
+	title = griffons.59.t
+	desc = griffons.59.d
+	picture = GFX_event_griffon_royal_guard
+	is_triggered_only = yes
+	option = {
+		name = griffons.59.a
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.05
+		}
+		add_stability = 0.05
+		add_political_power = 50
+		add_manpower = -5000
+		remove_ideas = GRF_falcons_of_griffinstone_junta
+		if = {
+			limit = {
+				GRF_reyhard_ironclaw = { is_unit_leader = yes }
+			}
+			remove_unit_leader_role = GRF_reyhard_ironclaw
+		}
+	}
+}
+
+country_event = {
+	#Hi anon! We're Shadowun now!
+	id = griffons.60
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.60"
+	}
+	title = griffons.60.t
+	desc = griffons.60.d
+	picture = GFX_event_bank_vault
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.60.a
+		add_political_power = -75 
+		set_cosmetic_tag = GRF_shadowrun
+		promote_character = GRF_skeiron
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		set_party_name = {
+			ideology = fascism
+			name = GRF_corporate
+			long_name = GRF_corporate_long
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.25
+		}
+		if = {
+			limit = {
+				GRF_erwin_highhill = { is_unit_leader = yes }
+			}
+			remove_unit_leader_role = GRF_erwin_highhill
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsg.9
+				hours = 6
+			}
+			set_country_flag = GRF_has_equipment_market_trade_desire_ai_strategy
+			every_possible_country = {
+				ROOT = {
+					add_ai_strategy = {
+						type = befriend
+						id = PREV
+						value = 25
+					}
+					add_ai_strategy = {
+						type = send_lend_lease_desire
+						id = PREV
+						value = -25
+					}
+					add_ai_strategy = {
+						type = equipment_market_trade_desire
+						id = PREV
+						value = 100
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#Sieg Heil
+	id = griffons.61
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.61"
+	}
+	title = griffons.61.t
+	desc = griffons.61.d
+	picture = GFX_event_griffon_with_gun
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.61.a
+		add_political_power = -75
+		GRF_reyhard_ironclaw = {
+			#set_character_name = GRF_reyhard_ironclaw
+			add_trait = {
+				ideology = nazism
+				trait = warmonger
+			}
+		}
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.25
+		}
+		if = {
+			limit = {
+				GRF_erwin_highhill = { is_unit_leader = yes }
+			}
+			remove_unit_leader_role = GRF_erwin_highhill
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsg.10
+				hours = 6
+			}
+		}
+	}
+}
+
+#Mercs
+country_event = {
+	id = griffons.62
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.62"
+	}
+	title = griffons.62.t
+	desc = griffons.62.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			num_of_civilian_factories_available_for_projects > 4
+		}
+		name = griffons.62.a
+		add_ai_strategy = {
+			type = befriend
+			id = FROM
+			value = 500
+		}
+		FROM = {
+			clr_country_flag = mercs_considered
+			clr_country_flag = mercs_considered_@ROOT
+			set_country_flag = { flag = mercs_in_progress value = 1 days = 31 }
+			set_country_flag = agreed_to_mercs_@ROOT
+			add_ai_strategy = {
+				type = support
+				id = ROOT
+				value = 20
+			}
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = ROOT
+				value = 999
+			}
+			hidden_effect = {
+				activate_targeted_decision = {
+					target = ROOT
+					decision = GRF_send_mercs_mis
+				}
+			}
+			country_event = griffons.65
+		}
+		ai_chance = {
+			factor = 2.5
+			modifier = {
+				factor = 2
+				is_major = no
+				has_war_with_major = yes
+			}
+			modifier = {
+				factor = 2
+				enemies_strength_ratio > 1
+			}
+			modifier = {
+				factor = 3
+				enemies_strength_ratio > 1.2
+			}
+			modifier = {
+				factor = 4
+				enemies_strength_ratio > 1.4
+			}
+			modifier = {
+				factor = 1.2
+				surrender_progress > 0.2
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.4
+			}
+			modifier = {
+				factor = 3
+				surrender_progress > 0.6
+			}
+			modifier = {
+				factor = 2
+				has_government = fascism
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 20
+				}
+			}
+			modifier = {
+				factor = 1.5
+				num_of_civilian_factories_available_for_projects > 18
+			}
+			modifier = {
+				factor = 0
+				num_of_civilian_factories_available_for_projects < 10
+			}
+		}
+	}
+	option = {
+		name = griffons.62.b
+		FROM = {
+			country_event = {
+				id = griffons.67
+				days = 1
+			}
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				is_major = no
+				has_war_with_major = yes
+			}
+			modifier = {
+				factor = 2
+				alliance_strength_ratio < 1
+			}
+			modifier = {
+				factor = 3
+				alliance_strength_ratio < 0.8
+			}
+			modifier = {
+				factor = 4
+				enemies_strength_ratio < 0.6
+			}
+			modifier = {
+				factor = 1.2
+				surrender_progress > 0.2
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.4
+			}
+			modifier = {
+				factor = 3
+				surrender_progress > 0.6
+			}
+			modifier = {
+				factor = 2
+				has_government = fascism
+			}
+			modifier = {
+				factor = 4
+				num_of_civilian_factories_available_for_projects < 10
+			}
+		}
+	}
+	option = {
+		name = griffons.62.c
+		set_country_flag = {
+			flag = refused_mercs_from_@FROM
+			value = 1
+			days = 180
+		}
+		FROM = {
+			clr_country_flag = mercs_considered
+			clr_country_flag = mercs_considered_@ROOT
+			country_event = griffons.66
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 10
+				OR = {
+					has_idea = TRD_got_mercs
+					has_idea = GRF_got_mercs
+					has_idea = TRD_got_mercs_delayed
+					has_idea = GRF_got_mercs_delayed
+				}
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					has_government = communism
+					has_government = democratic
+				}
+			}
+			modifier = {
+				factor = 3
+				alliance_strength_ratio > 1.3
+			}
+		}
+	}
+}
+
+#Mercs failed
+country_event = {
+	id = griffons.63
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.63"
+	}
+	title = griffons.63.t
+	desc = griffons.63.d
+	picture = GFX_event_gothic_interior
+	is_triggered_only = yes
+	option = {
+		name = griffons.63.a
+		effect_tooltip = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = GRF_failed_to_deliver_mercs
+			}
+		}
+	}
+}
+
+#Mercs success
+country_event = {
+	id = griffons.64
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.64"
+	}
+	title = griffons.64.t
+	desc = griffons.64.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {
+		name = griffons.64.a
+	}
+}
+
+#Mercs success for GRF
+country_event = {
+	id = griffons.65
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.65"
+	}
+	title = griffons.65.t
+	desc = griffons.65.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {
+		name = griffons.65.a
+		effect_tooltip = {
+			activate_targeted_decision = {
+				target = FROM
+				decision = GRF_send_mercs_mis
+			}
+		}
+	}
+}
+
+#Mercs fail for GRF
+country_event = {
+	id = griffons.66
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.66"
+	}
+	title = griffons.66.t
+	desc = griffons.66.d
+	picture = GFX_event_gothic_interior
+	is_triggered_only = yes
+	option = {
+		name = griffons.66.a
+	}
+}
+
+#FROM wants delayed payment
+country_event = {
+	id = griffons.67
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.67"
+	}
+	title = griffons.67.t
+	desc = griffons.67.d
+	picture = GFX_event_griffon_officers_meeting
+	is_triggered_only = yes
+	option = {
+		#OK
+		name = griffons.67.a
+		FROM = {
+			add_ai_strategy = {
+				type = befriend
+				id = ROOT
+				value = 500
+			}
+			set_country_flag = mercs_delayed_payment_@ROOT
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = GRF_agreed_to_delayed_payment
+				}
+			}
+			country_event = {
+				id = griffons.68
+				days = 1
+			}
+		}
+		clr_country_flag = mercs_considered
+		clr_country_flag = mercs_considered_@FROM
+		set_country_flag = { flag = mercs_in_progress value = 1 days = 31 }
+		set_country_flag = agreed_to_mercs_@FROM
+		add_ai_strategy = {
+			type = support
+			id = FROM
+			value = 20
+		}
+		add_ai_strategy = {
+			type = send_volunteers_desire
+			id = FROM
+			value = 999
+		}
+		activate_targeted_decision = {
+			target = FROM
+			decision = GRF_send_mercs_mis
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				FROM = {
+					strength_ratio = {
+						tag = ROOT
+						ratio > 0.8
+					}
+				}
+			}
+			#modifier = {
+			#	factor = 0
+			#	FROM = {
+			#		surrender_progress > 0.6
+			#	}
+			#}
+			modifier = {
+				factor = 0
+				FROM = {
+					alliance_strength_ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					alliance_strength_ratio > 0.9
+					alliance_strength_ratio < 1.1
+				}
+			}
+			modifier = {
+				factor = 4
+				FROM = {
+					alliance_strength_ratio > 1.2
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					ic_ratio = {
+						tag = ROOT
+						ratio > 0.8
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				has_opinion = {
+					target = FROM
+					value < -40
+				}
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = {
+					target = FROM
+					value < -20
+				}
+			}
+			modifier = {
+				factor = 0.9
+				has_opinion = {
+					target = FROM
+					value < -10
+				}
+			}
+			modifier = {
+				factor = 1.2
+				has_opinion = {
+					target = FROM
+					value > 10
+				}
+			}
+			modifier = {
+				factor = 1.2
+				has_opinion = {
+					target = FROM
+					value > 20
+				}
+			}
+			modifier = {
+				factor = 1.2
+				has_opinion = {
+					target = FROM
+					value > 35
+				}
+			}
+			modifier = {
+				factor = 1.4
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+		}
+	}
+	option = {
+		#Nope
+		name = griffons.67.b
+		FROM = {
+			set_country_flag = {
+				flag = refused_mercs_from_@ROOT
+				value = 1
+				days = 180
+			}
+			country_event = {
+				id = griffons.69
+				days = 1
+			}
+		}
+		clr_country_flag = mercs_considered
+		clr_country_flag = mercs_considered_@FROM
+		ai_chance = {
+			factor = 6
+		}
+	}
+}
+
+#Delayed payment agreed
+country_event = {
+	id = griffons.68
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.68"
+	}
+	title = griffons.68.t
+	desc = griffons.68.d
+	picture = GFX_event_feast
+	is_triggered_only = yes
+	option = {
+		name = griffons.68.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = GRF_agreed_to_delayed_payment
+		}
+	}
+}
+
+#Delayed payment refused
+country_event = {
+	id = griffons.69
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.69"
+	}
+	title = griffons.69.t
+	desc = griffons.69.d
+	picture = GFX_event_medieval_city_ugly_street
+	is_triggered_only = yes
+	option = {
+		name = griffons.69.a
+	}
+}
+
+#GRF demands delayed payment
+country_event = {
+	id = griffons.70
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.70"
+	}
+	title = griffons.70.t
+	desc = griffons.70.d
+	picture = GFX_event_bank_vault
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			multiply_variable = {
+				delayed_merc_payment_@FROM = 1.15
+			}
+		}
+	}
+	option = {
+		#Ok
+		name = griffons.70.a
+		if = {
+			limit = {
+				FROM = {
+					tag = GRF
+				}
+			}
+			hidden_effect = {
+				remove_ideas = GRF_got_mercs_delayed
+			}
+			add_timed_idea = {
+				idea = GRF_got_mercs_delayed_payment
+				days = var:delayed_merc_payment_@FROM
+			}
+		}
+		else = {
+			hidden_effect = {
+				remove_ideas = TRD_got_mercs_delayed
+			}
+			add_timed_idea = {
+				idea = TRD_got_mercs_delayed_payment
+				days = var:delayed_merc_payment_@FROM
+			}
+		}
+		FROM = {
+			hidden_effect = {
+				if = {
+					limit = {
+						tag = GRF
+					}
+					set_variable = {
+						GRF_send_mercs_reward_delayed_duration = ROOT.delayed_merc_payment_GRF
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 4
+					}
+					activate_targeted_decision = {
+						target = ROOT
+						decision = GRF_send_mercs_reward_delayed
+					}
+				}
+				else = {
+					set_variable = {
+						TRD_send_mercs_reward_delayed_duration_@ROOT = ROOT.delayed_merc_payment_TRD
+					}
+					log = "ROOT.delayed_merc_payment_TRD: [?ROOT.delayed_merc_payment_TRD]"
+					log = "TRD_send_mercs_reward_delayed_duration_@ROOT: [?TRD_send_mercs_reward_delayed_duration_@ROOT]"
+					activate_targeted_decision = {
+						target = ROOT
+						decision = TRD_send_mercs_reward_delayed
+					}
+				}
+			}
+			country_event = {
+				id = griffons.71
+				days = 1
+			}
+		}
+		clear_variable = delayed_merc_payment_@FROM
+		clr_country_flag = considering_delaying_payment_@FROM
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				is_neighbor_of = FROM
+			}
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.3
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+					tag = FROM
+					ratio < 1
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 3
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.6
+				}
+			}
+			modifier = {
+				factor = 2
+				num_of_civilian_factories_available_for_projects > 10
+			}
+			modifier = {
+				factor = 2
+				num_of_civilian_factories_available_for_projects > 15
+			}
+			modifier = {
+				factor = 2
+				num_of_civilian_factories_available_for_projects > 20
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = {
+					target = FROM
+					value < -40
+				}
+			}
+			modifier = {
+				factor = 0.9
+				has_opinion = {
+					target = FROM
+					value < -20
+				}
+			}
+			modifier = {
+				factor = 0.95
+				has_opinion = {
+					target = FROM
+					value < -10
+				}
+			}
+			modifier = {
+				factor = 1.1
+				has_opinion = {
+					target = FROM
+					value > 10
+				}
+			}
+			modifier = {
+				factor = 1.1
+				has_opinion = {
+					target = FROM
+					value > 20
+				}
+			}
+			modifier = {
+				factor = 1.1
+				has_opinion = {
+					target = FROM
+					value > 40
+				}
+			}
+		}
+	}
+	option = {
+		#No
+		name = griffons.70.b
+		hidden_effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = GRF
+					}
+				}
+				remove_ideas = GRF_got_mercs_delayed
+			}
+			else = {
+				remove_ideas = TRD_got_mercs_delayed
+			}
+		}
+		FROM = {
+			effect_tooltip = {
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROOT
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = GRF_refused_payment
+				}
+			}
+			country_event = {
+				id = griffons.72
+				days = 1
+			}
+		}
+		clear_variable = delayed_merc_payment_@FROM
+		clr_country_flag = considering_delaying_payment_@FROM
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 4
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+			modifier = {
+				factor = 2
+				num_of_civilian_factories_available_for_projects < 10
+			}
+			modifier = {
+				factor = 4
+				num_of_civilian_factories_available_for_projects < 5
+			}
+			modifier = {
+				factor = 2
+				ai_irrationality > 20
+			}
+		}
+	}
+}
+
+#Delayed payment agreed
+country_event = {
+	id = griffons.71
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.71"
+	}
+	title = griffons.71.t
+	desc = griffons.71.d
+	picture = GFX_event_bank_vault
+	is_triggered_only = yes
+	option = {
+		name = griffons.71.a
+		trigger = {
+			tag = GRF
+		}
+		effect_tooltip = {
+			FROM = {
+				add_timed_idea = {
+					idea = GRF_got_mercs_delayed_payment
+					days = var:delayed_merc_payment_@ROOT
+				}
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 4
+			}
+			activate_targeted_decision = {
+				target = FROM
+				decision = GRF_send_mercs_reward_delayed
+			}
+		}
+	}
+	option = {
+		name = griffons.71.a
+		trigger = {
+			tag = TRD
+		}
+		effect_tooltip = {
+			FROM = {
+				add_timed_idea = {
+					idea = TRD_got_mercs_delayed_payment
+					days = var:delayed_merc_payment_@ROOT
+				}
+			}
+			activate_targeted_decision = {
+				target = FROM
+				decision = TRD_send_mercs_reward_delayed
+			}
+		}
+	}
+}
+
+#Delayed payment refused
+country_event = {
+	id = griffons.72
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.72"
+	}
+	title = griffons.72.t
+	desc = griffons.72.d
+	picture = GFX_event_griffon_with_gun
+	is_triggered_only = yes
+	option = {
+		name = griffons.72.a
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = GRF_refused_payment
+		}
+		FROM = {
+			set_country_flag = { flag = mercs_refused_payment_@ROOT value = 1 days = 540 }  # same duration as opinion modifier
+		}
+	}
+}
+
+country_event = {
+	#Triton Gets Democratic Parties to all cooperate
+	id = griffons.73
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.73"
+	}
+	title = griffons.73.t
+	desc = griffons.73.d
+	picture = GFX_event_medieval_castle_on_hill
+	is_triggered_only = yes
+	option = {
+		name = griffons.73.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.03
+		}
+		add_stability = 0.03
+		add_political_power = 30
+	}
+}
+
+country_event = {
+	#Triton Meets With Redtail
+	id = griffons.74
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.74"
+	}
+	title = griffons.74.t
+	desc = griffons.74.d
+	picture = GFX_event_western_griffon_city
+	is_triggered_only = yes
+	option = {
+		name = griffons.74.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.02
+		}
+		add_stability = 0.03
+		add_war_support = 0.03
+	}
+}
+
+country_event = {
+	#Buraucracy Gets Streamlined
+	id = griffons.75
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.75"
+	}
+	title = griffons.75.t
+	desc = griffons.75.d
+	picture = GFX_event_medieval_city_in_mountains
+	is_triggered_only = yes
+	option = {
+		name = griffons.75.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_political_power = 50
+	}
+}
+
+country_event = {
+	#Cooperating With The Unions
+	id = griffons.76
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.76"
+	}
+	title = griffons.76.t
+	desc = griffons.76.d
+	picture = GFX_event_camelot
+	is_triggered_only = yes
+	option = {
+		name = griffons.76.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.02
+		}
+		add_stability = 0.03
+		add_war_support = 0.03
+	}
+}
+
+country_event = {
+	#Cooperating With The NGDSF (Socialists)
+	id = griffons.77
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.77"
+	}
+	title = griffons.77.t
+	desc = griffons.77.d
+	picture = GFX_event_griffon_mountain_2
+	is_triggered_only = yes
+	option = {
+		name = griffons.77.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	#Direct Democracy On A Local Level Implemented
+	id = griffons.78
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.78"
+	}
+	title = griffons.78.t
+	desc = griffons.78.d
+	picture = GFX_event_medieval_village
+	is_triggered_only = yes
+	option = {
+		name = griffons.78.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.03
+		}
+		add_political_power = 75
+	}
+}
+
+country_event = {
+	#Nova Griffonia Expanding Ties With Us! (Republican Perspective)
+	id = griffons.79
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.79"
+	}
+	title = griffons.79.t
+	desc = griffons.79.d
+	picture = GFX_event_griffon_mountain_2
+	is_triggered_only = yes
+	option = {
+		name = griffons.79.a
+		add_political_power = 50
+		add_opinion_modifier = {
+			target = GRF
+			modifier = GRF_oversea_support
+		}
+	}
+}
+
+country_event = {
+	#Equipment From Nova Griffonia Arrives (Republican Perspective)
+	id = griffons.80
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.80"
+	}
+	title = griffons.80.t
+	desc = griffons.80.d
+	picture = GFX_event_griffon_with_gun
+	is_triggered_only = yes
+	option = {
+		name = griffons.80.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 6000
+			producer = GRF
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 2000
+			producer = GRF
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 1000
+			producer = GRF
+		}
+	}
+}
+
+country_event = {
+	#Volunteers From Nova Griffonia (Republican Perspective)
+	id = griffons.81
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.81"
+	}
+	title = griffons.81.t
+	desc = griffons.81.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {
+		name = griffons.81.a
+		custom_effect_tooltip = GRF_volunteers_tp
+		hidden_effect = {
+			load_oob = "GRF_FAT_volunteers"
+		}
+	}
+}
+
+country_event = {
+	#Logistical Aid From Nova Griffonia (Republican Perspective)
+	id = griffons.82
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.82"
+	}
+	title = griffons.82.t
+	desc = griffons.82.d
+	picture = GFX_event_medieval_city_3
+	is_triggered_only = yes
+	option = {
+		name = griffons.82.a
+		add_ideas = GRF_logistical_aid_idea
+	}
+}
+
+country_event = {
+	#Financial Aid From Nova Griffonia (Republican Perspective)
+	id = griffons.83
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.83"
+	}
+	title = griffons.83.t
+	desc = griffons.83.d
+	picture = GFX_event_medieval_city_in_mountains
+	is_triggered_only = yes
+	option = {
+		name = griffons.83.a
+		add_ideas = GRF_republican_loan_idea
+	}
+}
+
+country_event = {
+	#Financial Aid From Nova Griffonia (Republican Perspective)
+	id = griffons.84
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.84"
+	}
+	title = griffons.84.t
+	desc = griffons.84.d
+	picture = GFX_event_medieval_city_winter
+	is_triggered_only = yes
+	option = {
+		name = griffons.84.a
+		swap_ideas = {
+			remove_idea = GRF_republican_loan_idea
+			add_idea = GRF_full_economic_support_idea
+		}
+	}
+}
+country_event = {
+	#Nova Griffonia offers to sell STG territory
+	id = griffons.85
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.84"
+	}
+	title = griffons.85.t
+	desc = {
+        text = griffons.85.d_no_village
+        trigger = { NOT = { owns_state = 241 } }
+    }
+	desc = {
+        text = griffons.85.d_village
+        trigger = { owns_state = 241 }
+    }
+	picture = GFX_event_stalliongrad_tower
+	is_triggered_only = yes
+	option = {
+		name = griffons.85.a
+		add_timed_idea = { 
+			idea = GRF_payment_for_stg
+			days = 365 
+		}
+		FROM = {
+			country_event = {
+				id = griffons.86
+				days = 3
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = griffons.85.b
+		add_political_power = -25
+		FROM = {
+			country_event = {
+				id = griffons.87
+				days = 3
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+country_event = {
+	#Equestria agrees
+	id = griffons.86
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.86"
+	}
+	title = griffons.86.t
+	desc = {
+        text = griffons.86.d_no_village
+        trigger = { FROM = { NOT = { owns_state = 241 } } }
+    }
+	desc = {
+        text = griffons.86.d_village
+        trigger = { FROM = { owns_state = 241 } }
+    }
+	picture = GFX_event_medieval_city_winter
+	is_triggered_only = yes
+	option = {
+		name = griffons.86.a
+		effect_tooltip = {
+			FROM = {
+				add_timed_idea = { 
+					idea = GRF_payment_for_stg
+					days = 365 
+				}
+			}
+		}
+		every_owned_state = {
+			limit = {
+				OR = {
+					is_core_of = STG
+					is_core_of = STL
+				}
+			}
+			transfer_state_to = FROM
+		}
+		if = {
+			limit = {
+				STG = {
+					is_subject_of = ROOT
+				}
+			}
+			FROM = {
+				annex_country = {
+					target = STG
+					transfer_troops = no
+				}
+			}
+		}
+		if = {
+			limit = {
+				STL = {
+					is_subject_of = ROOT
+				}
+			}
+			FROM = {
+				annex_country = {
+					target = STL
+					transfer_troops = no
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					owns_state = 241
+				}
+			}
+			241 = {
+				transfer_state_to = ROOT
+			}
+		}
+	}
+}
+country_event = {
+	#Equestria refuses
+	id = griffons.87
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.87"
+	}
+	title = griffons.87.t
+	desc = griffons.87.d
+	picture = GFX_event_medieval_city_winter
+	is_triggered_only = yes
+	option = {
+		name = griffons.87.a
+		
+	}
+}
+
+### New pre-civil war content ###
+
+country_event = {
+	#Starting event with strikes
+	id = griffons.88
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.88"
+	}
+	title = griffons.88.t
+	desc = griffons.88.d
+	picture = GFX_event_democratic_protest
+	is_triggered_only = yes
+	option = {
+		name = griffons.88.a
+		set_power_balance = {
+			id = GRF_civil_war_bop
+			set_default = yes
+		}
+		add_ideas = GRF_great_winter_strike
+		set_country_flag = GRF_have_bop_flag
+		custom_effect_tooltip = GRF_BoP_warning_ns_tt
+		custom_effect_tooltip = GRF_BoP_divisions_warning_ns_tt
+		hidden_effect = {
+			country_event = { id = griffons.89 days = 20 }
+			country_event = { id = griffons.91 days = 40 }
+			country_event = { id = griffons.92 days = 60 }
+			country_event = { id = griffons.93 days = 80 }
+			country_event = { id = griffons.114 days = 280 }
+			country_event = { id = griffons.116 days = 320 }
+			country_event = { id = griffons.117 days = 360 }
+			country_event = { id = griffons.118 days = 400 }
+			country_event = { id = griffons.115 days = 440 }
+			GRF_erwin_highhill = { set_character_flag = GRF_authoritarian_character }
+			GRF_reyhard_ironclaw = { set_character_flag = GRF_authoritarian_character }
+			GRF_hector_goldcrest = { set_character_flag = GRF_authoritarian_character }
+			GRF_jean_de_basse = { set_character_flag = GRF_authoritarian_character }
+			GRF_heinrich_lighttalon = { set_character_flag = GRF_authoritarian_character }
+			GRF_sus_griffon = { set_character_flag = GRF_authoritarian_character }
+			GRF_erika_rosetalon = { set_character_flag = GRF_republican_character }
+			GRF_wilhelm_silverwing = { set_character_flag = GRF_republican_character }
+			GRF_gabriel = { set_character_flag = GRF_republican_character }
+			GRF_toki_bright = { set_character_flag = GRF_republican_character }
+			GRF_daniel_crimsonbeak = { set_character_flag = GRF_republican_character }
+			GRF_paddy_rockfeller = { set_character_flag = GRF_republican_character }
+			GRF_conrad_darkclaw = { set_character_flag = GRF_republican_character }
+			
+			if = {
+				limit = {
+					is_ai = yes
+					is_historical_focus_on = no
+					NOT = {
+						has_country_flag = GRF_AI_WILHELM
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = WILHELM
+						}
+						has_country_flag = GRF_AI_HEINRICH
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = HEINRICH
+						}
+						has_country_flag = GRF_AI_BLACKPEAK
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = BLACKPEAK
+						}
+						has_country_flag = GRF_AI_HISTORICAL
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = HISTORICAL
+						}
+						has_country_flag = GRF_AI_SKEIRON
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = SKEIRON
+						}
+						has_country_flag = GRF_AI_IRONCLAW
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = IRONCLAW
+						}
+					}
+				}
+				random_list = {
+					15 = {
+						set_country_flag = GRF_AI_avoid_civil_war_go_republican
+					}
+					55 = {
+					
+					}
+					30 = {
+						set_country_flag = GRF_AI_go_full_auth
+					}
+				}
+			}
+		}
+	}
+}
+country_event = {
+	#Strikes in New Aquila
+	id = griffons.89
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.89"
+	}
+	title = griffons.89.t
+	desc = griffons.89.d
+	picture = GFX_event_medieval_city_winter
+	is_triggered_only = yes
+	option = {
+		name = griffons.89.a	#Use police and Falcons
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_political_power = 15
+		add_stability = -0.05
+		add_manpower = -20
+		222 = {
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.5
+			}
+			add_manpower = -282
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.89.b	#Try to solve diplomaticaly
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		country_event = { id = griffons.90 days = 1 }
+	}
+}
+country_event = {
+	#Strikes in New Aquila - diplo
+	id = griffons.90
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.90"
+	}
+	title = griffons.90.t
+	desc = griffons.90.d
+	picture = GFX_event_medieval_city_winter
+	is_triggered_only = yes
+	option = {
+		name = griffons.90.a	#Triton option
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+				}
+				factor = 0
+			}
+		}
+		add_timed_idea = { idea = GRF_triton_deal_with_workers days = 180 }
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+	option = {
+		name = griffons.90.b	#Silverwing option
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_political_power = -50
+		add_stability = 0.05
+		add_popularity = {
+			ideology = communism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Workers riot in Zerkshed Skall
+	id = griffons.91
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.91"
+	}
+	title = griffons.91.t
+	desc = griffons.91.d
+	picture = GFX_event_apartment_club
+	is_triggered_only = yes
+	option = {
+		name = griffons.91.a	#Goldfeather option
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_timed_idea = { idea = GRF_goldfeather_deal_with_workers days = 180 }
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.91.b	#Redtail option
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_political_power = -75
+		242 = {
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.91
+			}
+			damage_building = {
+			    type = rail_way
+			    damage = 0.84
+			}
+			add_manpower = -200
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Miners in Weter on strike
+	id = griffons.92
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.92"
+	}
+	title = griffons.92.t
+	desc = griffons.92.d
+	picture = GFX_event_old_mine
+	is_triggered_only = yes
+	option = {
+		name = griffons.92.a	#Highhill support
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_timed_idea = { idea = GRF_highhill_and_teafether_agreement_with_miners days = 180 }
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.03
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.92.b	#Teafeather alone
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_timed_idea = { idea = GRF_teafether_agreement_with_miners days = 180 }
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Griffon settlements in rural regions
+	id = griffons.93
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.93"
+	}
+	title = griffons.93.t
+	desc = griffons.93.d
+	picture = GFX_event_polar_forest1
+	is_triggered_only = yes
+	option = {
+		name = griffons.93.a	#Highhill visit in regions
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_timed_idea = { idea = GRF_highhill_visit_in_the_rural days = 180 }
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.93.b	#Teafeather visit
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_timed_idea = { idea = GRF_teafeather_visit_in_the_rural days = 180 }
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Decreasing tension
+	id = griffons.94
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.94"
+	}
+	title = griffons.94.t
+	desc = griffons.94.d
+	picture = GFX_event_medieval_city_winter
+	is_triggered_only = yes
+	option = {
+		name = griffons.94.a
+		remove_ideas = GRF_great_winter_strike
+	}
+}
+country_event = {
+	#Commies in snowy mountains
+	id = griffons.95
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.95"
+	}
+	title = griffons.95.t
+	desc = griffons.95.d
+	picture = GFX_event_polar_military_base
+	is_triggered_only = yes
+	option = {
+		name = griffons.95.a	#Highill starts destruction commies here
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		hidden_effect = {
+			STG = { country_event = { id = griffons.101 days = 180 random = 200 } }
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.95.b	#Redtail save this as secret
+		ai_chance = {
+			factor = 50
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		set_country_flag = GRF_communist_weapons_caches
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Stalliongradian infiltration in Snowy Mountains
+	id = griffons.96
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.96"
+	}
+	title = griffons.96.t
+	desc = griffons.96.d
+	picture = GFX_event_stg_red_army
+	is_triggered_only = yes
+	option = {
+		name = griffons.96.a	#Redtail option
+		ai_chance = {
+			factor = 20
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_war_support = -0.05
+		add_political_power = -25
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.2
+		}
+	}
+	option = {
+		name = griffons.96.b	#Try to make deal with STG and close Ho Shi Min route
+		ai_chance = {
+			factor = 20
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		STG = { country_event = { id = griffons.108 days = 2 } }
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+		custom_effect_tooltip = GRF_warning_about_relations_with_yaks_ns_tt
+	}
+	option = {
+		name = griffons.96.c	#Strike the red threat on south!
+		ai_chance = {
+			factor = 60
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.2
+		}
+		add_war_support = 0.1
+		custom_effect_tooltip = GRF_STG_border_war_warning_ns_tt
+		hidden_effect = {
+			activate_targeted_decision = {
+				target = GRF
+				decision = GRF_STG_border_war_preparation
+			}
+			set_country_flag = STG_GRF_border_war_ai_flag
+		}
+	}
+}
+country_event = {
+	#Claim the Our Town
+	id = griffons.97
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.97"
+	}
+	title = griffons.97.t
+	desc = griffons.97.d
+	picture = GFX_event_medieval_city_winter
+	is_triggered_only = yes
+	option = {
+		name = griffons.97.a
+		add_state_claim	= 57
+		STL = { country_event = { id = griffons.99 days = 2 } }
+	}
+}
+country_event = {
+	#Claim STG border regions
+	id = griffons.98
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.98"
+	}
+	title = griffons.98.t
+	desc = griffons.98.d
+	picture = GFX_event_our_town
+	is_triggered_only = yes
+	option = {
+		name = griffons.98.a
+		add_state_claim	= 240
+		add_state_claim	= 678
+		STG = { country_event = { id = griffons.100 days = 2 } }
+	}
+}
+country_event = {
+	#Our Town event about GRF claims
+	id = griffons.99
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.99"
+	}
+	title = griffons.99.t
+	desc = griffons.99.d
+	picture = GFX_event_guichard_laughing
+	is_triggered_only = yes
+	option = {
+		name = griffons.99.a
+		add_war_support = 0.05
+	}
+}
+country_event = {
+	#STG event about GRF claims on border regions
+	id = griffons.100
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.100"
+	}
+	title = griffons.100.t
+	desc = griffons.100.d
+	picture = GFX_event_guichard_laughing
+	is_triggered_only = yes
+	option = {
+		name = griffons.100.a	#lets do not do nothing
+		ai_chance = {
+			factor = 10
+		}
+		add_political_power = 25
+		add_stability = 0.02
+	}
+	option = {
+		name = griffons.100.b	#declare claims on their mountains then 
+		ai_chance = {
+			factor = 30
+		}
+		add_political_power = -25
+		add_state_claim	= 58
+		add_state_claim	= 338
+	}
+	option = {
+		name = griffons.100.c	#declare claims on all coastal state of Crescent Bay!
+		ai_chance = {
+			factor = 60
+		}
+		add_political_power = -50
+		add_state_claim	= 58
+		add_state_claim	= 338
+		add_state_claim	= 222
+	}
+}
+country_event = {
+	#STG event about GRF Ho Shi Min route
+	id = griffons.101
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.101"
+	}
+	title = griffons.101.t
+	desc = griffons.101.d
+	picture = GFX_event_polar_military_base
+	is_triggered_only = yes
+	option = {
+		name = griffons.101.a	#We will support our comrades!
+		ai_chance = {
+			factor = 90
+		}
+		GRF = {	country_event = { id = griffons.96 days = 60 random = 60 }	}
+	}
+	option = {
+		name = griffons.101.b	#Let's don't escalate the conflict
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		add_political_power = 5
+	}
+}
+country_event = {
+	#GRF losing border conflict
+	id = griffons.102
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.102"
+	}
+	title = griffons.102.t
+	desc = griffons.102.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.102.a
+		add_political_power = -75
+		add_war_support = -0.10
+		army_experience = 15
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.2
+		}
+		clr_country_flag = STG_GRF_border_war_ai_flag
+	}
+}
+country_event = {
+	#GRF won border conflict
+	id = griffons.103
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.103"
+	}
+	title = griffons.103.t
+	desc = griffons.103.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.103.a
+		add_political_power = 75
+		army_experience = 50
+		add_doctrine_cost_reduction = {
+			name = doctrine_bonus
+			category = land_doctrine
+			uses = 1
+			cost_reduction = 0.25
+		}
+		add_mastery_bonus = {
+			bonus = 0.2
+			days = 180
+			folder = land 
+			name = griffons.103.t
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.3
+		}
+		clr_country_flag = STG_GRF_border_war_ai_flag
+	}
+}
+
+country_event = {
+	#GRF border war is cancer
+	id = griffons.104
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.104"
+	}
+	title = griffons.104.t
+	desc = griffons.104.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.104.a
+		add_political_power = -25
+		army_experience = 25
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+		clr_country_flag = STG_GRF_border_war_ai_flag
+	}
+}
+country_event = {
+	#STG losing border conflict
+	id = griffons.105
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.105"
+	}
+	title = griffons.105.t
+	desc = griffons.105.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.105.a
+		add_political_power = -75
+		add_war_support = -0.10
+		army_experience = 15
+	}
+}
+country_event = {
+	#STG won border conflict
+	id = griffons.106
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.106"
+	}
+	title = griffons.106.t
+	desc = griffons.106.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.106.a
+		add_political_power = 75
+		army_experience = 50
+		add_doctrine_cost_reduction = {
+			name = doctrine_bonus
+			category = land_doctrine
+			uses = 1
+			cost_reduction = 0.25
+		}
+		add_mastery_bonus = {
+			bonus = 0.2
+			days = 180
+			folder = land 
+			name = griffons.106.t
+		}
+	}
+}
+
+country_event = {
+	#STG border war is cancer
+	id = griffons.107
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.107"
+	}
+	title = griffons.107.t
+	desc = griffons.107.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.107.a
+		add_political_power = -25
+		army_experience = 25
+	}
+}
+country_event = {
+	#STG event, GRF suggest STG will end their help for GRF commies
+	id = griffons.108
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.108"
+	}
+	title = griffons.108.t
+	desc = griffons.108.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.108.a	#No step back, we will continue!
+		ai_chance = {
+			factor = 15
+			modifier = {
+				add = -5
+				has_opinion = {
+					target = FROM
+					value > 25
+				}
+			}
+			modifier = {
+				add = -5
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				OR = {
+					GRF = {
+						is_ai = yes
+						has_country_flag = GRF_AI_BLACKPEAK
+					}
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+		}
+		FROM = {
+			country_event = { id = griffons.110 days = 1 }
+		}
+	}
+	option = {
+		name = griffons.108.b	#Well, on that profit we can stop. We will wait a better moment for intervention
+		ai_chance = {
+			factor = 85
+			modifier = {
+				add = -25
+				has_opinion = {
+					target = FROM
+					value < 0
+				}
+			}
+			modifier = {
+				add = -25
+				has_opinion = {
+					target = FROM
+					value < -25
+				}
+			}
+			modifier = {
+				add = -25
+				has_opinion = {
+					target = FROM
+					value < -50
+				}
+			}
+		}
+		add_political_power = -25
+		add_timed_idea = { idea = GRF_STG_payment_for_fuck_off days = 210 }
+		add_popularity = {
+			ideology = communism
+			popularity = -0.15
+		}
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+		FROM = {
+			country_event = { id = griffons.109 days = 1 }
+		}
+	}
+}
+country_event = {
+	#STG agree with the deal
+	id = griffons.109
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.109"
+	}
+	title = griffons.109.t
+	desc = griffons.109.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.109.a
+		add_political_power = 50
+		add_timed_idea = { idea = GRF_payment_for_STG_to_fuck_off days = 210 }
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.2
+		}
+	}
+}
+country_event = {
+	#STG disagree with the deal, war or humuliation
+	id = griffons.110
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.110"
+	}
+	title = griffons.110.t
+	desc = griffons.110.d
+	picture = GFX_event_stg_red_army
+	is_triggered_only = yes
+	option = {
+		name = griffons.110.a	#War!
+		ai_chance = {
+			factor = 90
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_political_power = 50
+		add_war_support = 0.1
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.04
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.2
+		}
+		hidden_effect = {
+			activate_targeted_decision = {
+				target = GRF
+				decision = GRF_STG_border_war_preparation
+			}
+		}
+	}
+	option = {
+		name = griffons.110.b	#Humuliation!
+		ai_chance = {
+			factor = 10
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_political_power = -25
+		add_stability = -0.05
+		add_war_support = -0.1
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.2
+		}
+	}
+}
+country_event = {
+	#STG event, GRF retreates after the deal failure
+	id = griffons.111
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.111"
+	}
+	title = griffons.111.t
+	desc = griffons.111.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.111.a
+		add_political_power = 100
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+	}
+}
+country_event = {
+	#JAK event, Goldfeather's help arrived
+	id = griffons.112
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.112"
+	}
+	title = griffons.112.t
+	desc = griffons.112.d
+	picture = GFX_event_polar_military_base
+	is_triggered_only = yes
+	option = {
+		name = griffons.112.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = GRF
+		}
+	}
+}
+country_event = {
+	#YAK event, Triton's help arrived
+	id = griffons.113
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.113"
+	}
+	title = griffons.113.t
+	desc = griffons.113.d
+	picture = GFX_event_polar_military_base
+	is_triggered_only = yes
+	option = {
+		name = griffons.113.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = GRF
+		}
+	}
+}
+country_event = {
+	#Highhill asking about more funds for army
+	id = griffons.114
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.114"
+	}
+	title = griffons.114.t
+	desc = griffons.114.d
+	picture = GFX_event_medieval_city_winter
+	is_triggered_only = yes
+	option = {
+		name = griffons.114.a	#Let him take more funds
+		ai_chance = {
+			factor = 60
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.02
+		}
+		army_experience = 50
+		navy_experience = 25
+		air_experience = 25
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.114.b	#Not give money to Highhill
+		ai_chance = {
+			factor = 40
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_political_power = -25
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Republicans trying to designate Falcons as a terrorist organisation
+	id = griffons.115
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.115"
+	}
+	title = griffons.115.t
+	desc = griffons.115.d
+	picture = GFX_event_apartment_club
+	is_triggered_only = yes
+	option = {
+		name = griffons.115.a	#Opposite them 
+		ai_chance = {
+			factor = 40
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_stability = -0.05
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.115.b	#Support them
+		ai_chance = {
+			factor = 60
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_political_power = -65
+		add_popularity = {
+			ideology = communism
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.04
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Falcons initiate anti-yak protests against minorities
+	id = griffons.116
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.116"
+	}
+	title = griffons.116.t
+	desc = griffons.116.d
+	picture = GFX_event_polar_camp_ruins
+	is_triggered_only = yes
+	option = {
+		name = griffons.116.a	#Don't look at them 
+		ai_chance = {
+			factor = 60
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		271 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.3
+			}
+			add_manpower = -429
+		}
+		335 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.3
+			}
+			add_manpower = -267
+		}
+		335 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.3
+			}
+			add_manpower = -867
+		}
+		337 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.3
+			}
+			add_manpower = -183
+		}
+		if = {
+			limit = { NOT = { country_exists = GFF } }
+			277 = {
+				damage_building = {
+					type = rail_way
+					damage = 0.4
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 0.4
+				}
+				add_manpower = -1083
+			}
+			278 = {
+				damage_building = {
+					type = rail_way
+					damage = 0.2
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 0.3
+				}
+				add_manpower = -91
+			}
+			281 = {
+				damage_building = {
+					type = rail_way
+					damage = 0.5
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 0.5
+				}
+				add_manpower = -1984
+			}
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.116.b	#Opposite them
+		ai_chance = {
+			factor = 40
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_political_power = -65
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Falcons initiate anti-penguin protests against minorities
+	id = griffons.117
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.117"
+	}
+	title = griffons.117.t
+	desc = griffons.117.d
+	picture = GFX_event_polar_village1
+	is_triggered_only = yes
+	option = {
+		name = griffons.117.a	#Ignore them
+		ai_chance = {
+			factor = 60
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		286 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.3
+			}
+			add_manpower = -631
+		}
+		287 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.3
+			}
+			add_manpower = -91
+		}
+		288 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.3
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.4
+			}
+			add_manpower = -1141
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.117.b	#Opposite them
+		ai_chance = {
+			factor = 40
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_political_power = -65
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Falcons initiate anti-pony protests against minorities
+	id = griffons.118
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.118"
+	}
+	title = griffons.118.t
+	desc = griffons.118.d
+	picture = GFX_event_fez_mafia
+	is_triggered_only = yes
+	option = {
+		name = griffons.118.a	#Support them
+		ai_chance = {
+			factor = 60
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		58 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.3
+			}
+			add_manpower = -585
+		}
+		338 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.3
+			}
+			add_manpower = -423
+		}
+		222 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.4
+			}
+			add_manpower = -1487
+		}
+		238 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.2
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.2
+			}
+			add_manpower = -109
+		}
+		239 = {
+			damage_building = {
+			    type = rail_way
+			    damage = 0.3
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.4
+			}
+			add_manpower = -2197
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {
+		name = griffons.118.b	#Opposite them
+		ai_chance = {
+			factor = 40
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_political_power = -65
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Highhill arrested for attempt to coup
+	id = griffons.119
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.119"
+	}
+	title = griffons.119.t
+	desc = griffons.119.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.119.a
+		add_political_power = 50
+		add_stability = 0.05
+		set_country_flag = GRF_refuse_junta
+		set_global_flag = GRF_civil_war_begun
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		swap_ideas = {
+			remove_idea = GRF_political_chaos
+			add_idea = GRF_doused_flames
+		}
+		if = {
+			limit = {
+				power_balance_value = {
+					id = GRF_civil_war_bop
+					value < -0.98
+				}
+			}
+			add_ideas = GRF_max_republican_buff
+		}
+		clr_country_flag = GRF_have_bop_flag
+		remove_power_balance = {
+			id = GRF_civil_war_bop
+		}
+		GRF_erwin_highhill = {
+			remove_unit_leader_role = yes
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsg.4
+				hours = 12
+			}
+		}
+	}
+}
+country_event = {
+	#STG event about helping to Left Front intheir fight with Highhill
+	id = griffons.120
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.120"
+	}
+	title = griffons.120.t
+	desc = griffons.120.d
+	picture = GFX_event_stg_pairlament
+	is_triggered_only = yes
+	option = {
+		name = griffons.120.a		#We will help
+		ai_chance = {
+			base = 60
+			modifier = {
+				GRA = {
+					OR = {
+						has_war_with = YAK
+						has_war_with = JAK
+						has_war_with = PNG
+						has_war_with = PLB
+					}
+				}
+				factor = 0.5
+			}
+		}
+		GRA = {
+            country_event = { id = griffons.121 hours = 4 }
+		}
+		hidden_effect = {
+			news_event = { days = 1 id = newsg.7 }
+		}
+	}
+	option = {
+		name = griffons.120.b		#We will not help
+		ai_chance = {
+			base = 20
+			modifier = {
+				has_country_leader = {
+					character = STG_sinister_serov
+					ruling_only = yes
+				}
+				factor = 0.5
+			}
+		}
+		GRA = {
+            country_event = { id = griffons.122 hours = 12 }
+		}
+	}
+}
+country_event = {
+	#STG will help, but we become a puppet
+	id = griffons.121
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.121"
+	}
+	title = griffons.121.t
+	desc = griffons.121.d
+	picture = GFX_event_stg_pairlament
+	is_triggered_only = yes
+	option = {
+		name = griffons.121.a
+		
+		STG = {
+			set_autonomy = {
+				target = ROOT
+				autonomy_state = autonomy_integrated_puppet
+				end_wars = no
+				end_civil_wars = no
+			}
+		}
+		GRB = {
+			STG = {
+				add_to_war = {
+					targeted_alliance = ROOT
+					enemy = PREV
+					hostility_reason = asked_to_join
+				}
+			}
+			hidden_effect = {
+				unlock_national_focus = GRF_form_republican_guard
+				unlock_national_focus = GRF_free_elections
+				unlock_national_focus = GRF_commies_win
+			}
+		}
+	}
+}
+country_event = {
+	#STG will not help us
+	id = griffons.122
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.122"
+	}
+	title = griffons.122.t
+	desc = griffons.122.d
+	picture = GFX_event_forest_depression
+	is_triggered_only = yes
+	option = {
+		name = griffons.122.a
+		add_stability = -0.1
+		add_war_support = -0.15
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+	}
+}
+country_event = {
+	#YAK event, GRF suggest to help for non-agression pact
+	id = griffons.123
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.123"
+	}
+	title = griffons.123.t
+	desc = griffons.123.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.123.a	#Yes, we accept their help
+		ai_chance = {
+			base = 70
+		}
+		effect_tooltip = {
+			diplomatic_relation = {
+				country = FROM
+				relation = non_aggression_pact
+				active = yes
+			}
+		}
+		add_timed_idea = { 
+			idea = GRF_yaks_payment_for_equipment 
+			days = 180 
+		}
+		add_equipment_to_stockpile = {		#prepayment
+			type = infantry_equipment
+			amount = 500
+			producer = GRF
+		}
+		FROM = { country_event = { id = griffons.125 days = 3 } }
+	}
+	option = {
+		name = griffons.123.b	#No, we do this alone
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				add = -15
+				has_opinion = { target = GRF value > 25 }
+			}
+			modifier = {
+				add = -15
+				has_opinion = { target = GRF value > 50 }
+			}
+		}
+		add_war_support = 0.025
+		FROM = { country_event = { id = griffons.127 days = 3 } }
+	}
+}
+country_event = {
+	#JAK event, GRF suggest to help for non-agression pact
+	id = griffons.124
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.124"
+	}
+	title = griffons.124.t
+	desc = griffons.124.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.124.a	#Yes, we accept their help
+		ai_chance = {
+			factor = 80
+		}
+		effect_tooltip = {
+			diplomatic_relation = {
+				country = FROM
+				relation = non_aggression_pact
+				active = yes
+			}
+		}
+		add_timed_idea = { 
+			idea = GRF_jaks_payment_for_equipment 
+			days = 180 
+		}
+		add_equipment_to_stockpile = {		#prepayment
+			type = infantry_equipment
+			amount = 500
+			producer = GRF
+		}
+		FROM = { country_event = { id = griffons.126 days = 1 } }
+	}
+	option = {
+		name = griffons.124.b	#No, we do this alone
+		ai_chance = {
+			factor = 20
+			modifier = {
+				add = -10
+				has_opinion = { target = GRF value > 25 }
+			}
+			modifier = {
+				add = -10
+				has_opinion = { target = GRF value > 50 }
+			}
+		}
+		add_war_support = 0.025
+		FROM = { country_event = { id = griffons.128 days = 1 } }
+	}
+}
+country_event = {
+	#YAK accept Triton suggestion
+	id = griffons.125
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.125"
+	}
+	title = griffons.125.t
+	desc = griffons.125.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.125.a
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#JAK accept Goldfeather suggestion
+	id = griffons.126
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.126"
+	}
+	title = griffons.126.t
+	desc = griffons.126.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.126.a
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+		add_timed_idea = { 
+			idea = GRF_jaks_payment_for_equipment_GRF_side 
+			days = 180 
+		}
+	}
+}
+country_event = {
+	#YAK decline Triton suggestion
+	id = griffons.127
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.127"
+	}
+	title = griffons.127.t
+	desc = griffons.127.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.127.a
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.05
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+}
+country_event = {
+	#JAK decline Goldfeather suggestion
+	id = griffons.128
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.128"
+	}
+	title = griffons.128.t
+	desc = griffons.128.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.128.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.05
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+		add_timed_idea = { 
+			idea = GRF_yaks_payment_for_equipment_GRF_side 
+			days = 180 
+		}
+	}
+}
+country_event = {
+	#STG supporting us with rifles!
+	id = griffons.129
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.129"
+	}
+	title = griffons.129.t
+	desc = griffons.129.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.129.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = STG
+		}
+	}
+}
+country_event = {
+	#STG supporting us with support equipment!
+	id = griffons.130
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.130"
+	}
+	title = griffons.130.t
+	desc = griffons.130.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.130.a
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 100
+			producer = STG
+		}
+	}
+}
+country_event = {
+	#STG supporting us with artillery!
+	id = griffons.131
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.131"
+	}
+	title = griffons.131.t
+	desc = griffons.131.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {
+		name = griffons.131.a
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 100
+			producer = STG
+		}
+	}
+}
+country_event = {
+	#Volonteers from STG are come!
+	id = griffons.132
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.132"
+	}
+	title = griffons.132.t
+	desc = griffons.132.d
+	picture = GFX_event_pony_march
+	is_triggered_only = yes
+	option = {
+		name = griffons.132.a
+		add_manpower = 15000
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+	}
+}
+country_event = {
+	#CHN event, Highhill asking for help against commies
+	id = griffons.133
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.133"
+	}
+	title = griffons.133.t
+	desc = griffons.133.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.133.a	#we will help, but with condition
+		ai_chance = {
+			factor = 70
+		}
+		FROM = { country_event = { id = griffons.134 days = 3 } }
+		custom_effect_tooltip = GRF_warning_about_relations_with_yaks_ns_tt
+	}
+	option = {
+		name = griffons.133.b	#we have enough problems now, and you are actually a target in future
+		ai_chance = {
+			factor = 30
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+			modifier = {
+				add = -15
+				has_opinion = {
+					target = FROM
+					value > 30
+				}
+			}
+			modifier = {
+				add = -15
+				has_opinion = {
+					target = FROM
+					value > 60
+				}
+			}
+		}
+		FROM = { country_event = { id = griffons.137 days = 3 } }
+	}
+}
+country_event = {
+	#CHN agree, but with little condition...
+	id = griffons.134
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.134"
+	}
+	title = griffons.134.t
+	desc = griffons.134.d
+	picture = GFX_event_chrysalis_parade
+	is_triggered_only = yes
+	option = {
+		name = griffons.134.a	#yes! Just help us now!
+		ai_chance = {
+			factor = 90
+		}
+		CHN = { country_event = { id = griffons.135 days = 3 } }
+		add_political_power = -75
+		add_stability = -0.05
+		add_war_support = -0.05
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_0
+			amount = 5000
+			producer = CHN
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 500
+			producer = CHN
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment_1
+			amount = 500
+			producer = CHN
+		}
+		add_timed_idea = { idea = GRF_CHN_advisors days = 180 }
+		add_manpower = 15000
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			create_equipment_variant = {
+				name = "Sv.109"
+				type = small_plane_airframe_1
+				modules = {
+					fixed_main_weapon_slot = light_mg_2x
+					fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
+					engine_type_slot = engine_2_1x
+					special_type_slot_1 = empty
+				}
+				icon = "GFX_changeling_2d_fighter1_medium"
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_1
+				variant_name = "Sv.109E-4"
+				amount = 100
+				producer = CHN
+			}
+		}
+		else = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment_1
+				amount = 100
+				producer = CHN
+			}
+		}
+		if = {
+			limit = {
+				has_dlc = "By Blood Alone"
+			}
+			create_equipment_variant = {
+				name = "Vs.87"
+				type = small_plane_cas_airframe_1
+				modules = {
+					fixed_main_weapon_slot = bomb_locks
+					engine_type_slot = engine_2_1x
+					special_type_slot_1 = lmg_defense_turret
+					special_type_slot_2 = dive_brakes_small
+				}
+				icon = "GFX_GER_CAS1_medium"
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_cas_airframe_1
+				variant_name = "Vs.87"
+				amount = 50
+				producer = CHN
+			}
+		}
+		else = {
+			add_equipment_to_stockpile = {
+				type = CAS_equipment_1
+				amount = 50
+				producer = CHN
+			}
+		}
+		add_relation_modifier = {
+			target = CHN
+			modifier = ROM_license_german_equipment
+		}
+		diplomatic_relation = {
+			country = CHN
+			relation = docking_rights
+			active = yes
+		}
+		if = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			add_equipment_subsidy = {
+				cic = 500
+				equipment_type = infantry_equipment
+				seller_tags = { CHN CCN OLE PLB }
+			}
+			add_equipment_subsidy = {
+				cic = 500
+				equipment_type = support_equipment
+				seller_tags = { CHN CCN OLE PLB }
+			}
+			add_equipment_subsidy = {
+				cic = 500
+				equipment_type = artillery_equipment
+				seller_tags = { CHN CCN OLE PLB }
+			}
+			add_equipment_subsidy = {
+				cic = 500
+				equipment_type = small_plane_airframe
+				seller_tags = { CHN CCN OLE PLB }
+			}
+			add_equipment_subsidy = {
+				cic = 500
+				equipment_type = small_plane_cas_airframe
+				seller_tags = { CHN CCN OLE PLB }
+			}
+		}
+		set_country_flag = GRF_agree_to_get_call_to_arms_against_EQS
+	}
+	option = {
+		name = griffons.134.b	#no! We will better die, then become a bug's weapon!
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+			modifier = {
+				add = -5
+				has_opinion = {
+					target = FROM
+					value > 10
+				}
+			}
+			modifier = {
+				add = -5
+				has_opinion = {
+					target = FROM
+					value > 25
+				}
+			}
+		}
+		CHN = { country_event = { id = griffons.136 days = 3 } }
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = -0.05
+	}
+}
+country_event = {
+	#CHN event, GRF agree with our conditions
+	id = griffons.135
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.135"
+	}
+	title = griffons.135.t
+	desc = griffons.135.d
+	picture = GFX_event_griffon_para
+	is_triggered_only = yes
+	option = {
+		name = griffons.135.a
+		add_timed_idea = { idea = GRF_CHN_helping_to_highhill days = 120 }
+		army_experience = 25
+		air_experience = 25
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+		add_mastery_bonus = {
+			bonus = 0.2
+			days = 180
+			folder = land 
+			name = griffons.135.t
+		}
+		set_country_flag = CHN_GRF_anti_equestrian_pact
+	}
+}
+country_event = {
+	#CHN event, fools from GRF decline our conditions
+	id = griffons.136
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.136"
+	}
+	title = griffons.136.t
+	desc = griffons.136.d
+	picture = GFX_event_guichard_laughing
+	is_triggered_only = yes
+	option = {
+		name = griffons.136.a
+		add_war_support = 0.01
+	}
+}
+country_event = {
+	#CHN decline the request
+	id = griffons.137
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.137"
+	}
+	title = griffons.137.t
+	desc = griffons.137.d
+	picture = GFX_event_swarm
+	is_triggered_only = yes
+	option = {
+		name = griffons.137.a
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.15
+		}
+	}
+}
+country_event = {
+	#CHN call to arms in the Great War, as we agreed
+	id = griffons.138
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.138"
+	}
+	title = griffons.138.t
+	desc = griffons.138.d
+	picture = GFX_event_chrysalis_parade
+	is_triggered_only = yes
+	option = {
+		name = griffons.138.a
+		add_ideas = GRF_required_to_join
+		CHN = { add_to_faction = GRB }
+	}
+}
+country_event = {
+	#CHN event, GRF suggesting to help against EQS for STG territory
+	id = griffons.139
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.139"
+	}
+	title = griffons.139.t
+	desc = griffons.139.d
+	picture = GFX_event_griffon_diplomacy
+	is_triggered_only = yes
+	option = {
+		name = griffons.139.a		#Yes, they will be a nice ally. For now.
+		ai_chance = {
+			factor = 90
+		}
+		add_to_faction = FROM
+	}
+	option = {
+		name = griffons.139.b		#Nah, we will finish ponies without their help
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = -5
+				has_opinion = {
+					target = FROM
+					value > 10
+				}
+			}
+			modifier = {
+				add = -5
+				has_opinion = {
+					target = FROM
+					value > 25
+				}
+			}
+		}
+		add_political_power = 50
+		FROM = { country_event = { id = griffons.141 days = 1 } }
+	}
+}
+country_event = {
+	#GRF are joining to Great War and wanna STG provinces
+	id = griffons.140
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.140"
+	}
+	title = griffons.140.t
+	desc = griffons.140.d
+	picture = GFX_event_stalliongrad_soldier
+	is_triggered_only = yes
+	option = {
+		name = griffons.140.a
+		STG = { every_core_state = { add_claim_by = ROOT } } 
+	}
+}
+country_event = {
+	#CHN don't wanna war together against Equestria
+	id = griffons.141
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.141"
+	}
+	title = griffons.141.t
+	desc = griffons.141.d
+	picture = GFX_event_swarm
+	is_triggered_only = yes
+	option = {
+		name = griffons.141.a
+		add_political_power = -50
+	}
+}
+country_event = {
+	#End of the civil war and disband the militia divisions
+	id = griffons.142
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.142"
+	}
+	title = griffons.142.t
+	desc = griffons.142.d
+	picture = GFX_event_boat_in_runined_dock
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = griffons.142.a
+		ai_chance = {
+			factor = 50
+		}
+		add_timed_idea = { idea = GRF_civil_war_recovery days = 365 }
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = GRF_correct_color
+		if = {
+			limit = {
+				is_in_faction_with = YAK
+				YAK = {
+					is_faction_leader = yes
+				}
+			}
+			YAK = {
+				dismantle_faction = yes
+			}
+		}
+		add_war_support = -0.1
+		#Making sure these flags are correct in case theyre not
+		if = {
+			limit = {
+				has_country_flag = GRF_civil_war_flag
+			}
+			clr_country_flag = GRF_civil_war_flag
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = GRF_civil_war_over
+				}
+			}
+			set_country_flag = GRF_civil_war_over
+		}
+		delete_unit_template_and_units = {
+			division_template = "National Militia Division"
+			disband = yes
+		}
+		delete_unit_template_and_units = {
+			division_template = "Revolutionary Militia Division"
+			disband = yes
+		}
+		delete_unit_template_and_units = {
+			division_template = "Revolutionary Artillery Militia Division"
+			disband = yes
+		}
+		delete_unit_template_and_units = {
+			division_template = "National Artillery Militia Division"
+			disband = yes
+		}
+		set_division_template_lock = {
+			division_template = "Falcon Panzer Division"
+			is_locked = no
+		}
+		add_ideas = { 
+			extensive_conscription
+			partial_economic_mobilisation
+		}
+		set_capital = {
+			state = 243
+			remember_old_capital = no
+		}
+		hidden_effect = {
+			country_event = { id = griffons.153 days = 3 }
+			if = {
+				limit = {
+					has_country_flag = GRF_authoritarians_flag
+				}
+				every_possible_country = { # bring back civil war leaders for puppets
+					limit = {
+						has_character = GRF_heinrich_redtail
+					}
+					GRF_heinrich_redtail = {
+						set_nationality = ROOT
+					}
+				}
+				GRF_heinrich_redtail = {						
+					promote_character = democratic_socialism
+				}
+				every_possible_country = { # bring back civil war leaders for puppets
+					limit = {
+						has_character = GRF_wilhelm_silverwing
+					}
+					GRF_wilhelm_silverwing = {
+						set_nationality = ROOT
+					}
+				}
+				GRF_wilhelm_silverwing = {				
+					promote_character = socialism
+				}
+				if = {
+					limit = {
+						GRF_wilhelm_silverwing = { is_unit_leader = yes }
+					}
+					remove_unit_leader_role = GRF_wilhelm_silverwing
+				}
+				every_possible_country = { # bring back civil war leaders for puppets
+					limit = {
+						has_character = GRF_triton_blackpeak
+					}
+					GRF_triton_blackpeak = {
+						set_nationality = ROOT
+					}
+				}
+			}
+			else = {
+				every_possible_country = {
+					limit = {
+						has_character = GRF_erwin_highhill
+					}
+					GRF_erwin_highhill = {
+						set_nationality = ROOT
+					}
+				}
+				GRF_erwin_highhill = {						
+					promote_character = khakistocracy
+				}
+				if = {
+					limit = {
+						GRF_erwin_highhill = { is_unit_leader = yes }
+					}
+					remove_unit_leader_role = GRF_erwin_highhill
+				}
+				every_possible_country = {
+					limit = {
+						has_character = GRF_reyhard_ironclaw
+					}
+					GRF_reyhard_ironclaw = {
+						set_nationality = ROOT
+					}
+				}
+				GRF_reyhard_ironclaw = {					
+					promote_character = nazism
+				}
+				every_possible_country = {
+					limit = {
+						has_character = GRF_skeiron
+					}
+					GRF_skeiron = {
+						set_nationality = ROOT
+					}
+				}
+			}
+		}
+	}
+	option = { # keep militias
+		name = griffons.142.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				STG = { is_ai = yes }
+			}
+		}
+		add_timed_idea = { idea = GRF_civil_war_recovery days = 500 }
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = GRF_correct_color
+		if = {
+			limit = {
+				is_in_faction_with = YAK
+				YAK = {
+					is_faction_leader = yes
+				}
+			}
+			YAK = {
+				dismantle_faction = yes
+			}
+		}
+		add_war_support = -0.2
+		add_political_power = -100
+		#Making sure these flags are correct in case theyre not
+		if = {
+			limit = {
+				has_country_flag = GRF_civil_war_flag
+			}
+			clr_country_flag = GRF_civil_war_flag
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = GRF_civil_war_over
+				}
+			}
+			set_country_flag = GRF_civil_war_over
+		}
+		add_ideas = { 
+			extensive_conscription
+			partial_economic_mobilisation
+		}
+		set_division_template_lock = {
+			division_template = "National Militia Division"
+			is_locked = no
+		}
+		set_division_template_lock = {
+			division_template = "Revolutionary Militia Division"
+			is_locked = no
+		}
+		set_division_template_lock = {
+			division_template = "National Artillery Militia Division"
+			is_locked = no
+		}
+		set_division_template_lock = {
+			division_template = "Revolutionary Artillery Militia Division"
+			is_locked = no
+		}
+		set_division_template_lock = {
+			division_template = "Falcon Panzer Division"
+			is_locked = no
+		}
+		set_capital = {
+			state = 243
+			remember_old_capital = no
+		}
+		set_technology = {
+			KIR_irregular_tech = 1
+		}
+		hidden_effect = {
+			country_event = { id = griffons.153 days = 3 }
+			if = {
+				limit = {
+					has_country_flag = GRF_authoritarians_flag
+				}
+				every_possible_country = { # bring back civil war leaders for puppets
+					limit = {
+						has_character = GRF_heinrich_redtail
+					}
+					GRF_heinrich_redtail = {
+						set_nationality = ROOT
+					}
+				}
+				GRF_heinrich_redtail = {						
+					promote_character = democratic_socialism
+				}
+				every_possible_country = { # bring back civil war leaders for puppets
+					limit = {
+						has_character = GRF_wilhelm_silverwing
+					}
+					GRF_wilhelm_silverwing = {
+						set_nationality = ROOT
+					}
+				}
+				GRF_wilhelm_silverwing = {				
+					promote_character = socialism
+				}
+				if = {
+					limit = {
+						GRF_wilhelm_silverwing = { is_unit_leader = yes }
+					}
+					remove_unit_leader_role = GRF_wilhelm_silverwing
+				}
+				every_possible_country = { # bring back civil war leaders for puppets
+					limit = {
+						has_character = GRF_triton_blackpeak
+					}
+					GRF_triton_blackpeak = {
+						set_nationality = ROOT
+					}
+				}
+			}
+			else = {
+				every_possible_country = {
+					limit = {
+						has_character = GRF_erwin_highhill
+					}
+					GRF_erwin_highhill = {
+						set_nationality = ROOT
+					}
+				}
+				GRF_erwin_highhill = {						
+					promote_character = khakistocracy
+				}
+				if = {
+					limit = {
+						GRF_erwin_highhill = { is_unit_leader = yes }
+					}
+					remove_unit_leader_role = GRF_erwin_highhill
+				}
+				every_possible_country = {
+					limit = {
+						has_character = GRF_reyhard_ironclaw
+					}
+					GRF_reyhard_ironclaw = {
+						set_nationality = ROOT
+					}
+				}
+				GRF_reyhard_ironclaw = {					
+					promote_character = nazism
+				}
+				every_possible_country = {
+					limit = {
+						has_character = GRF_skeiron
+					}
+					GRF_skeiron = {
+						set_nationality = ROOT
+					}
+				}
+			}
+		}
+	}
+}
+country_event = {
+	#Faith of STG after the war with them ends, question about resistance
+	id = griffons.143
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.143"
+	}
+	title = griffons.143.t
+	desc = griffons.143.d
+	picture = GFX_event_stalliongrad
+	is_triggered_only = yes
+	option = {		#keep them as it is
+		name = griffons.143.a
+		add_political_power = 25
+		every_controlled_state = {
+			limit = { is_core_of = STG }
+			add_resistance = 50
+			add_compliance  = -40
+		}
+	}
+	option = {		#republicans will be the best choice
+		name = griffons.143.b
+		trigger = {
+			OR = { 
+				has_government = democratic
+				has_government = communism
+			}
+		}
+		release_puppet = STG
+		STG = {
+			set_politics = { 
+				ruling_party = democratic 
+			}
+			hidden_effect = {
+			    add_ideas = limited_conscription
+				add_ideas = civilian_economy
+				add_ideas = free_trade
+				add_ideas = GRF_colloboration_administration
+				set_cosmetic_tag = STG_DEM
+			}
+		}
+		if = {
+			limit = { STG = { owns_state = 57 } }
+			57 = { transfer_state_to = ROOT }
+		}
+		if = {
+			limit = { STG = { owns_state = 240 } }
+			240 = { transfer_state_to = ROOT }
+		}
+		if = {
+			limit = { STG = { owns_state = 678 } }
+			678 = { transfer_state_to = ROOT }
+		}
+	}
+	option = {		#Tsar is good option
+		name = griffons.143.c
+		trigger = {
+			OR = { 
+				has_government = democratic
+				has_government = neutrality
+			}
+		}
+		release_puppet = STG
+		STG = {
+			set_politics = { 
+				ruling_party = neutrality 
+			}
+			hidden_effect = {
+			    add_ideas = limited_conscription
+				add_ideas = civilian_economy
+				add_ideas = free_trade
+				add_ideas = GRF_colloboration_administration
+				set_cosmetic_tag = STG_MONARCHY
+			}
+		}
+		if = {
+			limit = { STG = { owns_state = 57 } }
+			57 = { transfer_state_to = ROOT }
+		}
+		if = {
+			limit = { STG = { owns_state = 240 } }
+			240 = { transfer_state_to = ROOT }
+		}
+		if = {
+			limit = { STG = { owns_state = 678 } }
+			678 = { transfer_state_to = ROOT }
+		}
+	}
+	option = {		#lets give the power to Star Childerns
+		name = griffons.143.e
+		trigger = {
+			OR = { 
+				has_government = fascism
+				has_government = neutrality
+			}
+		}
+		release_puppet = STG
+		STG = {
+			set_politics = { 
+				ruling_party = fascism 
+			}
+			hidden_effect = {
+			    add_ideas = limited_conscription
+				add_ideas = civilian_economy
+				add_ideas = free_trade
+				add_ideas = GRF_colloboration_administration
+				set_cosmetic_tag = STG_PAGAN
+			}
+		}
+		if = {
+			limit = { STG = { owns_state = 57 } }
+			57 = { transfer_state_to = ROOT }
+		}
+		if = {
+			limit = { STG = { owns_state = 240 } }
+			240 = { transfer_state_to = ROOT }
+		}
+		if = {
+			limit = { STG = { owns_state = 678 } }
+			678 = { transfer_state_to = ROOT }
+		}
+	}
+}
+country_event = {
+	#STG event, on high cap progress GRF asking about removing autonomy
+	id = griffons.144
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.141"
+	}
+	title = griffons.144.t
+	desc = griffons.144.d
+	picture = GFX_event_eqs_communists
+	is_triggered_only = yes
+	option = {		#Yes
+		name = griffons.144.a
+		add_political_power = -50
+		GRA = {
+			country_event = { id = griffons.145 days = 2 }
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {		#No
+		name = griffons.144.b
+		add_stability = -0.05
+		GRA = {
+			country_event = { id = griffons.146 days = 2 }
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+country_event = {
+	#STG giving us that independence
+	id = griffons.145
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.145"
+	}
+	title = griffons.145.t
+	desc = griffons.145.d
+	picture = GFX_event_stg_pairlament
+	is_triggered_only = yes
+	option = {	
+		name = griffons.145.a
+		add_political_power = 100
+		add_war_support = 0.1
+		FROM = { end_puppet = ROOT }
+	}
+}
+country_event = {
+	#STG refused our suggestion
+	id = griffons.146
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.146"
+	}
+	title = griffons.146.t
+	desc = griffons.146.d
+	picture = GFX_event_stg_pairlament2
+	is_triggered_only = yes
+	option = {	
+		name = griffons.146.a
+		add_stability = -0.05
+		add_war_support = -0.05
+	}
+}
+country_event = {
+	#Flavor civil war event, republicans. First stage of escalation
+	id = griffons.147
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.147"
+	}
+	title = griffons.147.t
+	desc = griffons.147.d
+	picture = GFX_event_griffon_with_gun
+	is_triggered_only = yes
+	option = {	
+		name = griffons.147.a
+	}
+}
+country_event = {
+	#Flavor civil war event, republicans. Second stage of escalation
+	id = griffons.148
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.148"
+	}
+	title = griffons.148.t
+	desc = griffons.148.d
+	picture = GFX_event_griffon_with_gun
+	is_triggered_only = yes
+	option = {	
+		name = griffons.148.a
+	}
+}
+country_event = {
+	#Flavor civil war event, republicans. Third stage of escalation
+	id = griffons.149
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.149"
+	}
+	title = griffons.149.t
+	desc = griffons.149.d
+	picture = GFX_event_griffon_with_gun
+	is_triggered_only = yes
+	option = {	
+		name = griffons.149.a
+	}
+}
+country_event = {
+	#Flavor civil war event, authoritarians. First stage of escalation
+	id = griffons.150
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.150"
+	}
+	title = griffons.150.t
+	desc = griffons.150.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {	
+		name = griffons.150.a
+	}
+}
+country_event = {
+	#Flavor civil war event, authoritarians. Second stage of escalation
+	id = griffons.151
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.151"
+	}
+	title = griffons.151.t
+	desc = griffons.151.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {	
+		name = griffons.151.a
+	}
+}
+country_event = {
+	#Flavor civil war event, authoritarians. Third stage of escalation
+	id = griffons.152
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.152"
+	}
+	title = griffons.152.t
+	desc = griffons.152.d
+	picture = GFX_event_griffon_soldier
+	is_triggered_only = yes
+	option = {	
+		name = griffons.152.a
+	}
+}
+country_event = {
+	#Flavor civil war event, the aftereffect of Civil War
+	id = griffons.153
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.153"
+	}
+	title = griffons.153.t
+	desc = griffons.153.d
+	picture = GFX_event_forest_depression
+	is_triggered_only = yes
+	option = {	
+		name = griffons.153.a
+	}
+}
+country_event = {
+	#Flavor civil war event, republicans recruting the natives
+	id = griffons.154
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.154"
+	}
+	title = griffons.154.t
+	desc = griffons.154.d
+	picture = GFX_event_ponies_in_battle
+	is_triggered_only = yes
+	option = {	
+		name = griffons.154.a
+	}
+}
+country_event = {
+	#Flavor civil war event, authoritarians creating Falcon Elite Panzer Divisions
+	id = griffons.155
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.155"
+	}
+	title = griffons.155.t
+	desc = griffons.155.d
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	option = {	
+		name = griffons.155.a
+		add_corps_commander_role = {
+			character = GRF_sus_griffon
+			traits = { panzer_leader jaeger changeling_race_trait }
+			skill = 3
+			attack_skill = 4
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 2
+			desc = GRF_DESC_SUS_GRIFFON
+		}
+	}
+}
+country_event = {
+	#STL event, GRF demand subjigation
+	id = griffons.156
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.156"
+	}
+	title = griffons.156.t
+	desc = griffons.156.d
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	option = {			#yes
+		name = griffons.156.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = -20
+				is_guaranteed_by = STG
+			}
+			modifier = {
+				add = -20
+				is_guaranteed_by = CRY
+			}
+			modifier = {
+				add = -10
+				is_guaranteed_by = EQS
+			}
+		}
+		FROM = { country_event = { id = griffons.157 days = 2 } }
+		add_political_power = -50
+		add_stability = -0.1
+	}
+	option = {			#no!
+		name = griffons.156.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = -5
+				has_opinion = {
+					target = FROM
+					value > 10
+				}
+			}
+			modifier = {
+				add = -5
+				has_opinion = {
+					target = FROM
+					value > 25
+				}
+			}
+			modifier = {
+				add = -20
+				FROM = {	
+					divisions_in_border_state = {
+						size > 8
+						state = 58
+						border_state = 57
+					}
+				}
+			}
+			modifier = {
+				add = -20
+				FROM = {	
+					divisions_in_border_state = {
+						size > 12
+						state = 58
+						border_state = 57
+					}
+				}
+			}
+		}
+		FROM = { country_event = { id = griffons.158 days = 2 } }
+		add_war_support = 0.05
+	}
+}
+country_event = {
+	#STL agree on subjigation
+	id = griffons.157
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.157"
+	}
+	title = griffons.157.t
+	desc = griffons.157.d
+	picture = GFX_event_our_town
+	is_triggered_only = yes
+	option = {			#annex 
+		name = griffons.157.a
+		annex_country = { target = STL transfer_troops = yes }
+		ai_chance = {
+			base = 95
+			modifier = {
+				factor = 0
+				STL = { is_ai = no }
+			}
+		}
+		57 = { add_compliance = 50 }
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {			#puppet
+		name = griffons.157.b
+		puppet = STL
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.025
+		}
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+country_event = {
+	#STL disagree on subjigation
+	id = griffons.158
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.158"
+	}
+	title = griffons.158.t
+	desc = griffons.158.d
+	picture = GFX_event_our_town
+	is_triggered_only = yes
+	option = {			#insult
+		name = griffons.158.a
+		add_opinion_modifier = {
+			target = STL
+			modifier = hostility
+		}
+		add_opinion_modifier = {
+			target = STG
+			modifier = hostility
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.05
+		}
+	}
+	option = {			#retreat
+		name = griffons.158.b
+		add_political_power = -50
+		add_war_support = -0.1
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Flavor event, economy restoration
+	id = griffons.159
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.159"
+	}
+	trigger = {
+		has_country_leader = { character = GRF_governor_teafeather ruling_only = yes }
+	}
+	title = griffons.159.t
+	desc = griffons.159.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.159.a
+	}
+}
+country_event = {
+	#JAK event, GRF sends additional artillery
+	id = griffons.160
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.160"
+	}
+	title = griffons.160.t
+	desc = griffons.160.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.160.a
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 100
+			producer = GRF
+		}
+	}
+}
+country_event = {
+	#JAK event, GRF sends additional support equipment
+	id = griffons.161
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.161"
+	}
+	title = griffons.161.t
+	desc = griffons.161.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.161.a
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 100
+			producer = GRF
+		}
+	}
+}
+country_event = {
+	#JAK event, GRF sends some trains
+	id = griffons.162
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.162"
+	}
+	title = griffons.162.t
+	desc = griffons.162.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.162.a
+		add_equipment_to_stockpile = {
+			type = train_equipment
+			amount = 10
+			producer = GRF
+		}
+	}
+}
+country_event = {
+	#JAK event, GRF builds a factory here
+	id = griffons.163
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.163"
+	}
+	title = griffons.163.t
+	desc = griffons.163.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.163.a
+		one_random_arms_factory = yes
+	}
+}
+country_event = {
+	#YAK event, GRF sends additional artillery
+	id = griffons.164
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.164"
+	}
+	title = griffons.164.t
+	desc = griffons.164.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.164.a
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 100
+			producer = GRF
+		}
+	}
+}
+country_event = {
+	#YAK event, GRF sends additional support equipment
+	id = griffons.165
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.165"
+	}
+	title = griffons.165.t
+	desc = griffons.165.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.165.a
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 100
+			producer = GRF
+		}
+	}
+}
+country_event = {
+	#YAK event, GRF sends some trains
+	id = griffons.166
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.166"
+	}
+	title = griffons.166.t
+	desc = griffons.166.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.166.a
+		add_equipment_to_stockpile = {
+			type = train_equipment
+			amount = 10
+			producer = GRF
+		}
+	}
+}
+country_event = {
+	#YAK event, GRF builds a factory here
+	id = griffons.167
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.167"
+	}
+	title = griffons.167.t
+	desc = griffons.167.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.167.a
+		one_random_arms_factory = yes
+	}
+}
+country_event = {
+	#Ulla Redtail meets with her brother
+	id = griffons.168
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.168"
+	}
+	title = griffons.168.t
+	desc = griffons.168.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	# ok your tactics have a point
+		name = griffons.168.a
+		set_country_flag = GRF_ulla_helped
+		custom_effect_tooltip = GRF_ulla_partisans_tt			
+	}
+	option = {	# let's focus on propaganda
+		name = griffons.168.b
+		add_political_power = 50
+		add_popularity = {
+			ideology = communism
+			popularity = 0.02
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.05
+		}
+	}
+}
+country_event = {
+	#Flavor event, fleet's loyalty
+	id = griffons.169
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.169"
+	}
+	title = griffons.169.t
+	desc = griffons.169.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.169.a
+		add_political_power = -10
+	}
+}
+country_event = {
+	#Flavor event, fleet's betreyal
+	id = griffons.170
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.170"
+	}
+	title = griffons.170.t
+	desc = griffons.170.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.170.a
+		add_political_power = 15
+		navy_experience = 5
+	}
+}
+country_event = {
+	#Flavor event, fall of Weter
+	id = griffons.171
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.171"
+	}
+	title = griffons.171.t
+	desc = griffons.171.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.171.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 2500
+		243 = {
+			add_manpower = -1931
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 0.5
+			}
+		}
+		243 = {
+			add_manpower = -1635
+		}
+	}
+}
+country_event = {
+	#Flavor event, fall of Zerkshed
+	id = griffons.172
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.172"
+	}
+	title = griffons.172.t
+	desc = griffons.172.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.172.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		add_stability = 0.01
+		add_political_power = 25
+		add_manpower = 2500
+		242 = {
+			add_manpower = -1931
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 0.5
+			}
+		}
+		242 = {
+			add_manpower = -1635
+		}
+	}
+}
+country_event = {
+	#STG event, republican GRF call back their claims
+	id = griffons.173
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.173"
+	}
+	title = griffons.173.t
+	desc = griffons.173.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {					#We'll do the same!
+		name = griffons.173.a
+		trigger = {
+			58 = { is_claimed_by = STG }
+		}
+		GRF = {
+			if = {
+				limit = { 240 = { is_claimed_by = GRF } }
+				remove_state_claim = 240
+				remove_state_claim = 678
+			}
+			if = {
+				limit = { 
+					57 = { 
+						is_claimed_by = GRF 
+						is_owned_by = STG
+					} 
+				}
+				remove_state_claim = 57
+			}
+		}
+		remove_state_claim	= 58
+		remove_state_claim	= 338
+		if = {
+			limit = {
+				222 = { is_claimed_by = STG }
+			}
+			remove_state_claim	= 222
+		}
+		add_stability = 0.05
+		add_political_power = 50
+		add_popularity = {
+			ideology = communism
+			popularity = 0.1
+		}
+		FROM = { country_event = { id = griffons.174 days = 1 } }
+	}
+	option = {					#We'll keep your claims for now...
+		name = griffons.173.b
+		trigger = {
+			58 = { is_claimed_by = STG }
+		}
+		GRF = {
+			if = {
+				limit = { 240 = { is_claimed_by = GRF } }
+				remove_state_claim = 240
+				remove_state_claim = 678
+			}
+			if = {
+				limit = { 
+					57 = { 
+						is_claimed_by = GRF 
+						is_owned_by = STG
+					} 
+				}
+				remove_state_claim = 57
+			}
+		}
+		add_political_power = -15
+		add_popularity = {
+			ideology = communism
+			popularity = -0.1
+		}
+	}
+	option = {					#We glad to see our friendship!
+		name = griffons.173.c
+		trigger = {
+			58 = { NOT = { is_claimed_by = STG } }
+		}
+		add_stability = 0.025
+		add_war_support = 0.025
+		add_political_power = 50
+		add_popularity = {
+			ideology = communism
+			popularity = 0.1
+		}
+	}
+}
+country_event = {
+	#STG call back their claims too
+	id = griffons.174
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.174"
+	}
+	title = griffons.174.t
+	desc = griffons.174.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.174.a
+		add_stability = 0.05
+		add_war_support = 0.05
+		add_political_power = 25
+		add_popularity = {
+			ideology = communism
+			popularity = 0.1
+		}
+	}
+}
+country_event = {
+	#Julka wanna join to republicans
+	id = griffons.175
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.175"
+	}
+	title = griffons.175.t
+	desc = griffons.175.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	
+		name = griffons.175.a
+		every_possible_country = {
+			limit = {
+				has_character = GFF_heinrich_redtail
+			}
+			GFF_heinrich_redtail = {
+				set_nationality = ROOT
+			}
+		}
+		if = {
+			limit = {
+				GFF_heinrich_redtail = { is_unit_leader = no }
+			}
+			add_corps_commander_role = {
+				character = GFF_heinrich_redtail
+				desc = edgy_commie_bird_desc
+				traits = { inspirational_leader promising_general griffon_race_trait irregulars_officer }
+				skill = 2
+				attack_skill = 1
+				defense_skill = 2
+				planning_skill = 3
+				logistics_skill = 1
+			}
+		}
+		if = { 
+			limit = { has_country_flag = GRF_ulla_helped }
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1500
+				producer = STG
+			}
+		}
+	}
+}
+
+country_event = { # Ulla gets word of the civil war
+	id = griffons.176
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.176"
+	}
+	title = griffons.176.t
+	desc = griffons.176.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	#merge the revolutions!
+		name = griffons.176.a
+		if = {
+			limit = {
+				GFF_heinrich_redtail = { is_unit_leader = no }
+			}
+			add_corps_commander_role = {
+				character = GFF_heinrich_redtail
+				desc = edgy_commie_bird_desc
+				traits = { inspirational_leader promising_general griffon_race_trait irregulars_officer }
+				skill = 2
+				attack_skill = 1
+				defense_skill = 2
+				planning_skill = 3
+				logistics_skill = 1
+			}
+		}
+		GFF_heinrich_redtail = {
+			set_nationality = GRA
+		}
+		if = {
+			limit = {
+				is_ai = no
+				GRA = { is_ai = yes }
+			}
+			GRA = { change_tag_from = ROOT}
+		}
+		else_if = {
+			limit = { 
+				is_ai = no
+				GRA = { is_ai = no }
+			}
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		GRA = { annex_country = { target = ROOT transfer_troops = yes } }
+	}
+	option = {	#we're going all the way, no matter what!
+		name = griffons.176.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+country_event = { # Nova wants help in the skies!
+	id = griffons.177
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.177"
+	}
+	title = griffons.177.t
+	desc = griffons.177.d
+	picture = GFX_event_griffon_back
+	is_triggered_only = yes
+	option = {	# sure!
+		name = griffons.177.a
+		add_timed_idea = {
+			idea = GRF_paying_debts
+			days = 60
+		}
+		FROM = {
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				set_technology = {
+					basic_small_airframe = 1
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe_0
+					variant_name = "Early Fighter"
+					amount = 100
+					producer = STG
+				}
+				generic_basic_cas = yes
+				add_equipment_to_stockpile = {
+					type = small_plane_cas_airframe_1
+					variant_name = "Basic CAS"
+					amount = 50
+					producer = STG
+				}
+			}
+			else = {
+				set_technology = {
+					CAS1 = 1
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_0
+					amount = 100
+				}
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_1
+					amount = 50
+				}
+			}
+		}
+	}
+	option = {	#no, we can't afford that
+		name = griffons.177.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+
+country_event = {	#Highhill under pressure of press
+	id = griffons.178
+	immediate = {log = "[GetDateText]: [Root.GetName]: event griffons.178"}
+	title = griffons.178.t
+	desc = griffons.178.d
+	picture = GFX_event_griffon_with_gun
+	#major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = griffons.178.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = GRF_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = GRF_AI_HISTORICAL
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HISTORICAL
+					}
+					has_country_flag = GRF_AI_SKEIRON
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = SKEIRON
+					}
+					has_country_flag = GRF_AI_IRONCLAW
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = IRONCLAW
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_go_full_auth
+				factor = 0
+			}
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = -0.01
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		hidden_effect = {
+			country_event = { id = griffons.22 days = 14 }
+		}
+	}
+	option = {
+		name = griffons.178.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				OR = {
+					has_country_flag = GRF_AI_WILHELM
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = WILHELM
+					}
+					has_country_flag = GRF_AI_HEINRICH
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = HEINRICH
+					}
+					has_country_flag = GRF_AI_BLACKPEAK
+					has_game_rule = {
+						rule = GRF_ai_behavior
+						option = BLACKPEAK
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				has_country_flag = GRF_AI_avoid_civil_war_go_republican
+				factor = 0
+			}
+		}
+		add_power_balance_value = {
+			id = GRF_civil_war_bop
+			value = 0.01
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.01
+		}
+		hidden_effect = {
+			country_event = { id = griffons.22 days = 14 }
+		}
+	}
+}
+country_event = {
+	#White peace with STG?
+	id = griffons.179
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.179"
+	}
+	title = griffons.179.t
+	desc = {
+		text = griffons.179.d_auths
+		trigger = { original_tag = GRF }
+	}
+	desc = {
+		text = griffons.179.d_others
+		trigger = { NOT = { original_tag = GRF } }
+	}
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	option = {	
+		name = griffons.179.a
+		STG = {
+			country_event = griffons.180
+		}
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 0
+				original_tag = GRF
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.2
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.4
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.6
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.8
+			}
+		}
+	}
+	option = {	
+		name = griffons.179.b
+		trigger = {
+			NOT = {
+				has_government = communism
+			}
+		}
+		add_stability = -0.1
+		ai_chance = {
+			base = 1
+			modifier = {
+				has_war_support > 0.8
+				factor = 2
+			}
+			modifier = {
+				has_government = fascism
+				factor = 2
+			}
+			modifier = {
+				casualties_inflicted_by = {
+					opponent = STG
+					thousands < 50
+				}
+				factor = 2
+			}
+		}
+	}
+}
+country_event = {
+	#STG offered white peace
+	id = griffons.180
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.180"
+	}
+	title = griffons.180.t
+	desc = griffons.180.d
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	option = {
+		name = griffons.180.a
+		ai_chance = {
+			base = 3
+			modifier = {
+				has_country_leader = {
+					character = STG_sinister_serov
+					ruling_only = yes
+				}
+				factor = 0.5
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.2
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.4
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.6
+			}
+			modifier = {
+				factor = 2
+				surrender_progress > 0.8
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					NOT = {
+						original_tag = GRF
+					}
+				}
+			}
+			GRA = {
+				every_controlled_state = {
+					limit = { 
+						is_core_of = GRF 
+						is_controlled_by = GRA 
+					}
+					transfer_state_to = ROOT
+				}
+				add_political_power = 1000
+			}
+		}
+		else = {
+			GRA = {
+				every_controlled_state = {
+					limit = { 
+						is_core_of = GRF 
+						is_claimed_by = ROOT
+					}
+					transfer_state_to = ROOT
+					add_compliance = 50
+				}
+			}
+		}
+		set_country_flag = { flag = bypass_on_peaceconference_ended days = 1 value = 1 }
+		white_peace = FROM
+		set_truce = { target = FROM days = 365 }
+		every_other_country = {
+			limit = {
+				is_in_faction_with = ROOT
+				has_war_with = FROM
+			}
+			set_country_flag = { flag = bypass_on_peaceconference_ended days = 1 value = 1 }
+			white_peace = FROM
+			set_truce = { target = FROM days = 365 }
+		}
+		FROM = { annex_country = { target = GRA transfer_troops = no } }
+		if = {
+			limit = {
+				FROM = {
+					NOT = {
+						original_tag = GRF
+					}
+				}
+			}
+			ROOT = { release_puppet_on_controlled = GRF }
+		}
+	}
+	option = {
+		name = griffons.180.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				has_war_support > 0.7
+				factor = 2
+			}
+			modifier = {
+				casualties_inflicted_by = {
+					opponent = GRF
+					thousands < 50
+				}
+				factor = 2
+			}
+		}
+		FROM = {
+			country_event = { id = griffons.181 days = 1 }
+		}
+	}
+}
+country_event = {
+	#STG rejected white peace
+	id = griffons.181
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.181"
+	}
+	title = griffons.181.t
+	desc = griffons.181.d
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	option = {	
+		name = griffons.181.a
+		add_war_support = 0.1
+	}
+}
+
+
+country_event = {
+	#Auth GRF offers Skull Island as a military base
+	id = griffons.182
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.182"
+	}
+	title = griffons.182.t
+	desc = griffons.182.d
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	option = {	#of course
+		name = griffons.182.a
+		ai_chance = {
+			base = 100
+		}
+		effect_tooltip = {
+			GRF = {
+				124 = {
+					transfer_state_to = CHN
+				}
+			}
+		}
+		send_equipment = {
+			target = FROM
+			type = infantry_equipment_0
+			amount = 1000
+		}
+		send_equipment = {
+			target = FROM
+			type = support_equipment_1
+			amount = 100
+		}
+		send_equipment = {
+			target = FROM
+			type = artillery_equipment_1
+			amount = 100
+		}
+		GRF = {
+			country_event = griffons.183
+		}
+	}
+	option = {	#no thanks
+		name = griffons.182.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = 25
+		GRF = {
+			country_event = griffons.184
+		}
+	}
+}
+
+
+
+country_event = {
+	#CHN will buy!
+	id = griffons.183
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.183"
+	}
+	title = griffons.183.t
+	desc = griffons.183.d
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	option = {	# yay
+		name = griffons.183.a
+		ai_chance = {
+			base = 100
+		}
+		124 = {
+			transfer_state_to = CHN
+		}
+		add_timed_idea = {
+			idea = GRF_changeling_advisors
+			days = 270
+		}
+		add_units_to_division_template = {
+			template_name = "National Militia Division"
+			support = {
+				artillery = 0
+			}
+		}
+		effect_tooltip = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 1000
+				producer = CHN
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = 100
+				producer = CHN
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_1
+				amount = 100
+				producer = CHN
+			}
+		}
+	}
+}
+
+country_event = {
+	#CHN refuses
+	id = griffons.184
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event griffons.184"
+	}
+	title = griffons.184.t
+	desc = griffons.184.d
+	picture = GFX_event_griffons_machine_gun
+	is_triggered_only = yes
+	option = {	# yay
+		name = griffons.184.a
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.01
+		}
+	}
+}
