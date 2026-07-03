@@ -1,0 +1,29 @@
+ideas = {
+    country = {
+        eof2_chn_invasion = {
+            removal_cost = -1
+            picture = CHN_plan_east_prep
+            modifier = {
+                supply_consumption_factor = -0.4
+                no_supply_grace = 72
+                planning_speed = 2.0
+            }
+            targeted_modifier = {
+                tag = EQS
+                attack_bonus_against = 0.2
+            }
+            targeted_modifier = {
+                tag = STG
+                attack_bonus_against = 0.2
+            }
+            targeted_modifier = {
+                tag = CRY
+                attack_bonus_against = 0.2
+            }
+            targeted_modifier = {
+                tag = EQC
+                attack_bonus_against = 0.2
+            }
+        }
+    }
+}
