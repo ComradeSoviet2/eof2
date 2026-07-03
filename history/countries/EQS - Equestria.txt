@@ -346,7 +346,7 @@ recruit_character = ERE_vinyl_scratch
 create_faction_from_template = faction_template_all_ponies_front
 add_to_faction = CRY
 add_to_faction = EQC
-add_to_faction = PCB
+add_to_faction = STG
 
 set_rule = {
 	can_generate_female_aces = yes
