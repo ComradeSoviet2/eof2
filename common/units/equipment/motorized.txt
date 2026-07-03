@@ -1,0 +1,153 @@
+equipments = {
+
+	motorized_equipment = {
+		year = 1007
+		# can_be_produced = {
+		# 	NOT = {
+		# 	}
+		# }
+		is_archetype = yes
+		picture = archetype_motorized_equipment
+		is_buildable = no
+		type = {
+			#infantry #Removing inf type
+			motorized
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+
+		maximum_speed = 8
+		reliability = 0.8
+		hardness = 0.1
+
+		breakthrough = 5
+
+		#Space taken in convoy
+		lend_lease_cost = 5
+
+		build_cost_ic = 2.5
+		resources = {
+			#oil = 1
+			rubber = 1
+			steel = 1
+		}
+		fuel_consumption = 1.2
+		supply_truck = yes
+	}
+	motorized_equipment_0 = { # Introducing WW1 style trucks
+		year = 1007
+
+		archetype = motorized_equipment
+		priority = 30
+		maximum_speed = 8
+		hardness = 0.075
+		reliability = 0.65
+		breakthrough = 2			
+	}
+	
+	motorized_equipment_1 = {
+		year = 1007
+
+		archetype = motorized_equipment
+		priority = 30
+		parent = motorized_equipment_0
+		is_convertable = yes
+	}
+
+	motorized_equipment_2 = {
+		year = 1014
+		parent = motorized_equipment_1
+
+		archetype = motorized_equipment
+		priority = 30
+		hardness = 0.125
+		maximum_speed = 13
+		build_cost_ic = 2.8
+		breakthrough = 7
+		can_convert_from = {
+			motorized_equipment_1
+		}
+	}
+	motorized_equipment_3 = {
+		year = 1021
+		parent = motorized_equipment_2
+
+		archetype = motorized_equipment
+		priority = 30
+		hardness = 0.15
+		maximum_speed = 18
+		build_cost_ic = 3.1
+		breakthrough = 9
+		can_convert_from = {
+			motorized_equipment_2
+		}
+	}
+	motorized_equipment_4 = { # IMV: speed untouched, but everything else is a double-step buff
+		year = 1025
+		parent = motorized_equipment_3
+
+		archetype = motorized_equipment
+		priority = 30
+		hardness = 0.2
+		maximum_speed = 18
+		build_cost_ic = 3.4
+		breakthrough = 13
+		can_convert_from = {
+			motorized_equipment_3
+		}
+	}
+	motorbike_equipment = {
+		year = 1009
+
+		is_archetype = yes
+		picture = archetype_motorized_equipment	#TODO_Manu: check if new one needed
+		is_buildable = no
+		type = {
+			motorized #TODO_Manu: Maybe remove this?
+			support
+		}
+		group_by = archetype
+		
+		interface_category = interface_category_land
+		
+		maximum_speed = 9
+		reliability = 0.9
+		#hardness = 0
+
+		breakthrough = 1
+
+		#Space taken in convoy
+		lend_lease_cost = 2
+
+		build_cost_ic = 1.5
+		resources = {
+			#oil = 1
+			rubber = 1
+			steel = 1
+		}
+		
+		fuel_consumption = 0.5
+	}
+
+	motorbike_equipment_1 = {
+
+		archetype = motorbike_equipment
+		priority = 1 #Very low
+	}
+	
+	kirin_motorcycle = {
+		year = 1007
+		
+		archetype = motorized_equipment
+		priority = 30
+		maximum_speed = 8
+		
+		lend_lease_cost = 2
+
+		reliability = 0.9
+		build_cost_ic = 1.5
+		fuel_consumption = 0.5
+		is_convertable = no
+	}
+}
