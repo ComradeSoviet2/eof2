@@ -23,7 +23,6 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 4305;6057;sea;8557;-1;-1;-1;-1;;PinPegasus2
 11104;6015;sea;8482;-1;-1;-1;-1;;Griffons
 9328;9089;sea;8482;-1;-1;-1;-1;;Griffons2
-3301;11361;sea;2448;-1;-1;-1;-1;;Trottingham
 11361;3369;sea;8865;-1;-1;-1;-1;;Trottingham2
 11406;6526;sea;8865;-1;-1;-1;-1;;Trottingham3
 9833;11829;sea;4213;-1;-1;-1;-1;;Dragons
@@ -748,6 +747,24 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 12298;1210;impassable;-1;-1;-1;-1;-1;;BronzeMountains
 12298;1378;impassable;-1;-1;-1;-1;-1;;BronzeMountains
 
+13071;12087;impassable;-1;-1;-1;-1;-1;;DragonMountains
+13071;11675;impassable;-1;-1;-1;-1;-1;;DragonMountains
+13071;11840;impassable;-1;-1;-1;-1;-1;;DragonMountains
+13071;6921;impassable;-1;-1;-1;-1;-1;;DragonMountains
+13071;724;impassable;-1;-1;-1;-1;-1;;DragonMountains
+13071;889;impassable;-1;-1;-1;-1;-1;;DragonMountains
+
+4199;9945;impassable;-1;-1;-1;-1;-1;;DragonMountains
+4199;10013;impassable;-1;-1;-1;-1;-1;;DragonMountains
+4199;7100;impassable;-1;-1;-1;-1;-1;;DragonMountains
+
+13019;4696;impassable;-1;-1;-1;-1;-1;;GriffonstoneMountains
+4584;4696;impassable;-1;-1;-1;-1;-1;;GriffonstoneMountains
+12519;4696;impassable;-1;-1;-1;-1;-1;;GriffonstoneMountains
+10538;4696;impassable;-1;-1;-1;-1;-1;;GriffonstoneMountains
+12360;4696;impassable;-1;-1;-1;-1;-1;;GriffonstoneMountains
+4511;4696;impassable;-1;-1;-1;-1;-1;;GriffonstoneMountains
+
 8045;10668;impassable;-1;-1;-1;-1;-1;;BlackRockMountains
 10356;10668;impassable;-1;-1;-1;-1;-1;;BlackRockMountains
 10356;8214;impassable;-1;-1;-1;-1;-1;;BlackRockMountains
@@ -805,4 +822,24 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 20202;8626;;-1;-1;-1;-1;-1;ZAREDLINIA_STRAIT;Zaredlinia West
 
 
+6398;6279;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+6398;3346;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+3345;3346;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+3345;11235;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+3345;6243;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+6411;6243;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+6411;11284;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+9253;11284;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+3335;11284;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+3335;3390;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+6355;3390;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+6252;3390;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+6305;3390;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+11063;3390;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+11063;9261;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+11063;6092;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+9042;6092;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+9042;103;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+3069;103;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
+3069;6079;impassable;-1;-1;-1;-1;-1;;STG-GRF Front
 -1;-1;;-1;-1;-1;-1;-1;-1
