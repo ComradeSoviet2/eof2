@@ -84,8 +84,8 @@ NDefines.NMilitary.TRAINING_EXPERIENCE_SCALE = 0
 NDefines.NCharacter.OFFICER_CORP_HIGH_COMMAND_SLOTS_IN_MENU = 3 --For Alert manager to count the number of High Command Slots in the UI
 NDefines.NCharacter.POLITICAL_ADVISOR_SLOTS_IN_MENU = 6
 
-SLOWEST_SPEED = 3.5
+NDefines.NMilitary.SLOWEST_SPEED = 3.5
 
 
 
-TRAINING_MASTERY_GAIN_FACTOR = 0                  -- How much training contributes to doctrine mastery relative to combat/missions
+NDefines.NDoctrines.TRAINING_MASTERY_GAIN_FACTOR = 0                  -- How much training contributes to doctrine mastery relative to combat/missions
