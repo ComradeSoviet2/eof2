@@ -154,6 +154,14 @@ ideas = {
 				max_planning = 0.2
 			}
 		}
+		EoF_zebrican_volunteers = {
+			removal_cost = -1
+			picture = generic_volunteer_expedition_bonus
+			modifier = {
+				send_volunteer_size = 3
+				air_volunteer_cap = 4
+			}
+		}
 		EoF_YAK_thanks = {
 			removal_cost = -1
 			picture = SPR_seize_the_gold_reserves

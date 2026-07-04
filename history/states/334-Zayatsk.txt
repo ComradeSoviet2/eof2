@@ -11,7 +11,7 @@ state={
 	history={
 		owner = STG
 		add_core_of = STG
-		add_claim_by = EQS
+		
 		victory_points = {
 			2082 10
 		}

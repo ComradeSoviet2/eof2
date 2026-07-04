@@ -13,7 +13,7 @@ state={
 	history={
 		owner = EQS
 		add_core_of = EQS
-		add_claim_by = EQS
+		
 		victory_points = { 11755 3 }
 		buildings = {
 			infrastructure = 1

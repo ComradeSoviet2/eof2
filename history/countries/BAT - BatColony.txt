@@ -547,6 +547,7 @@ add_ideas = {
 	BAT_autumn_advisor_3
 	outdated_industry
 	proper_science_base
+	EoF_zebrican_volunteers
 }
 
 set_variable = { 

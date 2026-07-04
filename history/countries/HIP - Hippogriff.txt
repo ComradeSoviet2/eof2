@@ -464,6 +464,7 @@ add_ideas = {
 	isolation
 	modern_society
 	proper_science_base
+	EoF_zebrican_volunteers
 }
 
 set_stability = 0.3
