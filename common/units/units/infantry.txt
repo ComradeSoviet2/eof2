@@ -36,6 +36,7 @@ sub_units = {
 		max_strength = 25
 		max_organisation = 60
 		default_morale = 0.3
+		maximum_speed = 3.5
 		manpower = 1000
 
 		#Misc Abilities

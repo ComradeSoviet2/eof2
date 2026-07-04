@@ -1460,16 +1460,16 @@ characters={
 			slot = theorist
 			idea_token = grannysmith
 			ledger = army
-			cost = 100
+			cost = 150
 
 			allowed = {
 				original_tag = EQS
 			}
-			available = {
-				if = {
-					limit = { is_original_EQS = yes }
-					has_completed_focus = Extreme_war_comittee
-				}
+			 available = {
+			#	if = {
+			#		limit = { is_original_EQS = yes }
+			#		has_completed_focus = Extreme_war_comittee
+			#	}
 				if = {
 					limit = { is_EQS_SOL = yes }
 					has_global_flag = EQS_completed_Extreme_war_comittee
