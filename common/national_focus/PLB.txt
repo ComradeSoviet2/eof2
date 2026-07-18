@@ -31746,16 +31746,16 @@ shared_focus = {
 
 		completion_reward = {
 			add_stability = 0.05
-			every_state = {
-				limit = {
-					OR = {
-						is_core_of = PNG
-						is_core_of = GFF
-						is_core_of = GRF
-					}
-				}
-				add_claim_by = PLB
-			}
+			#every_state = {
+			#	limit = {
+			#		OR = {
+			#			is_core_of = PNG
+			#			is_core_of = GFF
+			#			is_core_of = GRF
+			#		}
+			#	}
+			#	add_claim_by = PLB
+			#}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY }
 	}
