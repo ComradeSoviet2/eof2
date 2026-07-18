@@ -7,7 +7,7 @@ NDefines.NFocus.MAX_SAVED_FOCUS_PROGRESS = 20			-- This much progress can be sav
 
 NDefines.NTechnology.MAX_SUBTECHS = 4				-- Max number of sub technologies a technology can have.
 
-NDefines.NCountry.BASE_FUEL_GAIN_PER_OIL = 0.2			-- base amount of fuel gained hourly per excess oil
+NDefines.NCountry.BASE_FUEL_GAIN_PER_OIL = 2			-- base amount of fuel gained hourly per excess oil
 NDefines.NCountry.SURRENDER_LIMIT_REDUCTION_PER_COLLABORATION = 0 	--each percent of collaboration will lower surrender limit by this percentage
 
 NDefines.NCountry.MIN_STABILITY = 0.0

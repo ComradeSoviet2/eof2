@@ -3,7 +3,7 @@ on_actions = {
 		effect = {
 			CHN = { ### CHN declares war on EQS
 				#country_event = { id = EoF_great_war.7 days = 1764 }
-				country_event = { id = EoF.7 days = 2130 } # nov 1st 1011
+				country_event = { id = EoF.7 days = 1764 } # nov 1st 1011
 			}
 			PLB = { ### PLB switches fascist on startup
 				hidden_effect = {
