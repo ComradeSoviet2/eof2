@@ -1,0 +1,276 @@
+default = {
+	line_infantry_equipment_1 = {
+		pool = {
+			weight = 1
+			icons = {
+				GFX_infantry_weapons_medium
+				GFX_infantry_weapons1_medium
+				GFX_improved_infantry_weapons_medium
+				GFX_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	mobile_infantry_equipment_1 = {
+		pool = {
+			weight = 1
+			icons = {
+				GFX_infantry_weapons_medium
+				GFX_infantry_weapons1_medium
+				GFX_improved_infantry_weapons_medium
+				GFX_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	special_infantry_equipment_1 = {
+		pool = {
+			weight = 1
+			icons = {
+				GFX_infantry_weapons_medium
+				GFX_infantry_weapons1_medium
+				GFX_improved_infantry_weapons_medium
+				GFX_advanced_infantry_weapons_medium
+			}
+		}
+	}
+}
+
+GER = {
+	line_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_GER_infantry_weapons_medium
+				GFX_GER_improved_infantry_weapons_medium
+				GFX_GER_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	mobile_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_GER_infantry_weapons_medium
+				GFX_GER_improved_infantry_weapons_medium
+				GFX_GER_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	special_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_GER_infantry_weapons_medium
+				GFX_GER_improved_infantry_weapons_medium
+				GFX_GER_advanced_infantry_weapons_medium
+			}
+		}
+	}
+}
+
+SOV = {
+	line_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_SOV_infantry_weapons_medium
+				GFX_SOV_infantry_weapons1_medium
+				GFX_SOV_improved_infantry_weapons_medium
+				GFX_SOV_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	mobile_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_SOV_infantry_weapons_medium
+				GFX_SOV_infantry_weapons1_medium
+				GFX_SOV_improved_infantry_weapons_medium
+				GFX_SOV_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	special_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_SOV_infantry_weapons_medium
+				GFX_SOV_infantry_weapons1_medium
+				GFX_SOV_improved_infantry_weapons_medium
+				GFX_SOV_advanced_infantry_weapons_medium
+			}
+		}
+	}
+}
+
+USA = {
+	line_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_USA_infantry_weapons_medium
+				GFX_USA_infantry_weapons1_medium
+				GFX_USA_improved_infantry_weapons_medium
+				GFX_USA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	mobile_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_USA_infantry_weapons_medium
+				GFX_USA_infantry_weapons1_medium
+				GFX_USA_improved_infantry_weapons_medium
+				GFX_USA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	special_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_USA_infantry_weapons_medium
+				GFX_USA_infantry_weapons1_medium
+				GFX_USA_improved_infantry_weapons_medium
+				GFX_USA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+}
+
+ENG = {
+	line_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_ENG_infantry_weapons1_medium
+				GFX_ENG_improved_infantry_weapons_medium
+				GFX_ENG_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	mobile_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_ENG_infantry_weapons1_medium
+				GFX_ENG_improved_infantry_weapons_medium
+				GFX_ENG_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	special_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_ENG_infantry_weapons1_medium
+				GFX_ENG_improved_infantry_weapons_medium
+				GFX_ENG_advanced_infantry_weapons_medium
+			}
+		}
+	}
+}
+
+FRA = {
+	line_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_FRA_infantry_weapons_medium
+				GFX_FRA_infantry_weapons1_medium
+				GFX_FRA_improved_infantry_weapons_medium
+				GFX_FRA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	mobile_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_FRA_infantry_weapons_medium
+				GFX_FRA_infantry_weapons1_medium
+				GFX_FRA_improved_infantry_weapons_medium
+				GFX_FRA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	special_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_FRA_infantry_weapons_medium
+				GFX_FRA_infantry_weapons1_medium
+				GFX_FRA_improved_infantry_weapons_medium
+				GFX_FRA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+}
+
+JAP = {
+	line_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_JAP_improved_infantry_weapons_medium
+				GFX_JAP_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	mobile_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_JAP_improved_infantry_weapons_medium
+				GFX_JAP_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	special_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_JAP_improved_infantry_weapons_medium
+				GFX_JAP_advanced_infantry_weapons_medium
+			}
+		}
+	}
+}
+
+ITA = {
+	line_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_ITA_infantry_weapons_medium
+				GFX_ITA_infantry_weapons1_medium
+				GFX_ITA_improved_infantry_weapons_medium
+				GFX_ITA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	mobile_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = { 
+				GFX_ITA_infantry_weapons_medium
+				GFX_ITA_infantry_weapons1_medium
+				GFX_ITA_improved_infantry_weapons_medium
+				GFX_ITA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+	special_infantry_equipment_1 = {
+		pool = {
+			weight = 2
+			icons = {
+				GFX_ITA_infantry_weapons_medium
+				GFX_ITA_infantry_weapons1_medium
+				GFX_ITA_improved_infantry_weapons_medium
+				GFX_ITA_advanced_infantry_weapons_medium
+			}
+		}
+	}
+}
+
