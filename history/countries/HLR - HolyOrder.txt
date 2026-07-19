@@ -30,7 +30,7 @@ add_ideas = {
 	detached_country
 	griffon_race
 	EoF_neutral_country
-	EoF_neutral_trade
+	#EoF_neutral_trade
 }
 
 set_stability = 0.50
