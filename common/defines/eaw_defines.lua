@@ -183,7 +183,7 @@ NDefines.NProject.BREAKTHROUGH_GAIN_ANIMATION_SPEED_MAX = 2.0 -- default is 1
 
 
 NDefines.NTechnology.BASE_TECH_COST = 80					-- Base cost for a tech. multiplied with tech cost and ahead of time penalties. 100 in vanilla
-NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 3	-- Base year ahead penalty. Vanilla is 2
+NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 2	-- Base year ahead penalty. Vanilla is 2
 
 NDefines.NAI.DEFAULT_MODULE_VARIANT_CREATION_XP_CUTOFF_LAND = 10	-- vanilla is 35
 NDefines.NAI.DEFAULT_MODULE_VARIANT_CREATION_XP_CUTOFF_NAVY = 10	-- vanilla is 50
