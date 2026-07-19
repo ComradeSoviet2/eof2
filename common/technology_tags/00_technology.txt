@@ -243,12 +243,12 @@ technology_folders = {
 			has_dlc = "No Step Back"
 		}
 	}
-	#TPMP_armour_support_folder = {
-	#	ledger = army
-	#	available = {
-	#		has_dlc = "No Step Back"
-	#	}
-	#}
+	TPMP_armour_support_folder = {
+		ledger = army
+		available = {
+			has_dlc = "No Step Back"
+		}
+	}
 	artillery_folder = {
 		ledger = army
 	}
