@@ -1,0 +1,242 @@
+political_actions = {
+	OLE_collaborationist_divisions = {
+		icon = generic_nationalism
+		allowed = {
+			original_tag = OLE
+		}
+		cost = 25
+		visible = {
+			is_subject_of = CHN
+			has_government = fascism
+		}
+		available = {
+			has_manpower > 75000
+		}
+		ai_will_do = {
+			factor = 200
+		}
+		days_remove = 120
+		fire_only_once = yes
+		modifier = {
+			political_power_gain = -0.5
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove OLE_collaborationist_divisions"
+			add_manpower = -75000
+			division_template = {
+				name = "Collaborationist Division"
+				division_names_group = OLE_INF_01
+				priority = 0
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				regimental_support = {
+					field_guns = { x = 0 y = 0 }
+					field_guns = { x = 1 y = 0 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Collaborationist Division\" start_experience_factor = 0.01"
+					owner = OLE
+					count = 15
+				}
+			}
+		}
+	}
+	OLE_end_civil_war = {
+
+		icon = generic_nationalism
+
+		allowed = {
+			original_tag = OLE
+		}
+		cost = 25
+		visible = {
+			has_civil_war = no
+			has_idea = OLE_civil_war_idea
+		}
+
+		available = {
+
+		}
+		days_remove = 50
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove OLE_end_civil_war"
+			remove_ideas = OLE_civil_war_idea
+		}
+		modifier = {
+			political_power_gain = -0.5
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	OLE_rehabilitate_generals = {
+
+		icon = generic_army_support
+
+		allowed = {
+			original_tag = OLE
+		}
+		available ={
+			NOT = { has_idea = OLE_civil_war_idea }
+		}
+		cost = 150
+		visible = {
+			has_civil_war = no
+			is_subject = no
+			OR = {
+				AND = {
+					NOT = { has_global_flag = rousho_dead }
+					NOT = { has_character = OLE_lord_roshuo }
+				}
+				NOT = { has_character = OLE_haakon_lurswig }
+				NOT = { has_character = OLE_spurdo_s_perkele }
+				NOT = { has_character = OLE_carl_gustaf_manntlerhim }
+				NOT = { has_character = OLE_einair_kainen }
+				NOT = { has_character = OLE_alvari_pirhonen }
+				NOT = { has_character = OLE_eilert }
+				NOT = { has_character = OLE_ansa_sito }
+				NOT = { has_character = OLE_lauri_virta }
+				NOT = { has_character = OLE_rikka_kaalinpaa }
+			}
+		}
+
+		days_re_enable = 120
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision OLE_rehabilitate_generals"
+			if = {
+				limit = { 
+					NOT = { 
+						has_global_flag = rousho_dead 
+						has_character = OLE_lord_roshuo
+					}
+				}
+				every_possible_country = {
+					limit = {
+						has_character = OLE_lord_roshuo
+					}
+					OLE_lord_roshuo = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_haakon_lurswig } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_haakon_lurswig
+					}
+					OLE_haakon_lurswig = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_spurdo_s_perkele } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_spurdo_s_perkele
+					}
+					OLE_spurdo_s_perkele = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_carl_gustaf_manntlerhim } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_carl_gustaf_manntlerhim
+					}
+					OLE_carl_gustaf_manntlerhim = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_einair_kainen } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_einair_kainen
+					}
+					OLE_einair_kainen = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_alvari_pirhonen } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_alvari_pirhonen
+					}
+					OLE_alvari_pirhonen = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_eilert } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_eilert
+					}
+					OLE_eilert = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_ansa_sito } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_ansa_sito
+					}
+					OLE_ansa_sito = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_lauri_virta } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_lauri_virta
+					}
+					OLE_lauri_virta = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_character = OLE_rikka_kaalinpaa } }
+				every_possible_country = {
+					limit = {
+						has_character = OLE_rikka_kaalinpaa
+					}
+					OLE_rikka_kaalinpaa = {
+						set_nationality = ROOT 
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+}

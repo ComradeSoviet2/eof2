@@ -1034,13 +1034,12 @@ ideas = {
 			picture = generic_fortify_the_borders
 
 			modifier = {
-				army_core_attack_factor = 0.1
-				army_core_defence_factor = 0.05
+				army_core_defence_factor = 0.1
 				war_support_factor = 0.05
 				max_dig_in = 1
 				production_speed_bunker_factor = 0.1
 				resistance_growth_on_our_occupied_states = 0.15
-				tactic_motti_tactics_preferred_weight_factor = 0.5
+				ai_focus_defense_factor = 0.5
 			}
 		}
 	}
@@ -1078,7 +1077,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				OR = {
@@ -1109,7 +1108,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				OR = {
@@ -1141,7 +1140,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				OR = {
@@ -1172,7 +1171,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				OR = {
@@ -1202,7 +1201,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				OR = {
@@ -1232,7 +1231,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				OR = {
@@ -1262,7 +1261,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				OR = {
@@ -1393,7 +1392,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				is_subject = no
@@ -1416,7 +1415,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				is_subject = no
@@ -1439,7 +1438,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				is_subject = no
@@ -1462,7 +1461,7 @@ ideas = {
 				always = no
 			}
 			allowed_civil_war = {
-				always = yes
+				has_government = neutrality
 			}
 			available = {
 				is_subject = no
@@ -1514,9 +1513,8 @@ ideas = {
 		OLE_hellfire = {
 			picture = generic_intel_bonus
 			modifier = {
-				army_attack_factor = 0.05
-				army_artillery_attack_factor = 0.15
-				army_artillery_defence_factor = 0.15
+				army_artillery_attack_factor = 0.1
+				army_artillery_defence_factor = 0.1
 			}
 		}
 	}

@@ -193,8 +193,8 @@ set_politics = {
 set_country_flag = has_custom_advisors
 
 add_ideas = {
-	OLE_currupt_government
-	OLE_raising_dissent
+	EoF_OLE_corrupt_government_2
+	EoF_OLE_raising_dissent
 	outdated_industry
 }
 
