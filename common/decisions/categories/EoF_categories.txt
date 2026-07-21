@@ -1,0 +1,7 @@
+EoF_OLE_deal_with_oligarchs_category = {
+	icon = generic_border_conflicts
+	priority = 500
+	allowed = {
+		original_tag = OLE
+	}
+}
