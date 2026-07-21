@@ -108,14 +108,6 @@ ideas = {
 
 			
 		}
-		EoF_OLE_deal = {
-			removal_cost = -1
-			picture = can_wartime_prices_and_trade_board
-			modifier = {
-				cic_to_overlord_factor = -0.5
-				mic_to_overlord_factor = -0.5
-			}
-		}
 		EoF_YAK_JAK_civil_war = {
 			removal_cost = -1
 			picture = generic_war_preparation
