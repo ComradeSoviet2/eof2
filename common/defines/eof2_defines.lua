@@ -25,8 +25,10 @@ NDefines.NMilitary.BASE_DIVISION_BRIGADE_GROUP_COST = 0 	--Base cost to unlock a
 NDefines.NMilitary.BASE_DIVISION_BRIGADE_CHANGE_COST = 0	--Base cost to change a regiment column.
 NDefines.NMilitary.BASE_DIVISION_SUPPORT_SLOT_COST = 0	 	--Base cost to unlock a support slot
 
-NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.048	-- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
-NDefines.NMilitary.LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.048	-- global damage modifier
+NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.050	-- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
+NDefines.NMilitary.LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.040	-- global damage modifier
+
+NDefines.NMilitary.EQUIPMENT_COMBAT_LOSS_FACTOR = 0.60	 	-- % of equipment lost to strength ratio in combat, so some % is returned if below 1
 
 NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.016	-- air global damage modifier
 NDefines.NMilitary.LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.016	-- global damage modifier
@@ -80,6 +82,19 @@ NDefines.NBuildings.MAX_SHARED_SLOTS = 50			-- Max slots shared by factories
 
 NDefines.NMilitary.TRAINING_ATTRITION = 0		  	-- amount of extra attrition from being in training
 NDefines.NMilitary.TRAINING_EXPERIENCE_SCALE = 0
+
+NDefines.NMilitary.COHESION_IMMOBILE_PLANNING_SPEED_MULTIPLIER = 1	-- If using the 'immobile' cohesion setting, factor ALL planning speed growth by this
+
+NDefines.NMilitary.COMMANDER_ABILITY_BASE_RANGE = 20            -- Base radius range of commander abilities
+NDefines.NMilitary.COMMS_MAX_DISTANCE = 1			-- If N is >= the size of the below arrays, the last value will be considered repeated
+NDefines.NMilitary.PLANNING_CAP_COMMS_SCALING = { 1.0 }		-- Value at index J is the scaling applied to planning cap when HQ is J provinces behind the frontline
+NDefines.NMilitary.PLANNING_CAP_NO_HQ_SCALING = 1.0		-- Scaling applied to planning cap when there's no HQ (no leader or leader not deployed or not the same root order)
+NDefines.NMilitary.PLANNING_SPEED_COMMS_SCALING = { 1.0 }	-- Same as PLANNING_CAP_COMMS_SCALING but for planning speed
+NDefines.NMilitary.PLANNING_SPEED_NO_HQ_SCALING = 1.0		-- Same as PLANNING_CAP_NO_HQ_SCALING but for planning speed
+NDefines.NMilitary.LEADER_MOD_COMMS_SCALING = { 1.0 }		-- Same as PLANNING_CAP_COMMS_SCALING but for leader modifiers
+NDefines.NMilitary.LEADER_MOD_NO_HQ_SCALING = 1.0		-- Same as PLANNING_CAP_NO_HQ_SCALING but for leader modifiers
+NDefines.NMilitary.ABILITY_COMMS_SCALING = { 1.0 }		-- Same as PLANNING_CAP_COMMS_SCALING but for active abilities
+NDefines.NMilitary.ABILITY_NO_HQ_SCALING = 1.0			-- Same as PLANNING_CAP_NO_HQ_SCALING but for active abilities
 
 NDefines.NCharacter.OFFICER_CORP_HIGH_COMMAND_SLOTS_IN_MENU = 3 --For Alert manager to count the number of High Command Slots in the UI
 NDefines.NCharacter.POLITICAL_ADVISOR_SLOTS_IN_MENU = 6
