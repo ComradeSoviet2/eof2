@@ -31,6 +31,7 @@ focus_tree = {
 			custom_effect_tooltip = destroy_thoraxian_opposition_tt
 			country_event = { id = changelings.59 days = 3 }
 			add_war_support = 0.05			
+			add_named_threat = { threat = 3 name = thoraxian_extermination }
 		}
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 	}
