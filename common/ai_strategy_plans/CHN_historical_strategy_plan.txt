@@ -33,8 +33,8 @@ CHN_ideas_plan = {
 		hive_funding
 		unite_the_people
 		pressure_olenia
-		#offer_puppet
-		conquest
+		offer_puppet
+		#conquest
 		war_academy
 		CHN_high_command_cabinet_1
 		CHN_high_command_cabinet_2

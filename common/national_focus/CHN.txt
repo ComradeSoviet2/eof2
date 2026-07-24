@@ -21,10 +21,10 @@ focus_tree = {
 		ai_will_do = {
 			factor = 200
 		}
-		mutually_exclusive = {
-			focus = thoraxian_betrayal
-		}
-		x = 9
+		#mutually_exclusive = {
+		#	focus = thoraxian_betrayal
+		#}
+		x = 8
 		y = 0
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus destroy_thoraxian_opposition"
@@ -39,9 +39,12 @@ focus_tree = {
 		id = thoraxian_betrayal
 		icon = GFX_goal_chn_harmony
 		cost = 10
+		allow_branch= {
+			always = no
+		}
 		available = {
-			is_subject = no
-			has_government = fascism
+			always = no
+			#has_government = fascism
 		}
 		ai_will_do = {
 			factor = 1
@@ -50,10 +53,10 @@ focus_tree = {
 				factor = 0
 			}
 		}
-		mutually_exclusive = {
-			focus = destroy_thoraxian_opposition
-		}
-		x = 7
+		#mutually_exclusive = {
+		#	focus = destroy_thoraxian_opposition
+		#}
+		x = 6
 		y = 0
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus thoraxian_betrayal"
@@ -68,7 +71,7 @@ focus_tree = {
 		cost = 3
 		prerequisite = {
 			focus = destroy_thoraxian_opposition
-			focus = thoraxian_betrayal
+			#focus = thoraxian_betrayal
 		}
 		available = {
 			is_subject = no
@@ -1035,9 +1038,9 @@ focus_tree = {
 		prerequisite = {
 			focus = pressure_olenia
 		}
-		mutually_exclusive = {
-			focus = conquest
-		}
+		#mutually_exclusive = {
+		#	focus = conquest
+		#}
 		will_lead_to_war_with = OLE
 		bypass = {
 			OR = {
@@ -1052,11 +1055,17 @@ focus_tree = {
 			}
 		}
 		available = {
-			always = no
-			#OLE = { has_civil_war = no is_subject = no }
-			#NOT = { has_war_with = OLE has_country_flag = CHN_refused_OLE_puppet }
-			#has_government = fascism
-			#is_subject = no
+			any_country_with_original_tag = {
+				original_tag_to_check = OLE
+				exists = yes
+				NOT = {
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+					has_non_aggression_pact_with = ROOT
+				}
+			}
+			has_government = fascism
+			is_subject = no
 		}
 		ai_will_do = {
 			factor = 100
@@ -1073,22 +1082,23 @@ focus_tree = {
 				factor = 100
 			}
 		}
-		x = 11
+		x = 13
 		y = 8
 		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus offer_puppet"
-			country_event = { id = changelings.2 } 
-			#if = {
-			#	limit = { 
-			#		is_ai = yes 
-			#		NOT = {
-			#			has_idea = tot_economic_mobilisation
-			#			has_idea = war_economy
-			#		}
-			#	}
-			#	add_political_power = -150
-			#	add_ideas = war_economy
-			#}
+			custom_effect_tooltip = EoF_make_olenia_puppet
+			add_named_threat = { threat = 5 name = pressure_olenia }
+			add_mastery_bonus = {
+				bonus = 0.3
+				days = 180
+				folder = air
+				name = conquest
+			}
+			add_mastery_bonus = {
+				bonus = 0.3
+				days = 180
+				folder = land
+				name = conquest
+			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
 	}
@@ -1101,21 +1111,14 @@ focus_tree = {
 		prerequisite = {
 			focus = pressure_olenia
 		}
-		mutually_exclusive = {
-			focus = offer_puppet
+		allow_branch= {
+			always = no
 		}
+		#mutually_exclusive = {
+		#	focus = offer_puppet
+		#}
 		available = {
-			any_country_with_original_tag = {
-				original_tag_to_check = OLE
-				exists = yes
-				NOT = {
-					is_subject_of = ROOT
-					is_in_faction_with = ROOT
-					has_non_aggression_pact_with = ROOT
-				}
-			}
-			has_government = fascism
-			is_subject = no
+			always = no
 		}
 		ai_will_do = {
 			factor = 100

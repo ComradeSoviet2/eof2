@@ -2880,12 +2880,12 @@ CHN_protectorates = {
 		icon = deer
 		available = {
 			has_government = fascism
-			has_completed_focus = conquest
+			has_completed_focus = offer_puppet
 		}
 
-		cost = 15
+		#cost = 1
 
-		days_remove = 5
+		#days_remove = 1
 
 		fire_only_once = yes
 
@@ -2895,21 +2895,21 @@ CHN_protectorates = {
 				factor = 2
 				has_completed_focus = offer_puppet
 			}
-			modifier = {
-				factor = 0
-				has_completed_focus = conquest
-				NOT = { has_country_flag = CHN_pax_chrysalia_begun }
-			}
+			#modifier = {
+			#	factor = 0
+			#	has_completed_focus = conquest
+			#	NOT = { has_country_flag = CHN_pax_chrysalia_begun }
+			#}
         }
 
 		visible = {
 			has_government = fascism
-			has_completed_focus = conquest
+			has_completed_focus = offer_puppet
 		}
 
-		modifier = {
-			political_power_gain = -0.15
-		}
+		#modifier = {
+		#	political_power_gain = -0.01
+		#}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHN_olenia_protectorate"
 		}
