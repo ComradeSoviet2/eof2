@@ -401,29 +401,7 @@ shared_focus = {
 	y = 2
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus CRY_industry_f"
-		random_owned_controlled_state = {
-			limit = {
-				free_building_slots = {
-					building = arms_factory
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = arms_factory
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
+		53 = {
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = arms_factory
@@ -431,29 +409,7 @@ shared_focus = {
 				instant_build = yes
 			}
 		}
-		random_owned_controlled_state = {
-			limit = {
-				free_building_slots = {
-					building = industrial_complex
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = industrial_complex
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
+		53 = {
 			add_extra_state_shared_building_slots = 2
 			add_building_construction = {
 				type = industrial_complex
@@ -623,7 +579,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_fortifications
 	icon = GFX_goal_cry_forts
-	cost = 10
+	cost = 5
 	prerequisite = {
 		focus = CRY_military
 	}
@@ -650,29 +606,7 @@ shared_focus = {
 	y = 1
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus CRY_gunfactories"
-		random_owned_controlled_state = {
-			limit = {
-				free_building_slots = {
-					building = arms_factory
-					size > 0
-					include_locked = yes
-				}
-				OR = {
-					is_in_home_area = yes
-					NOT = {
-						owner = {
-							any_owned_state = {
-								free_building_slots = {
-									building = arms_factory
-									size > 0
-									include_locked = yes
-								}
-								is_in_home_area = yes
-							}
-						}
-					}
-				}
-			}
+		98 = {
 			add_extra_state_shared_building_slots = 3
 			add_building_construction = {
 				type = arms_factory
@@ -837,7 +771,7 @@ shared_focus = { #Equestria Games (PP Buff)
 shared_focus = { #Grand crystal festival (PP Buff, NU buff, something else buffed)
 	id = CRY_grandfestival
 	icon = GFX_goal_cry_festival
-	cost = 10
+	cost = 7
 	x = 5
 	y = 1
 	ai_will_do = {
@@ -991,7 +925,7 @@ shared_focus = { #Crystal Faire
 shared_focus = {
 	id = CRY_fame
 	icon = GFX_goal_crystal_empire_symbol_cry
-	cost = 10
+	cost = 5
 	prerequisite = {
 		focus = CRY_grandfestival
 	}
@@ -1014,7 +948,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_oldorder
 	icon = GFX_goal_crystal_empire_symbol_flowers
-	cost = 10
+	cost = 8
 	prerequisite = {
 		focus = CRY_fame
 	}
@@ -1069,10 +1003,11 @@ shared_focus = {
 		focus = CRY_oldorder
 	}
 	available = {
-		NOT = {
-			has_country_flag = CRY_solar_governorship 
-			has_country_flag = CRY_lunar_governorship 
-		}
+		always = no
+		#NOT = {
+		#	has_country_flag = CRY_solar_governorship 
+		#	has_country_flag = CRY_lunar_governorship 
+		#}
 	}
 	relative_position_id = CRY_fame
 	x = 4
@@ -1511,7 +1446,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_medicine_focus
 	icon = GFX_goal_cry_medicine
-	cost = 13
+	cost = 10
 	prerequisite = {
 		focus = CRY_rndinstitute
 		focus = CRY_industry_f
@@ -2034,7 +1969,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_miamore
 	icon = GFX_goal_miamore
-	cost = 10
+	cost = 8
 	prerequisite = {
 		focus = CRY_oldorder
 	}
@@ -2086,7 +2021,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_subordination
 	icon = GFX_goal_cry_subordination
-	cost = 10
+	cost = 8
 	prerequisite = {
 		focus = CRY_miamore
 	}
@@ -2138,7 +2073,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_independence_referendum
 	icon = GFX_goal_cry_referendum
-	cost = 10
+	cost = 8
 	mutually_exclusive = { focus = CRY_subordination }
 	prerequisite = {
 		focus = CRY_miamore
@@ -2201,7 +2136,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_eqs_tech_share
 	icon = GFX_goal_cry_eqs_tech_share
-	cost = 10
+	cost = 8
 	ai_will_do = { factor = 300 }
 	relative_position_id = CRY_miamore
 	x = 0
@@ -2234,7 +2169,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_eqs_strengthen_ties
 	icon = GFX_goal_cry_strengthen_ties
-	cost = 10
+	cost = 8
 	ai_will_do = { factor = 30 }
 	relative_position_id = CRY_miamore
 	x = -2
@@ -2268,7 +2203,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_deep_integration
 	icon = GFX_goal_cry_deep_integration
-	cost = 10
+	cost = 8
 	ai_will_do = { factor = 30 }
 	relative_position_id = CRY_miamore
 	x = -1
@@ -2314,7 +2249,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_eqs_crystalcity_to_canterlot
 	icon = GFX_goal_cry_train
-	cost = 10
+	cost = 8
 	ai_will_do = { factor = 30 }
 	relative_position_id = CRY_miamore
 	x = 0
@@ -2358,7 +2293,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_free_trade_focus
 	icon = GFX_goal_cry_free_trade
-	cost = 10
+	cost = 8
 	ai_will_do = { factor = 30 }
 	relative_position_id = CRY_miamore
 	x = 2
@@ -2375,7 +2310,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_world_metropolis
 	icon = GFX_goal_cry_world_metropolis
-	cost = 10
+	cost = 8
 	ai_will_do = { factor = 30 }
 	relative_position_id = CRY_miamore
 	x = 1
@@ -2440,7 +2375,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_miamore_forever
 	icon = GFX_goal_cry_miamore
-	cost = 10
+	cost = 8
 	ai_will_do = { factor = 30 }
 	relative_position_id = CRY_miamore
 	x = 0
@@ -2493,7 +2428,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_eqsadvisors
 	icon = GFX_goal_cry_eqs_hat
-	cost = 10
+	cost = 8
 	prerequisite = {
 		focus = CRY_eqsforces
 	}
@@ -2533,7 +2468,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_eqsforces
 	icon = GFX_goal_cry_celestia
-	cost = 10
+	cost = 8
 	prerequisite = {
 		focus = CRY_miamore
 	}
@@ -2559,7 +2494,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_eqsengineers
 	icon = GFX_goal_cry_engineering
-	cost = 10
+	cost = 8
 	prerequisite = {
 		focus = CRY_eqsforces
 	}
@@ -2604,7 +2539,7 @@ shared_focus = {
 shared_focus = {
 	id = CRY_eqsfactories
 	icon = GFX_goal_cry_factory_cel
-	cost = 10
+	cost = 8
 	prerequisite = {
 		focus = CRY_eqsengineers
 		focus = CRY_eqsadvisors

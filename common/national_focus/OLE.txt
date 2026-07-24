@@ -4367,7 +4367,7 @@ focus_tree = {
 		id = OLE_focus_electronics
 		icon = GFX_goal_generic_radar
 		prerequisite = { focus = OLE_computing }
-		x = 52
+		x = 29
 		y = 3
 		cost = 10
 		ai_will_do = {
@@ -4400,7 +4400,7 @@ focus_tree = {
 		icon = GFX_goal_generic_army_artillery2
 		prerequisite = { focus = OLE_focus_electronics }
 		prerequisite = { focus = OLE_new_arty }
-		x = 51
+		x = 28
 		y = 5
 		cost = 10.00
 		ai_will_do = {
