@@ -4303,9 +4303,9 @@ country_event = {
 				factor = 0
 			}
 		}
-		hidden_effect = {
-			STG = { country_event = { id = griffons.101 days = 180 random = 200 } }
-		}
+		#hidden_effect = {
+		#	STG = { country_event = { id = griffons.101 days = 180 random = 200 } }
+		#}
 		add_power_balance_value = {
 			id = GRF_civil_war_bop
 			value = 0.05
