@@ -1,11 +1,40 @@
 ideas = {
     country = {
-        eof2_chn_invasion = {
+        eof_chn_overstressed_supply = {
             removal_cost = -1
             picture = CHN_plan_east_prep
             modifier = {
+                supply_consumption_factor = 0.2
+                planning_speed = -1
+            }
+            targeted_modifier = {
+                tag = EQS
+                attack_bonus_against = -0.3
+            }
+            targeted_modifier = {
+                tag = STG
+                attack_bonus = -0.3
+            }
+            targeted_modifier = {
+                tag = CRY
+                attack_bonus_against = -0.3
+            }
+            targeted_modifier = {
+                tag = EQC
+                attack_bonus_against = -0.3
+            }
+        }
+    }
+    country = {
+        eof2_chn_invasion = {
+            removal_cost = -1
+            on_remove = {
+                add_timed_idea = { idea = eof_chn_overstressed_supply days = 120}
+            }
+            picture = CHN_plan_east_prep
+            modifier = {
                 supply_consumption_factor = -0.4
-                no_supply_grace = 72
+                no_supply_grace = 24
                 planning_speed = 2.0
             }
             targeted_modifier = {
