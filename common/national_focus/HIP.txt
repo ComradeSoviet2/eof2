@@ -6495,15 +6495,15 @@ shared_focus = {
 		}
 
 		available = {
-			OR = {
-				has_war = yes
-				AND = {
-					NOT = {
-						has_idea = isolation
-					}
-					any_of_potential_and_current_enemies_justifying_or_has_wargoal_on_THIS = yes
-				}
-			}
+			#OR = {
+			#	has_war = yes
+			#	AND = {
+			#		NOT = {
+			#			has_idea = isolation
+			#		}
+			#		any_of_potential_and_current_enemies_justifying_or_has_wargoal_on_THIS = yes
+			#	}
+			#}
 			NOT = {
 				has_completed_focus = HIP_hardline_strategy
 			}
@@ -6560,15 +6560,15 @@ shared_focus = {
 			NOT = {
 				has_completed_focus = HIP_moderate_strategy
 			}
-			OR = {
-				has_war = yes
-				AND = {
-					NOT = {
-						has_idea = isolation
-					}
-					any_of_potential_and_current_enemies_justifying_or_has_wargoal_on_THIS = yes
-				}
-			}
+			#OR = {
+			#	has_war = yes
+			#	AND = {
+			#		NOT = {
+			#			has_idea = isolation
+			#		}
+			#		any_of_potential_and_current_enemies_justifying_or_has_wargoal_on_THIS = yes
+			#	}
+			#}
 		}
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -7038,9 +7038,9 @@ shared_focus = {
 		prerequisite = {
 			focus = HIP_defend_our_island
 		}
-		available = {
-			has_war = yes
-		}
+		#available = {
+		#	has_war = yes
+		#}
 		bypass = {
 			has_country_flag = HIP_won_north_zebrican_war
 		}
@@ -7089,9 +7089,9 @@ shared_focus = {
 		prerequisite = {
 			focus = HIP_defend_our_island
 		}
-		available = {
-			has_war = yes
-		}
+		#available = {
+		#	has_war = yes
+		#}
 		bypass = {
 			has_country_flag = HIP_won_north_zebrican_war
 		}
@@ -8873,7 +8873,7 @@ shared_focus = {
 		}
 
 		available = {
-			has_war = yes
+			#has_war = yes
 			has_government = fascism
 			OR = {
 				has_completed_focus = HIP_the_factories_or_the_front
