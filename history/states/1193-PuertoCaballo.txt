@@ -8,7 +8,7 @@ state={
 	}
 
 	history={
-		owner = EQS
+		owner = PCB
 		buildings = {
 			infrastructure = 3
 			arms_factory = 1
@@ -19,7 +19,7 @@ state={
 				naval_base = 3
 			}
 		}
-		add_core_of = EQS
+		add_core_of = PCB
 		victory_points={
 			2345 20
 		}

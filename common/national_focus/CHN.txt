@@ -2580,6 +2580,49 @@ focus_tree = {
 #			}
 #		}
 #	}
+
+
+ #eof changes
+    focus = {
+		id = EoF_coup_Puerto_Coballo
+		icon = GFX_goal_chn_battleships
+		cost = 9
+		x = 4
+		y = 0
+		cancel_if_invalid = yes
+		available = {
+			PCB = {
+				original_tag_exists = yes
+			}
+		}
+		completion_reward = {
+			annex_country = {
+				target = PCB
+				transfer_troops = yes
+			}
+		}
+	}
+	focus = {
+		id = eof_subjugate_dragons
+		icon = GFX_goal_chn_battleships
+		cost = 10
+		x = 2
+		y = 0
+		cancel_if_invalid = yes
+		avaiable = {
+			DRG = {
+				original_tag_exists = yes
+			}
+		}
+		completion_reward = {
+			annex_country = {
+				target = DRG
+				transfer_troops = yes
+			}
+		}
+	}
+
+
 	##############MILITARY FOCUS TREES################
 
 	focus = {

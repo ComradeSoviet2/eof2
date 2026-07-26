@@ -11,8 +11,8 @@ state={
 	buildings_max_level_factor=1.00
 
 	history={
-		owner = EQS
-		add_core_of = EQS
+		owner = DRG
+		add_core_of = DRG
 
 		buildings = {
 			arms_factory = 1
