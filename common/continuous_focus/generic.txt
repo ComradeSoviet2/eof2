@@ -415,13 +415,77 @@ continuous_focus_palette = {
 		ai_will_do = {
 			factor = 0
 		}
+	}
+	
+	#EoF Changes
 
-		supports_ai_strategy = ai_focus_military_advancements
-
+	focus = {
+		id = EoF_rapid_mobilization
+		
+		icon = GFX_goal_conscription
+		
+		available = {
+		}
+				
+		modifier = {
+			mobilization_speed = 3
+		}
+		
 		daily_cost = 1
-
+		
 		available_if_capitulated = yes
 	}
+
+	focus = {
+		id = EoF_resource_efficient_production
+		
+		icon = GFX_All_resource
+		
+		available = {
+		}
+				
+		modifier = {
+			production_lack_of_resource_penalty_factor = -0.25
+		}
+		
+		daily_cost = 1
+		
+		available_if_capitulated = yes
+	}
+
+	focus = {
+		id = EoF_continuous_infantry_production
+		
+		icon = GFX_goal_generic_small_arms
+		
+		available = {
+		}
+				
+		idea = EoF_continuous_infantry_production
+		
+		daily_cost = 1
+		
+		available_if_capitulated = yes
+	}
+
+	focus = {
+		id = EoF_all_my_focuses_are_done
+		
+		icon = GFX_goal_munitions_factories
+		
+		available = {
+		}
+				
+		modifier = {
+			industrial_capacity_factory = 0.1
+		}
+		
+		daily_cost = 1
+		
+		available_if_capitulated = yes
+	}
+
+	#EoF Changes
 
 	focus = {
 		id = MAN_continuous_love_tax_sucking
